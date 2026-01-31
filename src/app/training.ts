@@ -15,7 +15,6 @@ interface IUserInfo extends IUser {
 }
 
 let statuses: "loading" | "success" | "error";
-
 let textType: 'uppercase' | 'lowercase' | 'capitalize';
 
 let user1: IUser = {
@@ -57,10 +56,10 @@ let userInfo1: IUserInfo = {
     car: 'None'
 }
 
-const result = formatText('hello world!', 'uppercase');
+const result: string = getFormattedText('hello world!', 'uppercase');
 console.log(result);
 
-let textInfo = returnText('qwer', '');
+let textInfo: string = getText('qwer', '');
 console.log(textInfo);
 
 const users: IUser[] = [
@@ -89,13 +88,13 @@ let filteredAge: IUser[] = users.filter((user) => user.age > 20);
 
 console.log(filteredAge);
 
-function add(number1: number, number2: number): number {
+function getNumbers(number1: number, number2: number): number {
     return number1 + number2;
 }
-add(20, 30);
-add(130, 230);
+getNumbers(20, 30);
+getNumbers(130, 230);
 
-function formatText(text: string, format: string): string {
+function getFormattedText(text: string, format: string): string {
     if (format === 'uppercase') {
         return text.toUpperCase();
     } else if (format === 'lowercase') {
@@ -106,6 +105,6 @@ function formatText(text: string, format: string): string {
     return text;
 }
 
-function returnText(text: string, symbol: string): string {
+function getText(text: string, symbol: string): string {
     return text.replaceAll(symbol, "");
 }
