@@ -15,7 +15,6 @@ interface IUserInfo extends IUser {
 }
 
 let statuses: "loading" | "success" | "error";
-
 let textType: 'uppercase' | 'lowercase' | 'capitalize';
 
 let user1: IUser = {
