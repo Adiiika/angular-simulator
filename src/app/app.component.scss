@@ -1,0 +1,159 @@
+.container {
+    display: block;
+    background-image: url('/bg-mountains.jpg');
+    width: 1470px;
+    height: 985px;
+    background-size: cover;
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 1180px;
+        margin: 0 auto;
+        padding-top: 16px;
+
+        &-right {
+            display: flex;
+            align-items: center;
+            color: var(--white-color);
+            gap: 24px;
+            cursor: pointer;
+        }
+
+        &-left {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    .company-icon {
+        width: 137px;
+        height: 48px;
+        margin-right: 212px;
+        margin-bottom: 0;
+    }
+
+    .company-name {
+        font-size: 18px;
+        letter-spacing: 6px;
+        color: var(--white-color);
+    }
+
+    .required-btn {
+        color: var(--white-color);
+        background-color: var(--green-color);
+        width: 157px;
+        height: 44px;
+        border: none;
+        border-radius: 4px;
+        font-weight: 600;
+        margin-left: 25px;
+        cursor: pointer;
+    }
+
+    .main-title {
+        display: flex;
+        padding: 463px 100px 41px 0;
+        margin: 0 auto;
+        font-weight: 400;
+        width: 1080px;
+        font-size: 50px;
+        line-height: 150%;
+        text-transform: uppercase;
+        color: var(--white-color)
+    }
+
+    .sub-form {
+        display: flex;
+        gap: 24px;
+    }
+
+    .sub-title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        width: 1180px;
+        height: 161px;
+        backdrop-filter: blur(6px);
+        border-radius: 10px;
+        background-color: #FFFFFF33;
+        backdrop-filter: blur(6px);
+    }
+
+    .search-select {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .select {
+        padding-right: 20px;
+        appearance: none;
+        padding-left: 16px;
+        background-color: #FFFFFF33;
+        width: 270px;
+        height: 52px;
+        color: var(--white-color);
+        border-color: var(--white-color);
+        border-radius: 8px;
+    }
+
+    .pointer-icon-left {
+        position: absolute;
+        left: 265px;
+        top: 41%;
+        transform: translateY(-50%);
+        pointer-events: none;
+    }
+
+    .pointer-icon-right {
+        position: absolute;
+        right: 273px;
+        top: 41%;
+        transform: translateY(-50%);
+        pointer-events: none;
+    }
+
+    .calendar-icon {
+        position: absolute;
+        right: 570px;
+        top: 36%;
+    }
+
+    input.date {
+        width: 270px;
+        height: 52px;
+        border: 1px solid var(--white-color);
+        border-radius: 8px;
+        background-color: #FFFFFF33;
+        color: var(--white-color);
+        padding-left: 16px;
+    }
+
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        display: none;
+        -webkit-appearance: none;
+    }
+
+    .sub-select {
+        display: block;
+        font-weight: 400;
+        line-height: 150%;
+        color: var(--white-color);
+        padding-left: 4px;
+        margin-top: 8px;
+    }
+
+    .search-program-btn {
+        border: none;
+        width: 213px;
+        height: 53px;
+        background-color: var(--white-color);
+        color: var(--green-color);
+        border-radius: 4px;
+        font-weight: 700;
+        line-height: 20px;
+        cursor: pointer;
+    }
+}

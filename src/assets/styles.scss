@@ -1,0 +1,23 @@
+@use './fonts';
+@use './normalize.scss';
+
+* {
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+:root {
+    --white-color: #FDFDFD;
+    --green-color: #1A3E3E;
+}
+
+.fs-14 {
+    font-size: 14px
+}
+
+.fs-16 {
+    font-size: 16px;
+}
+
+.fs-18 {
+    font-size: 18px;
+}
