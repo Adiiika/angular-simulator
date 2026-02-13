@@ -10,36 +10,34 @@ import './collection.js'
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
+
+  private primaryColors = [Color.Red, Color.Green, Color.Blue];
+
   companyName: string = 'РУМТИБЕТ';
 
   constructor() {
     this.lastVisit();
     this.countLogin();
-  }
 
-  isPrimaryColor(color: Color): boolean {
-    const primaryColor: Color[] = [Color.Red, Color.Green, Color.Blue];
-
-    return primaryColor.includes(color);
+    this.primaryColors.includes(Color.Blue);
   }
 
   lastVisit() {
     let lastLogin: string = new Date().toString();
-    localStorage.getItem('lastVisit');
+    localStorage.getItem('last-visit');
 
     if (lastLogin) {
-      localStorage.setItem('lastVisit', lastLogin);
+      localStorage.setItem('last-visit', lastLogin);
       console.log('Последний вход', lastLogin);
     }
   }
 
   countLogin() {
-    let visitsStored: number = Number(localStorage.getItem('Visits') || '0');
+    let visitsStored: number = Number(localStorage.getItem('visits') || '0');
 
-    if (visitsStored) {
-      visitsStored += 1;
-      localStorage.setItem('Visits', visitsStored.toString());
-      console.log('Количество заходов', visitsStored);
-    }
+    visitsStored += 1;
+    localStorage.setItem('visits', visitsStored.toString());
+    console.log('Количество заходов', visitsStored);
   }
+
 }

@@ -1,21 +1,21 @@
 <div class="container">
     <header class="header">
         <div class="header-left">
-            <img class="company-icon" src="./mountain-icon.svg" width="137px" height="72px">
+            <img class="company-icon" src="./mountain-logo.svg" width="137px" height="72px">
             <span class="company-name">{{companyName}}</span>
         </div>
-        <div class="header-right fs-18">
+        <nav id="header-right-navigation" class="fs-18">
             <a>Главная</a>
             <a>Про гида</a>
             <a>Программа тура</a>
             <a>Стоимость</a>
             <a>Блог</a>
             <a>Контакты</a>
-            <button class="required-btn fs-16" width="157px" height="44px">Консультанция</button>
-        </div>
+            <button id="required-btn" class="fs-16 fw-600" width="157px" height="44px">Консультанция</button>
+        </nav>
     </header>
 
-    <h1 class="main-title">
+    <h1 class="main-title fw-400">
         Насладись прогулкой в горах <br> с командой единомышленников
     </h1>
 
@@ -23,38 +23,38 @@
         <form class="sub-form">
             <div class="search-select">
                 <div class="field-wrapper">
-                    <select class="select location">
+                    <select id="select-destination">
                         <option disabled selected>Локация для тура</option>
                         <option>Москва</option>
                         <option>Санкт-Петербург</option>
                         <option>Сочи</option>
                     </select>
-                    <img class="pointer-icon-left" src="./pointer.svg" width="15px" height="8px">
+                    <img class="pointer-icon-left" src="./pointer-icon.svg" width="15px" height="8px">
                 </div>
-                <span class="sub-select fs-14">выберите из списка</span>
+                <span class="sub-select fs-14 fw-400">выберите из списка</span>
             </div>
 
             <div class="field-wrapper">
-                <div class="search-select">
-                    <input class="select date" type="date" placeholder="Дата похода">
-                    <img class="calendar-icon" src="./calendar.svg" width="18px" height="18px">
+                <div id="select-tour-date">
+                    <input class="select-date" type="date" placeholder="Дата похода">
+                    <img class="calendar-icon" src="./calendar-icon.svg" width="18px" height="18px">
                     <span class="sub-select fs-14">укажите дату</span>
                 </div>
             </div>
 
             <div class="field-wrapper">
                 <div class="search-select">
-                    <select class="select party">
+                    <select id="select-tour-participants">
                         <option disabled selected>Участники</option>
                         <option>Адам</option>
                         <option>Влад</option>
                         <option>Фарух</option>
                     </select>
-                    <img class="pointer-icon-right" src="./pointer.svg" width="15px" height="8px">
+                    <img class="pointer-icon-right" src="./pointer-icon.svg" width="15px" height="8px">
                 </div>
                 <span class="sub-select fs-14">выберите из списка</span>
             </div>
-            <button class="search-program-btn fs-16">Найти программу</button>
+            <button id="search-program-btn" class="fs-16 fw-700">Найти программу</button>
         </form>
     </div>
 </div>

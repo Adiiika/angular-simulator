@@ -12,19 +12,19 @@
         width: 1180px;
         margin: 0 auto;
         padding-top: 16px;
+    }
 
-        &-right {
-            display: flex;
-            align-items: center;
-            color: var(--white-color);
-            gap: 24px;
-            cursor: pointer;
-        }
+    #header-right-navigation {
+        display: flex;
+        align-items: center;
+        color: var(--white-color);
+        gap: 24px;
+        cursor: pointer;
+    }
 
-        &-left {
-            display: flex;
-            flex-direction: column;
-        }
+    .header-left {
+        display: flex;
+        flex-direction: column;
     }
 
     .company-icon {
@@ -40,14 +40,13 @@
         color: var(--white-color);
     }
 
-    .required-btn {
+    #required-btn {
         color: var(--white-color);
         background-color: var(--green-color);
         width: 157px;
         height: 44px;
         border: none;
         border-radius: 4px;
-        font-weight: 600;
         margin-left: 25px;
         cursor: pointer;
     }
@@ -56,12 +55,11 @@
         display: flex;
         padding: 463px 100px 41px 0;
         margin: 0 auto;
-        font-weight: 400;
         width: 1080px;
         font-size: 50px;
         line-height: 150%;
         text-transform: uppercase;
-        color: var(--white-color)
+        color: var(--white-color);
     }
 
     .sub-form {
@@ -87,7 +85,28 @@
         flex-direction: column;
     }
 
-    .select {
+    #select-destination {
+        appearance: none;
+        padding-left: 16px;
+        background-color: #FFFFFF33;
+        width: 270px;
+        height: 52px;
+        color: var(--white-color);
+        border-color: var(--white-color);
+        border-radius: 8px;
+    }
+
+    #select-tour-date {
+        padding-right: 25px;
+        appearance: none;
+        padding-left: 16px;
+        width: 270px;
+        height: 52px;
+        border-color: var(--white-color);
+        border-radius: 8px;
+    }
+
+    #select-tour-participants {
         padding-right: 20px;
         appearance: none;
         padding-left: 16px;
@@ -121,9 +140,9 @@
         top: 36%;
     }
 
-    input.date {
+    .select-date {
         width: 270px;
-        height: 52px;
+        height: 51px;
         border: 1px solid var(--white-color);
         border-radius: 8px;
         background-color: #FFFFFF33;
@@ -138,21 +157,19 @@
 
     .sub-select {
         display: block;
-        font-weight: 400;
         line-height: 150%;
         color: var(--white-color);
         padding-left: 4px;
         margin-top: 8px;
     }
 
-    .search-program-btn {
+    #search-program-btn {
         border: none;
         width: 213px;
         height: 53px;
         background-color: var(--white-color);
         color: var(--green-color);
         border-radius: 4px;
-        font-weight: 700;
         line-height: 20px;
         cursor: pointer;
     }

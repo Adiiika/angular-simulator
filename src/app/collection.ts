@@ -1,4 +1,5 @@
 class Collection<T> {
+
     private items: T[] = [];
 
     constructor(items: T[]) {
@@ -24,8 +25,9 @@ class Collection<T> {
     updateItem(index: number, newValue: T): void {
         this.items[index] = newValue;
     }
+    
 }
 
 const animalsCollection: Collection<string> = new Collection<string>(['cat', 'dog', 'horse', 'shark']);
-const NumbersAndStringCollection: Collection<number | string> = new Collection<number | string>(['adam', 23, 'bagdad', 2026]);
+const numbersAndStringCollection: Collection<number | string> = new Collection<number | string>(['adam', 23, 'bagdad', 2026]);
 
