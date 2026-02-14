@@ -21,7 +21,7 @@ export class AppComponent {
   isPrimaryColor(color: Color): boolean {
     const primaryColors: Color[] = [Color.RED, Color.GREEN, Color.BLUE];
 
-    return primaryColors.includes(color) === true ? true : false;
+    return primaryColors.includes(color);
   }
 
   lastVisit(): void {
