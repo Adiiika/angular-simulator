@@ -11,20 +11,26 @@ import './collection.js'
 })
 export class AppComponent {
 
-  private primaryColors = [Color.Red, Color.Green, Color.Blue];
-
   companyName: string = 'РУМТИБЕТ';
 
   constructor() {
     this.lastVisit();
     this.countLogin();
-
-    this.primaryColors.includes(Color.Blue);
   }
 
-  lastVisit() {
+  isPrimaryColor(color: Color): boolean {
+    const primaryColors: Color[] = [Color.RED, Color.GREEN, Color.BLUE];
+
+    if (primaryColors.includes(color) === true) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  lastVisit(): void {
     let lastLogin: string = new Date().toString();
-    localStorage.getItem('last-visit');
+    const visitsCount: string | null = localStorage.getItem('last-visit');
 
     if (lastLogin) {
       localStorage.setItem('last-visit', lastLogin);
@@ -32,7 +38,7 @@ export class AppComponent {
     }
   }
 
-  countLogin() {
+  countLogin(): void {
     let visitsStored: number = Number(localStorage.getItem('visits') || '0');
 
     visitsStored += 1;
@@ -41,3 +47,4 @@ export class AppComponent {
   }
 
 }
+

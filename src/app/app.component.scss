@@ -12,19 +12,19 @@
         width: 1180px;
         margin: 0 auto;
         padding-top: 16px;
-    }
 
-    #header-right-navigation {
-        display: flex;
-        align-items: center;
-        color: var(--white-color);
-        gap: 24px;
-        cursor: pointer;
-    }
+        &-right-navigation {
+            display: flex;
+            align-items: center;
+            color: var(--white-color);
+            gap: 24px;
+            cursor: pointer;
+        }
 
-    .header-left {
-        display: flex;
-        flex-direction: column;
+        &-left {
+            display: flex;
+            flex-direction: column;
+        }
     }
 
     .company-icon {
@@ -96,7 +96,7 @@
         border-radius: 8px;
     }
 
-    #select-tour-date {
+    .select-tour-date {
         padding-right: 25px;
         appearance: none;
         padding-left: 16px;
@@ -140,7 +140,7 @@
         top: 36%;
     }
 
-    .select-date {
+    #select-date {
         width: 270px;
         height: 51px;
         border: 1px solid var(--white-color);
