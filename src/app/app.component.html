@@ -1,1 +1,60 @@
-<h1 style="display: flex; justify-content: center; font-family: sans-serif;">NGX SIMULATOR</h1>
+<div class="container">
+    <header class="header">
+        <div class="header-left">
+            <img class="company-icon" src="./mountain-logo.svg" width="137px" height="72px">
+            <span class="company-name">{{companyName}}</span>
+        </div>
+        <nav class="header-right-navigation fs-18">
+            <a id="nav-link-home">Главная</a>
+            <a id="nav-item-guide">Про гида</a>
+            <a id="nav-item-tour-program">Программа тура</a>
+            <a id="nav-item-pricing">Стоимость</a>
+            <a id="nav-item-blog">Блог</a>
+            <a id="nav-item-contacts">Контакты</a>
+            <button id="request-consultation-btn" class="fs-16 fw-600" width="157px" height="44px">Консультация</button>
+        </nav>
+    </header>
+
+    <h1 class="main-title fw-400">
+        Насладись прогулкой в горах <br> с командой единомышленников
+    </h1>
+
+    <div class="sub-title">
+        <form class="sub-form">
+            <div class="search-select">
+                <div class="field-wrapper">
+                    <select id="select-destination">
+                        <option disabled selected>Локация для тура</option>
+                        <option>Москва</option>
+                        <option>Санкт-Петербург</option>
+                        <option>Сочи</option>
+                    </select>
+                    <img class="pointer-icon-left" src="./down-arrow-icon.svg" width="15px" height="8px">
+                </div>
+                <span class="sub-select fs-14 fw-400">выберите из списка</span>
+            </div>
+
+            <div class="field-wrapper">
+                <div class="select-tour-date">
+                    <input id="select-date" type="date" placeholder="Дата похода">
+                    <img class="calendar-icon" src="./calendar-icon.svg" width="18px" height="18px">
+                    <span class="sub-select fs-14">укажите дату</span>
+                </div>
+            </div>
+
+            <div class="field-wrapper">
+                <div class="search-select">
+                    <select id="select-tour-participants">
+                        <option disabled selected>Участники</option>
+                        <option>Адам</option>
+                        <option>Влад</option>
+                        <option>Фарух</option>
+                    </select>
+                    <img class="pointer-icon-right" src="./down-arrow-icon.svg" width="15px" height="8px">
+                </div>
+                <span class="sub-select fs-14">выберите из списка</span>
+            </div>
+            <button id="search-program-btn" class="fs-16 fw-700">Найти программу</button>
+        </form>
+    </div>
+</div>
