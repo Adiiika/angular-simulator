@@ -1,3 +1,27 @@
+@use '../assets/mixins.scss' as *;
+
+.modal-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+
+    .loading-icon {
+        animation: spin 1s linear infinite;
+    }
+
+    .loading-title {
+        margin-left: 30px;
+        color: var(--white-color);
+    } 
+}
+
 .container {
     display: block;
     background-image: url('/bg-mountains.jpg');
@@ -30,30 +54,70 @@
     .company-icon {
         width: 137px;
         height: 48px;
-        margin-right: 212px;
-        margin-bottom: 0;
+        margin: 0 212px 0 0;
     }
 
     .company-name {
-        font-size: 18px;
         letter-spacing: 6px;
         color: var(--white-color);
     }
 
     #request-consultation-btn {
-        color: var(--white-color);
-        background-color: var(--green-color);
+        @include button();
         width: 157px;
         height: 44px;
-        border: none;
-        border-radius: 4px;
         margin-left: 25px;
+    }
+
+    .date-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+        margin: 10px 145px 0 0;
+    }
+
+    .count-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+        margin: 10px 145px 0 0;
+    }
+
+    .count-div {
+        display: flex;
+        width: 70px;
+        justify-content: space-around;
+        margin: 13px 40px 0 0;
+    }
+
+    .counter-control {
+        margin-top: 10px;
+    }
+
+    #counter-plus,
+    .count-zero,
+    #counter-minus {
+        margin: 20px 20px 0 0;
+        color: var(--white-color);
+        font-size: 20px;
         cursor: pointer;
+    }
+
+    .run-time {
+        margin: 12px 40px 0 0;
+        color: var(--white-color);
+    }
+
+    #date-toggle-btn,
+    #count-toggle-btn {
+        @include button();
+        width: 158px;
+        height: 40px;
     }
 
     .main-title {
         display: flex;
-        padding: 463px 100px 41px 0;
+        padding: 463px 100px 21px 0;
         margin: 0 auto;
         width: 1080px;
         font-size: 50px;
@@ -97,9 +161,8 @@
     }
 
     .select-tour-date {
-        padding-right: 25px;
+        padding: 0 25px 0 16px;
         appearance: none;
-        padding-left: 16px;
         width: 270px;
         height: 52px;
         border-color: var(--white-color);
@@ -107,9 +170,8 @@
     }
 
     #select-tour-participants {
-        padding-right: 20px;
+        padding: 0 20px 0 16px;
         appearance: none;
-        padding-left: 16px;
         background-color: #FFFFFF33;
         width: 270px;
         height: 52px;
@@ -164,13 +226,210 @@
     }
 
     #search-program-btn {
-        border: none;
         width: 213px;
         height: 53px;
-        background-color: var(--white-color);
-        color: var(--green-color);
-        border-radius: 4px;
-        line-height: 20px;
+        background-color: var(--green-color) !important;
+        color: var(--white-color) !important;
+        transition: all 0.7s ease;
+        @include button();
+
+        &:disabled {
+            background-color: var(--white-color) !important;
+            color: var(--green-color) !important;
+        }
+    }
+
+    .input-container {
+        display: flex;
+        flex-direction: row;
+        margin: 15px 0 0 150px;
+        height: 52px;
+        width: 454px;
+    }
+
+    #input-text {
+        height: 25px;
+        width: 244px;
+        color: transparent;
+    }
+
+    .text {
+        color: var(--white-color);
+        margin: 5px 0 0 40px;
+    }
+}
+
+.container-description {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    margin: 100px 200px 100px 150px;
+
+    .description-content-left {
+        position: relative;
+        width: 480px;
+        height: 526px;
+    }
+
+    .snow-mountain {
+        position: relative;
+        border-radius: 24px;
+        z-index: -2;
+    }
+
+    .mountain-house {
+        border-radius: 24px;
+        position: absolute;
+        z-index: -1;
+        right: 10px;
+        top: 126px;
+    }
+
+    #player-toggle {
+        z-index: 1;
+        position: absolute;
+        top: 301px;
+        right: 850px;
+        left: 270px;
         cursor: pointer;
+    }
+
+    .history-journey {
+        @include span();
+    }
+
+    .promo-description {
+        @include offers();
+        width: 580px;
+        margin: 8px 0 40px 0;
+    }
+
+    .description-journey {
+        @include description();
+        width: 580px;
+        height: 162px;
+        margin-bottom: 40px;
+    }
+
+    #request-journey-btn {
+        @include button();
+        height: 52px;
+        width: 200px;
+    }
+}
+
+.container-offers {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    background-color: var(--gray-color);
+
+    .offers-content-left {
+        margin: 80px 90px 0 0;
+    }
+
+    .company-offers {
+        @include span();
+    }
+
+    .best-offer {
+        @include offers();
+        margin: 8px 0 40px 0;
+    }
+
+    .description-offer {
+        @include description();
+        width: 580px;
+        margin: 0 0 40px 0;
+    }
+
+    .active-offer-cards {
+        display: flex;
+        flex-direction: column;
+        transition: all 0.7s ease;
+        background-color: var(--green-color);
+        color: var(--white-color);
+        cursor: pointer;
+        border-radius: 7px;
+
+
+        .offer-title {
+            margin-top: 10px;
+            transition: all 0.7s ease;
+            color: var(--yellow-color);
+            text-align: center;
+        }
+
+        .offer-description {
+            transition: all 1s ease;
+            color: var(--yellow-color);
+            padding-left: 5px;
+            text-align: center;
+        }
+
+        .offer-icon {
+            padding: 15px 0px 0 235px;
+            transition: all 0.5s ease;
+        }
+    }
+
+    .offer-cards {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .offer-cards-icons {
+        display: inline-block;
+    }
+
+    .offer-icon {
+        margin-right: 16px;
+        padding-top: 6px;
+    }
+
+    .offer-cards-content {
+        margin-bottom: 40px
+    }
+
+    .offer-title {
+        line-height: 20px;
+        color: var(--black-color);
+        margin: 0 0 4px 0;
+    }
+
+    .offer-description {
+        line-height: 20px;
+        color: #000000;
+        width: 514px;
+        margin-top: 0;
+    }
+
+    #program-price-btn {
+        @include button();
+        width: 236px;
+        height: 52px;
+        margin-top: 10px;
+    }
+
+    .offers-content-right {
+        height: 400px;
+        margin-top: 120px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .river-coffe,
+    .orange-stream {
+        border-radius: 0 50px 0 50px;
+        object-fit: cover;
+    }
+
+    .man-canyon,
+    .man-snowmobile {
+        object-fit: cover;
+        border-radius: 50px 0 50px 0;
     }
 }
