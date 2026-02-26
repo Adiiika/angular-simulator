@@ -15,29 +15,36 @@
         </nav>
     </header>
     <div>
-        <div *ngIf="isBoolean == true" class="date-container">
+        @if (!isVisible) {
+        <div class="date-container">
             <span class="run-time">{{ date }}</span>
-            <button (click)="toggleVisibility()" id="date-toggle-btn">Показать кликер</button>
-        </div>
+            <button (click)="isVisible = !isVisible" id="date-toggle-btn">Показать кликер</button>
+        </div>}
 
-        <div *ngIf="isBoolean == false" class="count-container">
+        @if (isVisible) {
+    <div class="count-container">
             <div class="counter-control">
-                <span (click)="addOne(counter)" id="counter-plus">+</span>
+                <span (click)="counter+=1" id="counter-plus">+</span>
                 <span class="count-zero">{{ counter }}</span>
-                <span (click)="subtractOne(counter)" id="counter-minus">-</span>
+                <span (click)="counter >= 1 ? counter-=1 : null" id="counter-minus">-</span>
             </div>
-            <button (click)="toggleVisibility()" id="count-toggle-btn">Показать дату</button>
-        </div>
+            <button (click)="isVisible = !isVisible" id="count-toggle-btn">Показать дату</button>
+        </div>}
     </div>
 
     <h1 class="main-title fw-400">
         Насладись прогулкой в горах <br> с командой единомышленников
     </h1>
     <div class="sub-title">
-        <form class="sub-form" [formGroup]="tourForm">
+        <form class="sub-form" #subForm="ngForm" (ngSubmit)="onSubmit(subForm)">
             <div class="search-select">
                 <div class="field-wrapper">
-                    <select formControlName="placeName" id="select-destination">
+                    <select 
+                    [(ngModel)]="searchQuery.townName"
+                    name="town"
+                    #nameModel="ngModel" 
+                    id="select-destination" 
+                    required>
                         <option [ngValue]="''" disabled selected>Локация для тура</option>
                         <option value="moscow">Москва</option>
                         <option value="spb">Санкт-Петербург</option>
@@ -50,7 +57,13 @@
 
             <div class="field-wrapper">
                 <div class="select-tour-date">
-                    <input formControlName="tourDate" id="select-date" type="date" placeholder="Дата похода">
+                    <input
+                    [(ngModel)]="searchQuery.tourDate" 
+                    id="select-date" 
+                    name="tour"  
+                    type="date" 
+                    placeholder="Дата похода" 
+                    required>
                     <img class="calendar-icon" src="./calendar-icon.svg" width="18px" height="18px">
                     <span class="sub-select fs-14">укажите дату</span>
                 </div>
@@ -58,7 +71,11 @@
 
             <div class="field-wrapper">
                 <div class="search-select">
-                    <select formControlName="humanName" id="select-tour-participants">
+                    <select 
+                    [(ngModel)]="searchQuery.humanCount"  
+                    name="human" 
+                    id="select-tour-participants"
+                    required>
                         <option [ngValue]="''" disabled selected>Участники</option>
                         <option value="1">1 человек</option>
                         <option value="2">2 человека</option>
@@ -68,7 +85,7 @@
                 </div>
                 <span class="sub-select fs-14">выберите из списка</span>
             </div>
-            <button id="search-program-btn" [disabled]="tourForm.invalid" class="fs-16 fw-700">Найти программу</button>
+            <button id="search-program-btn" [disabled]="subForm.invalid" class="fs-16 fw-700">Найти программу</button>
         </form>
     </div>
     <div class="input-container">
@@ -76,7 +93,6 @@
         <span class="text fs-16 fw-700">{{ userText }}</span>
     </div>
 </div>
-
 
 <section class="container-description" width="1180px" height="526px">
     <div class="description-content-left">
@@ -114,10 +130,13 @@
         </p>
         @for (offer of offers; track offer.id) {
         <div class="offer-cards">
-            <div class="active-offer-cards" [class.active-offer-cards]="offer.id === selectedOfferId"
-                (mouseenter)="selectOffer(offer.id)" (mouseleave)="selectedOfferId = null">
+            <div 
+            class="active-offer-cards" 
+            [class.active-offer-cards]="offer.id === selectedOfferId"
+            (mouseenter)="selectOffer(offer.id)" 
+            (mouseleave)="selectedOfferId = null">
                 <div class="offer-cards-icons">
-                    <img class="offer-icon" [src]='offer.icon' width="50px" height="50px">
+                    <img class="offer-icon" [src]="'./' + offer.icon + '.svg'" width="50px" height="50px">
                 </div>
                 <div class="offer-cards-content">
                     <h3 class="offer-title fs-18 fw-700">{{ offer.title }}</h3>
@@ -129,14 +148,14 @@
         <button id="program-price-btn" class="fw-600 fs-16">Стоимость программ</button>
     </div>
     <div class="offers-content-right">
-        <img class="river-coffe" src="./river-coffe.jpg" width="250px" height="250px">
+        <img class="river-coffe" src="./sea-coffee-blue.jpg" width="250px" height="250px">
         <img class="man-canyon" src="./man-canyon.jpg" width="250px" height="250px">
         <img class="man-snowmobile" src="./man-snowmobile.jpg" width="250px" height="250px">
         <img class="orange-stream" src="./orange-stream.jpg" width="250px" height="250px">
     </div>
 </section>
 
-<div *ngIf="isBoolean" class="modal-overlay">
+<div *ngIf="isVisible" class="modal-overlay">
     <img class="loading-icon" src="./loading-icon.svg" width="51px" height="51px">
     <h2 class="loading-title">Загрузка страницы</h2>
 </div>

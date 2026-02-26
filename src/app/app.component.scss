@@ -19,7 +19,7 @@
     .loading-title {
         margin-left: 30px;
         color: var(--white-color);
-    } 
+    }
 }
 
 .container {
@@ -113,6 +113,7 @@
         @include button();
         width: 158px;
         height: 40px;
+        cursor: pointer;
     }
 
     .main-title {
@@ -352,7 +353,6 @@
         color: var(--white-color);
         cursor: pointer;
         border-radius: 7px;
-
 
         .offer-title {
             margin-top: 10px;

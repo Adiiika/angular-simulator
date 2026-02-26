@@ -14,50 +14,53 @@ import { NgIf } from '@angular/common';
 })
 export class AppComponent {
 
-  public companyName: string = 'РУМТИБЕТ';
-
-  public selectedOfferId: number | null = null;
-
-  public date: string = '';
-
-  public counter: number = 0;
-
-  public isBoolean: boolean = true;
-  
-  public userText: string = '';
-
-  public offers: IOffer[] = [
+  companyName: string = 'РУМТИБЕТ';
+  selectedOfferId: number | null = null;
+  date: string = '';
+  counter: number = 0;
+  isBoolean: boolean = true;
+  isVisible: boolean = true;
+  userText: string = '';
+  offers: IOffer[] = [
     {
       id: 1,
-      icon: './offer-people.svg',
+      icon: 'people-green-icon',
       title: 'Опытный гид',
       description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.'
     },
     {
       id: 2,
-      icon: './offer-safe.svg',
+      icon: 'safe-blue',
       title: 'Безопасный поход',
       description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.'
     },
     {
       id: 3,
-      icon: './offer-price.svg',
+      icon: 'price-yellow',
       title: 'Лояльные цены',
       description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.'
     }
   ]
 
-  public tourForm = new FormGroup({
+  tourForm = new FormGroup({
     humanName: new FormControl('', Validators.required),
     placeName: new FormControl('', Validators.required),
     tourDate: new FormControl('', Validators.required)
   })
 
+  searchQuery = {
+    townName: '',
+    tourDate: '',
+    humanCount: ''
+  }
+
   constructor() {
     this.lastVisit();
     this.countLogin();
     this.runTime();
-    this.loadModal();
+    setTimeout(() => {
+      this.isBoolean = false;
+    }, 2000);
   }
 
   private isPrimaryColor(color: Color): boolean {
@@ -66,7 +69,11 @@ export class AppComponent {
     return primaryColors.includes(color);
   }
 
-  public selectOffer(offerId: number): void {
+  onSubmit(form: any) {
+    console.log(form.value);
+  }
+
+  selectOffer(offerId: number): void {
     this.selectedOfferId = offerId;
   }
 
@@ -88,7 +95,7 @@ export class AppComponent {
     console.log('Количество заходов', visitsStored);
   }
 
-  public runTime(): void {
+  private runTime(): void {
     const updateDate = (): void => {
       this.date = new Date().toLocaleString('ru-RU', {
         day: '2-digit',
@@ -99,29 +106,9 @@ export class AppComponent {
         hour: '2-digit'
       })
     }
-      updateDate();
+    updateDate();
 
-      setInterval(updateDate, 1000);
-  }
-
-  public addOne(counter: number) {
-    this.counter = counter + 1;
-  }
-
-  public subtractOne(counter: number) {
-    if (counter >= 1) {
-      this.counter = counter - 1;
-    } else {}
-  }
-
-  public toggleVisibility() {
-    this.isBoolean = !this.isBoolean;
-  }
-
-  public loadModal() {
-    setTimeout(() => {  
-      this.isBoolean = false;
-    }, 2000);
+    setInterval(updateDate, 1000);
   }
 
 }
