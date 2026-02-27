@@ -97,7 +97,9 @@
     #counter-plus,
     .count-zero,
     #counter-minus {
-        margin: 20px 20px 0 0;
+        background: none;
+        border: none;
+        margin: 0 20px 0 0;
         color: var(--white-color);
         font-size: 20px;
         cursor: pointer;

@@ -18,8 +18,8 @@ export class AppComponent {
   selectedOfferId: number | null = null;
   date: string = '';
   counter: number = 0;
-  isBoolean: boolean = true;
-  isVisible: boolean = true;
+  loadingIcon: boolean = true;
+  isShown: boolean = true;
   userText: string = '';
   offers: IOffer[] = [
     {
@@ -30,23 +30,17 @@ export class AppComponent {
     },
     {
       id: 2,
-      icon: 'safe-blue',
+      icon: 'safe-blue-icon',
       title: 'Безопасный поход',
       description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.'
     },
     {
       id: 3,
-      icon: 'price-yellow',
+      icon: 'price-yellow-icon',
       title: 'Лояльные цены',
       description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.'
     }
   ]
-
-  tourForm = new FormGroup({
-    humanName: new FormControl('', Validators.required),
-    placeName: new FormControl('', Validators.required),
-    tourDate: new FormControl('', Validators.required)
-  })
 
   searchQuery = {
     townName: '',
@@ -59,7 +53,7 @@ export class AppComponent {
     this.countLogin();
     this.runTime();
     setTimeout(() => {
-      this.isBoolean = false;
+      this.loadingIcon = false;
     }, 2000);
   }
 
@@ -69,11 +63,11 @@ export class AppComponent {
     return primaryColors.includes(color);
   }
 
-  onSubmit(form: any) {
+  handleFormSubmit(form: any) {
     console.log(form.value);
   }
 
-  selectOffer(offerId: number): void {
+  selectOfferCard(offerId: number): void {
     this.selectedOfferId = offerId;
   }
 
@@ -95,20 +89,10 @@ export class AppComponent {
     console.log('Количество заходов', visitsStored);
   }
 
-  private runTime(): void {
-    const updateDate = (): void => {
-      this.date = new Date().toLocaleString('ru-RU', {
-        day: '2-digit',
-        month: '2-digit',
-        year: '2-digit',
-        second: '2-digit',
-        minute: '2-digit',
-        hour: '2-digit'
-      })
-    }
-    updateDate();
-
-    setInterval(updateDate, 1000);
+  private runTime() {
+    setInterval(() => {
+      this.date = new Date().toString().slice(0, 24);
+    }, 1000)
   }
 
-}
+} 
