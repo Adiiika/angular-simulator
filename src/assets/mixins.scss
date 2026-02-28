@@ -1,0 +1,27 @@
+@mixin span {
+    font-size: 24px;
+    line-height: 20%;
+    color: var(--yellow-color);
+}
+
+@mixin offers {
+    font-size: 32px;
+    line-height: 120%;
+    font-weight: 800;
+    color: var(--black-color);
+}
+
+@mixin description {
+    font-size: 18px;
+    line-height: 150%;
+    color: var(--black-color);
+}
+
+@mixin button {
+    border: none;
+    background-color: var(--green-color);
+    color: var(--white-color);
+    border-radius: 4px;
+    line-height: 20px;
+    cursor: pointer;
+}

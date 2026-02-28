@@ -8,6 +8,9 @@
 :root {
     --white-color: #FDFDFD;
     --green-color: #1A3E3E;
+    --yellow-color: #F2BE22;
+    --black-color: #18121E;
+    --gray-color: #F3F5F4;
 }
 
 .fs-14 {
@@ -32,4 +35,14 @@
 
 .fw-700 {
     font-weight: 700;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
 }
