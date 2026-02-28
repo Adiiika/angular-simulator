@@ -1,39 +1,39 @@
 <div class="container">
     <header class="header">
-        <div class="header-left">
-            <img class="company-icon" src="./mountain-logo.svg" width="137px" height="72px">
-            <span class="company-name fs-18">{{companyName}}</span>
-        </div>
-        <nav class="header-right-navigation fs-18">
-            <a id="nav-link-home">Главная</a>
-            <a id="nav-item-guide">Про гида</a>
-            <a id="nav-item-tour-program">Программа тура</a>
-            <a id="nav-item-pricing">Стоимость</a>
-            <a id="nav-item-blog">Блог</a>
-            <a id="nav-item-contacts">Контакты</a>
-            <button id="request-consultation-btn" class="fs-16 fw-600" width="157px" height="44px">Консультация</button>
-        </nav>
-    </header>
-    <div>
-        @if (!isShown) {
-        <div class="date-container">
-            <span class="run-time">{{ date }}</span>
-            <button (click)="isShown = !isShown" id="date-toggle-btn">Показать кликер</button>
-        </div>
-        }
-
-        @if (isShown) {
-        <div class="count-container">
-            <div class="counter-control">
-                <button (click)="counter+=1" id="counter-plus">+</button>
-                <span class="count-zero">{{ counter }}</span>
-                <button (click)="counter -=1" [disabled]="counter === 0" id="counter-minus">-</button>
+            <div class="header-navigation">
+                <div class="header-left">
+                    <img class="company-icon" src="./mountain-logo.svg" width="137px" height="72px">
+                    <span class="company-name fs-18">{{companyName}}</span>
+                </div>
+                <nav class="header-right-navigation fs-18">
+                    <a id="nav-link-home">Главная</a>
+                    <a id="nav-item-guide">Про гида</a>
+                    <a id="nav-item-tour-program">Программа тура</a>
+                    <a id="nav-item-pricing">Стоимость</a>
+                    <a id="nav-item-blog">Блог</a>
+                    <a id="nav-item-contacts">Контакты</a>
+                    <button id="request-consultation-btn" class="fs-16 fw-600" width="157px" height="44px">Консультация</button>
+                </nav>
             </div>
-            <button (click)="isShown = !isShown" id="count-toggle-btn">Показать дату</button>
-        </div>
-        }
-    </div>
 
+            @if (!isClickerMode) {
+                <div class="date-container">
+                    <span class="run-time">{{ date }}</span>
+                    <button (click)="isClickerMode = !isClickerMode" id="date-toggle-btn">Показать кликер</button>
+                </div>
+            }
+            @if (isClickerMode) {
+                <div class="count-container">
+                    <div class="counter-control">
+                        <button (click)="counter+=1" id="counter-plus">+</button>
+                        <span class="count-zero">{{ counter }}</span>
+                        <button (click)="counter -=1" [disabled]="counter === 0" id="counter-minus">-</button>
+                    </div>
+                    <button (click)="isClickerMode = !isClickerMode" id="count-toggle-btn">Показать дату</button>
+                </div>
+            }
+    </header>
+   
     <h1 class="main-title fw-400">
         Насладись прогулкой в горах <br> с командой единомышленников
     </h1>
@@ -161,7 +161,7 @@
     </div>
 </section>
 
-<div *ngIf="loadingIcon" class="modal-overlay">
+<div *ngIf="loadPage" class="modal-overlay">
     <img class="loading-icon" src="./loading-icon.svg" width="51px" height="51px">
     <h2 class="loading-title">Загрузка страницы</h2>
 </div>

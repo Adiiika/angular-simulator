@@ -3,12 +3,12 @@ import './training.ts';
 import { Color } from '../enums/Color.js';
 import './collection.js';
 import { IOffer } from '../interfaces/IOffer.js';
-import { FormsModule, NgModel, Validators, FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, NgModel } from '@angular/forms';
 import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [FormsModule, ReactiveFormsModule, NgIf],
+  imports: [FormsModule, NgIf],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -18,8 +18,8 @@ export class AppComponent {
   selectedOfferId: number | null = null;
   date: string = '';
   counter: number = 0;
-  loadingIcon: boolean = true;
-  isShown: boolean = true;
+  loadPage: boolean = true;
+  isClickerMode: boolean = true;
   userText: string = '';
   offers: IOffer[] = [
     {
@@ -51,10 +51,14 @@ export class AppComponent {
   constructor() {
     this.lastVisit();
     this.countLogin();
-    this.runTime();
+    
     setTimeout(() => {
-      this.loadingIcon = false;
+      this.loadPage = false;
     }, 2000);
+
+    setInterval(() => {
+      this.date = new Date().toString().slice(0, 24);
+    }, 1000)
   }
 
   private isPrimaryColor(color: Color): boolean {
@@ -87,12 +91,6 @@ export class AppComponent {
     visitsStored += 1;
     localStorage.setItem('visits', visitsStored.toString());
     console.log('Количество заходов', visitsStored);
-  }
-
-  private runTime() {
-    setInterval(() => {
-      this.date = new Date().toString().slice(0, 24);
-    }, 1000)
   }
 
 } 
