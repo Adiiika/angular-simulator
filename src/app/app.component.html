@@ -134,22 +134,22 @@
             то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа.
         </p>
         @for (offer of offers; track offer.id) {
-        <div class="offer-cards">
-            <div 
-                class="active-offer-cards" 
-                [class.active-offer-cards]="offer.id === selectedOfferId"
-                (mouseenter)="selectOfferCard(offer.id)" 
-                (mouseleave)="selectedOfferId = null"
-            >
-                <div class="offer-cards-icons">
-                    <img class="offer-icon" [src]="`./${offer.icon}.svg`" width="50px" height="50px">
-                </div>
-                <div class="offer-cards-content">
-                    <h3 class="offer-title fs-18 fw-700">{{ offer.title }}</h3>
-                    <p class="offer-description fs-14">{{ offer.description }}</p>
+            <div class="offer-cards">
+                <div 
+                    class="active-offer-cards" 
+                    [class.active-offer-cards]="offer.id === selectedOfferId"
+                    (mouseenter)="selectOfferCard(offer.id)" 
+                    (mouseleave)="selectedOfferId = null"
+                >
+                    <div class="offer-cards-icons">
+                        <img class="offer-icon" [src]="`./${offer.icon}.svg`" width="50px" height="50px">
+                    </div>
+                    <div class="offer-cards-content">
+                        <h3 class="offer-title fs-18 fw-700">{{ offer.title }}</h3>
+                        <p class="offer-description fs-14">{{ offer.description }}</p>
+                    </div>
                 </div>
             </div>
-        </div>
         }
         <button id="program-price-btn" class="fw-600 fs-16">Стоимость программ</button>
     </div>
@@ -161,7 +161,9 @@
     </div>
 </section>
 
-<div *ngIf="loadPage" class="modal-overlay">
-    <img class="loading-icon" src="./loading-icon.svg" width="51px" height="51px">
-    <h2 class="loading-title">Загрузка страницы</h2>
-</div>
+@if (loadPage) {
+    <div class="modal-overlay">
+        <img class="loading-icon" src="./loading-icon.svg" width="51px" height="51px">
+        <h2 class="loading-title">Загрузка страницы</h2>
+    </div>
+}

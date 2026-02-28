@@ -4,11 +4,10 @@ import { Color } from '../enums/Color.js';
 import './collection.js';
 import { IOffer } from '../interfaces/IOffer.js';
 import { FormsModule, NgModel } from '@angular/forms';
-import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [FormsModule, NgIf],
+  imports: [FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -51,7 +50,7 @@ export class AppComponent {
   constructor() {
     this.lastVisit();
     this.countLogin();
-    
+
     setTimeout(() => {
       this.loadPage = false;
     }, 2000);
