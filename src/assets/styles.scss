@@ -25,6 +25,14 @@
     font-size: 18px;
 }
 
+.fs-20 {
+    font-size: 20px;
+}
+
+.fs-24 {
+    font-size: 24px;
+}
+
 .fw-400 {
     font-weight: 400;
 }
@@ -44,5 +52,17 @@
 
     to {
         transform: rotate(0deg);
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
     }
 }
