@@ -1,4 +1,25 @@
 @use '../assets/mixins.scss' as *;
+@keyframes spin {
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
 
 .modal-overlay {
     display: flex;
@@ -355,7 +376,7 @@
         margin: 0 0 40px 0;
     }
 
-    .active-offer-cards {
+    #active-offer-cards {
         display: flex;
         flex-direction: column;
         transition: all 0.7s ease;
@@ -471,6 +492,12 @@
         width: 380px;
         height: 500px;
         position: relative;
+    }
+
+    .paths-image-item {
+        z-index: -999;
+        position: absolute;
+        object-fit: cover;
     }
 
     .card-rating {
@@ -642,25 +669,25 @@
 
 .container-message {
     animation: slideIn 0.4s ease;
-    pointer-events: auto;   
-    position: relative;     
+    pointer-events: auto;
+    position: relative;
     width: 350px;
     min-height: 70px;
     background-color: #0F172AD9;
     border: 1px solid #FFFFFF;
     border-radius: 10px;
     box-sizing: border-box;
-    display: flex;   
+    display: flex;
     padding: 10px;
 }
 
 .natice-block {
     position: fixed;
     top: 20px;
-    right: 20px; 
+    right: 20px;
     z-index: 9999;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     gap: 15px;
 }
 
@@ -686,8 +713,8 @@
     width: 250px;
 }
 
-.message-close-btn {
-    position: absolute;    
+#message-close-btn {
+    position: absolute;
     top: 10px;
     right: 10px;
     background: transparent;

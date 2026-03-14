@@ -119,7 +119,7 @@
             слов в Lorem Ipsum, "consectetur" и занялся его поисками в классической латинской литературе.
         </p>
 
-        <button (click)="messageService.addSuccess()" id="request-journey-btn" class="fs-16 fw-600">
+        <button (click)="messageService.addMessage(msg.SUCCESS, 'Направления получены')" id="request-journey-btn" class="fs-16 fw-600">
             Программа тура
         </button>
     </div>
@@ -136,8 +136,7 @@
         @for (offer of offers; track offer.id) {
             <div class="offer-cards">
                 <div 
-                    class="active-offer-cards" 
-                    [class.active-offer-cards]="offer.id === selectedOfferId"
+                    [id]="offer.id === selectedOfferId ? 'active-offer-cards' : ''"
                     (mouseenter)="selectOfferCard(offer.id)" 
                     (mouseleave)="selectedOfferId = null"
                 >
@@ -151,7 +150,7 @@
                 </div>
             </div>
         }
-        <button (click)="messageService.addInfo()" id="program-price-btn" class="fw-600 fs-16">Стоимость программ</button>
+        <button (click)="messageService.addMessage(msg.WARN, 'Программа недоступна')" id="program-price-btn" class="fw-600 fs-16">Стоимость программ</button>
     </div>
     <div class="offers-content-right">
         <img class="river-coffe" src="./coffee-blue-sea.jpg" width="250px" height="250px">
@@ -174,7 +173,8 @@
 
     <div class="paths-cards">
         @for (path of paths; track path.id) {
-            <div class="paths-image" style="background-image: url('/pathes/{{path.image}}.jpg')">
+            <div class="paths-image">
+                <img class="paths-image-item" [src]="`/pathes/${ path.image }.jpg`">
                 <div class="card-rating">
                     <img class="star" src="./star-icon.svg" width="17px" height="16px">
                     <span class="rating-text fw-700 fs-14">{{ path.rating }}</span>
@@ -189,7 +189,7 @@
             </div>
         }
     </div>
-    <button (click)="messageService.addWarning()" id="rating-btn">Рейтинг направлений</button>
+    <button (click)="messageService.addMessage(msg.INFO, 'Стоимость отправлена на почту')" id="rating-btn">Рейтинг направлений</button>
 </section>
 
 <section class="container-blog">
@@ -211,7 +211,7 @@
             </div>
         }
     </div>
-    <button (click)="messageService.addError()" id="blog-more-btn">Другие материалы</button>
+    <button (click)="messageService.addMessage(msg.ERROR, 'Материалы недоступны')" id="blog-more-btn">Другие материалы</button>
 </section>
 
     <div class="natice-block">
@@ -229,8 +229,8 @@
                 <p class="message-description fs-14 fw-400">{{ msg.description }} </p>
             </div>
         </div>
-        <button (click)="messageService.closeMessage(msg.id)" class="message-close-btn">
-            <img src="./messages/close-icon.svg">
+        <button (click)="messageService.closeMessage(msg.id)" id="message-close-btn">
+            <img src="./messages/close-icon-btn.svg">
         </button>
     </div>
 </ng-template>
