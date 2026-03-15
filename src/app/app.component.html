@@ -136,7 +136,6 @@
         @for (offer of offers; track offer.id) {
             <div class="offer-cards">
                 <div 
-                    id="offer-card"
                     [class.active-offer-cards]="offer.id === selectedOfferId ? 'active-offer-cards' : ''"
                     (mouseenter)="selectOfferCard(offer.id)" 
                     (mouseleave)="selectedOfferId = null"
