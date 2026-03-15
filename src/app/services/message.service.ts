@@ -11,10 +11,11 @@ export class MessageService {
   messages: IMessages[] = [];
 
   addMessage(type: MessageType, description: string): void {
-    const newMessage: IMessages = { id: Date.now(), type, description }
-    this.messages = [newMessage, ...this.messages]
+    const newMessage: IMessages = { id: Date.now(), type, description };
+    this.messages = [newMessage, ...this.messages];
+
     setTimeout(() => {
-      this.closeMessage(newMessage.id)
+      this.closeMessage(newMessage.id);
     }, 5000)
   }
 

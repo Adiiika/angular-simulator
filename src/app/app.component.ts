@@ -25,7 +25,7 @@ export class AppComponent {
   messageService: MessageService = inject(MessageService);
   localStorageService: LocalStorageService = inject(LocalStorageService);
 
-  msg = MessageType;
+  msgType: typeof MessageType = MessageType;
   companyName: string = 'РУМТИБЕТ';
   selectedOfferId: number | null = null;
   date: string = '';
