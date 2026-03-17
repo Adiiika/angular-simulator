@@ -4,7 +4,7 @@
     color: var(--yellow-color);
 }
 
-@mixin offers {
+@mixin title {
     font-size: 32px;
     line-height: 120%;
     font-weight: 800;
@@ -24,4 +24,5 @@
     border-radius: 4px;
     line-height: 20px;
     cursor: pointer;
+    height: 52px;
 }
