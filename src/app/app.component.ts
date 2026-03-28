@@ -4,10 +4,12 @@ import { Color } from '../enums/Color.js';
 import './collection.js';
 import { IOffer } from '../interfaces/IOffer.js';
 import { FormsModule, NgModel } from '@angular/forms';
-
+import { RouterOutlet } from '@angular/router';
+import { FooterComponent } from "./footer/footer.component";
+import { HeaderComponent } from "./header/header.component";
 @Component({
   selector: 'app-root',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterOutlet, FooterComponent, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
