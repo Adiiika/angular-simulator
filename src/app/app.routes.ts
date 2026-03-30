@@ -5,11 +5,10 @@ import { NotFoundPageComponent } from './not-found-page/not-found-page.component
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { UsersPageComponent } from './users-page/users-page.component';
+import { MessageComponent } from './message/message.component';
 
 export const routes: Routes = [
     { path: '', component: HomePageComponent },
-    { path: 'footer', component: FooterComponent },
-    { path: 'header', component: HeaderComponent },
     { path: 'users', component: UsersPageComponent },
-    { path: '**', component: NotFoundPageComponent }
+    { path: '**', component: NotFoundPageComponent },
 ];

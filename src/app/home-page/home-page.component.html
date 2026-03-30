@@ -1,1 +1,117 @@
-<p>home-page works!</p>
+<section class="container-description" width="1180px" height="526px">
+    <div class="description-content-left">
+        <img class="snow-mountain" src="./snow-mountain.jpg" width="350px" height="400px">
+        <img class="mountain-house" src="./mountain-house.jpg" width="350px" height="400px">
+        <img id="player-toggle" src="./player-icon.svg" width="50px" height="50px">
+    </div>
+
+    <div class="description-content-right">
+        <span class="history-journey fw-400">о нашем походе</span>
+        <h2 class="promo-description">Исследуйте все горные массивы мира вместе с нами</h2>
+        <p class="description-journey">
+            Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад.
+            Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных
+            слов в Lorem Ipsum, "consectetur" и занялся его поисками в классической латинской литературе.
+        </p>
+        <button (click)="messageService.showSuccess('Направления получены')" id="request-journey-btn" class="fs-16 fw-600">
+            Программа тура
+        </button>
+    </div>
+</section>
+
+<section class="container-offers" width="1470px" height="771px">
+    <div class="offers-content-left">
+        <span class="company-offers">наше предложение</span>
+        <h2 class="best-offer">Лучшие программы для тебя</h2>
+        <p class="description-offer">
+            Его корни уходят в один фрагмент классической латыни 45 года н.э.,
+            то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа.
+        </p>
+        @for (offer of offers; track offer.id) {
+            <div class="offer-cards">
+                <div 
+                    id="offer-card"
+                    [class.active-offer-cards]="offer.id === selectedOfferId"
+                    (mouseenter)="selectOfferCard(offer.id)" 
+                    (mouseleave)="selectedOfferId = null"
+                >
+                    <div class="offer-cards-icons">
+                        <img class="offer-icon" [src]="`./${ offer.icon }.svg`" width="50px" height="50px">
+                    </div>
+                    <div class="offer-cards-content">
+                        <h3 class="offer-title fs-18 fw-700">{{ offer.title }}</h3>
+                        <p class="offer-description fs-14">{{ offer.description }}</p>
+                    </div>
+                </div>
+            </div>
+        }
+        <button (click)="messageService.showWarn('Программа недоступна')" id="program-price-btn" class="fw-600 fs-16">Стоимость программ</button>
+    </div>
+    <div class="offers-content-right">
+        <img class="river-coffe" src="./coffee-blue-sea.jpg" width="250px" height="250px">
+        <img class="man-canyon" src="./man-canyon.jpg" width="250px" height="250px">
+        <img class="man-snowmobile" src="./man-snowmobile.jpg" width="250px" height="250px">
+        <img class="orange-stream" src="./orange-stream.jpg" width="250px" height="250px">
+    </div>
+</section>
+
+<section class="container-paths">
+    <span class="path-title">по версии отдыхающих</span>
+    <h1 class="popular-paths">Популярные направления</h1>
+
+    <div class="paths-cards">
+        @for (path of paths; track path.id) {
+            <div class="paths-image">
+                <img class="paths-image-item" [src]="`/paths/${ path.image }.jpg`">
+                <div class="card-rating">
+                    <img class="star" src="./star-icon.svg" width="17px" height="16px">
+                    <span class="rating-text fw-700 fs-14">{{ path.rating }}</span>
+                </div>
+                <div class="paths-glass">
+                    <h2 class="paths-glass__title fs-24">{{ path.title }}</h2>
+                    <p class="paths-glass__subtitle fs-14 fw-400">{{ path.subtitle }}</p>
+                    <div class="paths-glass__price fs-20">
+                        {{ path.price }}
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <button (click)="messageService.showInfo('Стоимость отправлена на почту')" id="rating-btn">Рейтинг направлений</button>
+</section>
+
+<section class="container-blog">
+    <span class="blog-title">делимся впечатлениями</span>
+    <h1 class="blog-journey">Блог о путешествиях</h1>
+
+    <div class="blog-cards-container">
+        @for (blog of blogs; track blog.id) {
+            <div class="blog-card">
+                <img class="blog-image" [src]="`/blogs/${ blog.image }.jpg`">
+                <div class="blog-card-info">
+                    <span class="blog-card-info-title fs-24 fw-700">{{ blog.title }}</span>
+                    <p class="blog-card-info-description fs-14 fw-400">{{ blog.description }}</p>
+                    <div class="action-block">
+                        <p class="blog-card-info-date fw-700">{{ blog.date }}</p>
+                        <button id="blog-card-info-btn" class="fw-700 fs-14">читать статью</button>
+                    </div>    
+                </div>
+            </div>
+        }
+    </div>
+    <button (click)="messageService.showError('Материалы недоступны')" id="blog-more-btn">Другие материалы</button>
+</section>
+
+<section class="container-photo-report">
+    <span class="report-title">фото-отчет</span>
+    <h2 class="experience-report">Делимся впечатлениями</h2>
+    <div class="container-photos">
+        <img class="wide-photo" src="/photo-reports/ballons.jpg">
+        <img src="/photo-reports/travel-stuff.jpg">
+        <img src="/photo-reports/large-hotel.jpg">
+        <img src="/photo-reports/boats-on-coast.jpg">
+        <img class="wide-photo" src="/photo-reports/canyon-background.jpg">
+        <img src="/photo-reports/traveler-notebook.jpg">
+    </div>
+    <button id="pinterest-btn">Наш pinterest</button>
+</section>

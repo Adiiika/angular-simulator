@@ -1,1 +1,101 @@
-<p>header работает!</p>
+<div class="container">
+    <header class="header">
+            <div class="header-navigation">
+                <div class="header-left">
+                    <img class="company-icon" src="./mountain-logo.svg" width="137px" height="72px">
+                    <span class="company-name fs-18">{{ companyName }}</span>
+                </div>
+                <nav class="header-right-navigation fs-18">
+                    @for(navigation of navigations; track navigation.id) {
+                        <a [routerLink]="navigation.link"
+                            routerLinkActive="active-navigation-text"
+                            [routerLinkActiveOptions]="{ exact: true }"
+                            id="navigation-text"
+                        >{{ navigation.text }}</a>
+                    }
+                    <button id="request-consultation-btn" class="fs-16 fw-600" width="157px" height="44px">Консультация</button>
+                </nav>
+            </div>
+
+            @if (!isClickerMode) {
+                <div class="date-container">
+                    <span class="run-time">{{ date }}</span>
+                    <button (click)="isClickerMode = !isClickerMode" id="date-toggle-btn">Показать кликер</button>
+                </div>
+            }
+            @if (isClickerMode) {
+                <div class="count-container">
+                    <div class="counter-control">
+                        <button (click)="counter+=1" id="counter-plus" class="fs-20">+</button>
+                        <span class="count-zero fs-20">{{ counter }}</span>
+                        <button (click)="counter -=1" [disabled]="counter === 0" id="counter-minus" class="fs-20">-</button>
+                    </div>
+                    <button (click)="isClickerMode = !isClickerMode" id="count-toggle-btn">Показать дату</button>
+                </div>
+            }
+    </header>
+   
+    <h1 class="main-title fw-400">
+        Насладись прогулкой в горах <br> с командой единомышленников
+    </h1>
+    <div class="sub-title">
+        <form class="sub-form" #subForm="ngForm" (ngSubmit)="handleFormSubmit(subForm)">
+            <div class="search-select">
+                <div class="field-wrapper">
+                    <select 
+                        [(ngModel)]="searchQuery.townName"
+                        name="town"
+                        #nameModel="ngModel" 
+                        id="select-destination" 
+                        required
+                    >
+                        <option [ngValue]="''" disabled selected>Локация для тура</option>
+                        <option value="moscow">Москва</option>
+                        <option value="spb">Санкт-Петербург</option>
+                        <option value="sochi">Сочи</option>
+                    </select>
+                    <img class="pointer-icon-left" src="./down-arrow-icon.svg" width="15px" height="8px">
+                </div>
+                <span class="sub-select fs-14 fw-400">выберите из списка</span>
+            </div>
+
+            <div class="field-wrapper">
+                <div class="select-tour-date">
+                    <input
+                        [(ngModel)]="searchQuery.tourDate" 
+                        id="select-date" 
+                        name="tour"  
+                        type="date" 
+                        placeholder="Дата похода" 
+                        required
+                    >
+                    <img class="calendar-icon" src="./calendar-icon.svg" width="18px" height="18px">
+                    <span class="sub-select fs-14">укажите дату</span>
+                </div>
+            </div>
+
+            <div class="field-wrapper">
+                <div class="search-select">
+                    <select 
+                        [(ngModel)]="searchQuery.humanCount"  
+                        name="human" 
+                        id="select-tour-participants"
+                        required
+                    >
+                        <option [ngValue]="''" disabled selected>Участники</option>
+                        <option value="1">1 человек</option>
+                        <option value="2">2 человека</option>
+                        <option value="3">3 человека</option>
+                    </select>
+                    <img class="pointer-icon-right" src="./down-arrow-icon.svg" width="15px" height="8px">
+                </div>
+                <span class="sub-select fs-14">выберите из списка</span>
+            </div>
+            <button id="search-program-btn" [disabled]="subForm.invalid" class="fs-16 fw-700">Найти программу</button>
+        </form>
+    </div>
+    <div class="input-container">
+        <input [(ngModel)]="userText" id="input-text">
+        <span class="text fs-16 fw-700">{{ userText }}</span>
+    </div>
+</div>

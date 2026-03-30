@@ -1,0 +1,415 @@
+@use '../../assets/mixins.scss' as *;
+
+.container-description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+    max-width: 1470px;
+    margin: 100px auto;
+
+    .description-content-left {
+        position: relative;
+        width: 480px;
+        height: 526px;
+    }
+
+    .snow-mountain {
+        position: relative;
+        border-radius: 24px;
+        z-index: -2;
+    }
+
+    .mountain-house {
+        border-radius: 24px;
+        position: absolute;
+        z-index: -1;
+        right: 10px;
+        top: 126px;
+    }
+
+    #player-toggle {
+        z-index: 1;
+        position: absolute;
+        top: 301px;
+        right: 850px;
+        left: 270px;
+        cursor: pointer;
+    }
+
+    .history-journey {
+        @include span();
+    }
+
+    .promo-description {
+        @include title();
+        width: 580px;
+        margin: 8px 0 40px 0;
+    }
+
+    .description-journey {
+        @include description();
+        width: 580px;
+        height: 162px;
+        margin-bottom: 40px;
+    }
+
+    #request-journey-btn {
+        @include button();
+        width: 200px;
+    }
+}
+
+.container-offers {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    background-color: var(--gray-color);
+
+    .offers-content-left {
+        margin: 80px 90px 0 0;
+    }
+
+    .company-offers {
+        @include span();
+    }
+
+    .best-offer {
+        @include title();
+        margin: 8px 0 40px 0;
+    }
+
+    .description-offer {
+        @include description();
+        width: 580px;
+        margin: 0 0 40px 0;
+    }
+
+    .active-offer-cards {
+        display: flex;
+        flex-direction: column;
+        transition: all 0.7s ease;
+        background-color: var(--green-color);
+        color: var(--white-color);
+        cursor: pointer;
+        border-radius: 7px;
+
+        .offer-title {
+            margin-top: 10px;
+            transition: all 0.7s ease;
+            color: var(--yellow-color);
+            text-align: center;
+        }
+
+        .offer-description {
+            transition: all 1s ease;
+            color: var(--yellow-color);
+            padding-left: 5px;
+            text-align: center;
+        }
+
+        .offer-icon {
+            padding: 15px 0px 0 235px;
+            transition: all 0.5s ease;
+        }
+    }
+
+    .offer-cards {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .offer-cards-icons {
+        display: inline-block;
+    }
+
+    .offer-icon {
+        margin-right: 16px;
+        padding-top: 6px;
+    }
+
+    .offer-cards-content {
+        margin-bottom: 40px
+    }
+
+    .offer-title {
+        line-height: 20px;
+        color: var(--black-color);
+        margin: 0 0 4px 0;
+    }
+
+    .offer-description {
+        line-height: 20px;
+        color: #000000;
+        width: 514px;
+        margin-top: 0;
+    }
+
+    #program-price-btn {
+        @include button();
+        width: 236px;
+        height: 52px;
+        margin: 10px 0 100px 0;
+    }
+
+    .offers-content-right {
+        height: 400px;
+        margin-top: 120px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .river-coffe,
+    .orange-stream {
+        border-radius: 0 50px 0 50px;
+        object-fit: cover;
+    }
+
+    .man-canyon,
+    .man-snowmobile {
+        object-fit: cover;
+        border-radius: 50px 0 50px 0;
+    }
+}
+
+.container-paths {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .path-title {
+        @include span();
+        margin: 80px 0 9px 0;
+    }
+
+    .popular-paths {
+        @include title();
+        margin: 0 0 50px 0;
+    }
+
+    .paths-cards {
+        height: 500px;
+        width: 1180px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .paths-image {
+        width: 380px;
+        height: 500px;
+        position: relative;
+    }
+
+    .paths-image-item {
+        z-index: -999;
+        position: absolute;
+        object-fit: cover;
+    }
+
+    .card-rating {
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+        z-index: 10;
+        position: absolute;
+        height: 32px;
+        width: 65px;
+        background-color: var(--white-color);
+        top: 50px;
+        right: 0px;
+        background-color: rgba(255, 255, 255, 0.7);
+    }
+
+    .star {
+        position: absolute;
+        margin: 8px 36px 11px 8px;
+    }
+
+    .rating-text {
+        position: absolute;
+        margin: 8px 8px 7px 36px;
+        color: var(--green-color);
+        line-height: 18px;
+    }
+
+    .paths-glass {
+        position: relative;
+        top: 410px;
+        backdrop-filter: blur(6px);
+        width: 380px;
+        height: 90px;
+        border-bottom-left-radius: 32px;
+        border-bottom-right-radius: 32px;
+
+        &__title {
+            width: 206px;
+            position: absolute;
+            margin: 20px 153px 41px 32px;
+            color: var(--white-color);
+            line-height: 120%;
+        }
+
+        &__subtitle {
+            position: absolute;
+            margin: 49px 153px 23px 32px;
+            color: var(--white-color);
+            line-height: 18px;
+        }
+
+        &__price {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            height: 40px;
+            width: 86px;
+            margin: 25px 32px 25px 262px;
+            background-color: #FFFFFF4D;
+            color: var(--white-color);
+            border-radius: 4px;
+            line-height: 24px;
+        }
+    }
+
+    #rating-btn {
+        @include button();
+        width: 244px;
+        margin: 50px 0 95px 0;
+    }
+}
+
+.container-blog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--gray-color);
+
+    .blog-title {
+        @include span();
+        margin: 85px 0 15px 0;
+    }
+
+    .blog-journey {
+        @include title();
+        margin: 0 0 40px 0;
+    }
+
+    .blog-cards-container {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .blog-card {
+        position: relative;
+        background-color: var(--white-color);
+        border-radius: 10px;
+        box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.2);
+        height: 312px;
+        width: 580px;
+    }
+
+    .blog-image {
+        position: absolute;
+        margin: 16px 334px 16px 16px;
+        width: 230px;
+        height: 280px;
+    }
+
+    .blog-card-info {
+        position: relative;
+        margin: 30px 16px 16px 270px;
+    }
+
+    .blog-card-info-title {
+        margin: 0 0 0 0;
+        width: 294px;
+        line-height: 32px;
+        margin-top: 16px;
+        color: var(--black-color)
+    }
+
+    .blog-card-info-title:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    .blog-card-info-description {
+        width: 294px;
+        line-height: 20px;
+        color: var(--black-color);
+        margin: 24px 0 0 0;
+    }
+
+    .action-block {
+        display: flex;
+        justify-content: space-between;
+        margin: auto;
+        margin-top: 50px;
+        align-items: center;
+        width: 294px;
+    }
+
+    .blog-card-info-date {
+        @include span();
+        font-size: 14px;
+    }
+
+    #blog-card-info-btn {
+        color: var(--green-color);
+        background: transparent;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        outline: none;
+    }
+
+    #blog-more-btn {
+        @include button();
+        width: 220px;
+        margin: 50px 0 95px 0;
+    }
+}
+
+.container-photo-report {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .report-title {
+        @include span();
+        margin: 85px 0 13px 0;
+    }
+
+    .experience-report {
+        @include title();
+        margin: 0 0 40px 0;
+    }
+
+    .container-photos {
+        justify-content: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin: 0 0 50px 0;
+    }
+
+    .wide-photo {
+        width: 580px;
+        height: 250px;
+    }
+
+    #pinterest-btn {
+        @include button();
+        width: 178px;
+        height: 52px;
+        margin: 0 0 40px 0;
+    }
+}

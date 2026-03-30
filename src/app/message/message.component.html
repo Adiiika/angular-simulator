@@ -1,1 +1,20 @@
-<p>message works!</p>
+<div class="natice-block">
+    @for (msg of messageService.messages; track msg.id) {
+        <ng-container [ngTemplateOutlet]="messageTemplate" [ngTemplateOutletContext]="{ msg }"/>
+    }
+</div>
+
+<ng-template #messageTemplate let-msg="msg" let-type="type" let-description="description">
+    <div isClickerMode="true"  class="container-message"> 
+        <div class="message-content">
+            <img class="message-icon" src="./messages/message-icon.svg" width="40px" height="40px">
+            <div class="message-content-info">
+                <h3 class="message-title fs-16 fw-700">{{ msg.type }}</h3>
+                <p class="message-description fs-14 fw-400">{{ msg.description }} </p>
+            </div>
+        </div>
+        <button (click)="messageService.closeMessage(msg.id)" id="message-close-btn">
+            <img src="./messages/close-icon-btn.svg">
+        </button>
+    </div>
+</ng-template>
