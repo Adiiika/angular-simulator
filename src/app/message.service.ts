@@ -5,40 +5,42 @@ import { MessageType } from '../enums/MessageType';
 @Injectable({
   providedIn: 'root',
 })
+
 export class MessageService {
 
   messages: IMessages[] = [];
+
+  showSuccess(description: string): void {
+    this.addMessage(MessageType.SUCCESS, description);
+  }
+  
+  showWarn(description: string): void {
+    this.addMessage(MessageType.WARN, description);
+  }
+  
+  showInfo(description: string): void {
+    this.addMessage(MessageType.INFO, description);
+  }
+  
+  showError(description: string): void {
+    this.addMessage(MessageType.ERROR, description);
+  }
+  
+  closeMessage(id: number): void {
+    this.messages = this.messages.filter(message => message.id != id);
+  }
 
   private addMessage(type: MessageType, description: string): void {
     const newMessage: IMessages = {
       id: Date.now(),
       type: type,
-      description: description,
+      description: description
     }
-    this.messages.unshift(newMessage);
-
+    this.messages = [newMessage, ...this.messages];
+  
     setTimeout(() => {
-      this.closeMessage(newMessage.id)
-    }, 5000)
+      this.closeMessage(newMessage.id);
+    }, 5000);
   }
 
-  addSuccess(): void {
-    this.addMessage(MessageType.SUCCESS, 'Направления получены');
-  }
-
-  addWarning(): void {
-    this.addMessage(MessageType.WARN, 'Программа недоступна');
-  }
-
-  addInfo(): void {
-    this.addMessage(MessageType.INFO, 'Стоимость отправлена на почту');
-  }
-
-  addError(): void {
-    this.addMessage(MessageType.ERROR, 'Материалы недоступны');
-  }
-
-  closeMessage(id: number) {
-    this.messages = this.messages.filter(m => m.id != id);
-  }
 }
