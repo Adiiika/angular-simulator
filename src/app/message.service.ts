@@ -36,11 +36,11 @@ export class MessageService {
       type: type,
       description: description
     }
-    this.messages.unshift(newMessage);
+    this.messages = [newMessage, ...this.messages];
   
     setTimeout(() => {
-      this.closeMessage(newMessage.id)
-    }, 5000)
+      this.closeMessage(newMessage.id);
+    }, 5000);
   }
 
 }
