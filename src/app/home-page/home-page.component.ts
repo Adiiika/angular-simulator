@@ -46,7 +46,7 @@ export class HomePageComponent {
       image: 'blue-lake',
       title: 'Озеро возле гор',
       subtitle: 'романтическое приключение',
-      price: '480 $'
+      price: '480'
     },
     {
       id: 2,
@@ -54,7 +54,7 @@ export class HomePageComponent {
       image: 'starry-sky',
       title: 'Ночь в горах',
       subtitle: 'в компании друзей',
-      price: '500 $'
+      price: '500'
     },
     {
       id: 3,
@@ -62,7 +62,7 @@ export class HomePageComponent {
       image: 'mountain-yoga',
       title: 'Растяжка в горах',
       subtitle: 'для тех, кто забоится о себе',
-      price: '230 $'
+      price: '230'
     }
   ]
 
