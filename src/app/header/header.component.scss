@@ -1,266 +1,109 @@
 @use '../../assets/mixins.scss' as *;
 
-.container {
+.container-header {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    background-image: url('/bg-mountains.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    max-width: 1470px;
-    width: 100%;
-    height: 985px;
-    background-size: cover;
+    height: 140px;
+    width: 1470px;
+    background-color: #18121E80;
+}
 
-    .header {
-        height: 140px;
-        min-width: 1470px;
-        margin: 0 auto;
-        padding-top: 16px;
-        background-color: #18121E80;
+.header-left {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+}
 
-        &-right-navigation {
-            display: flex;
-            align-items: center;
-            color: var(--white-color);
-            gap: 24px;
-            cursor: pointer;
-            margin: 0 0 0 110px;
-        }
+.header-right-navigation {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    cursor: pointer;
+    margin: 10px 0 0 0;
+}
 
-        &-left {
-            display: flex;
-            flex-direction: column;
-            margin: 0 290px 0 0;
-        }
-    }
+.header-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 150px 0 250px;
+}
 
-    .header-navigation {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+.navigation-text {
+    color: royalblue;
+    text-decoration: none;
+}
 
-    .navigation-text {
-        color: royalblue;
-        text-decoration: none;
-    }
+.active-navigation-text {
+    color: var(--white-color);
+    text-decoration: none;
+}
 
-    .active-navigation-text {
-        color: var(--white-color);
-        text-decoration: none;
-    }
+.company-icon {
+    width: 137px;
+    height: 48px;
+}
 
-    .company-icon {
-        width: 137px;
-        height: 48px;
-        margin: 0 212px 0 0;
-    }
+.company-name {
+    letter-spacing: 6px;
+    color: var(--white-color);
+}
 
-    .company-name {
-        letter-spacing: 6px;
-        color: var(--white-color);
-    }
+#request-consultation-btn {
+    @include button();
+    background-color: var(--white-color);
+    color: var(--green-color);
+    width: 157px;
+    height: 44px;
+}
 
-    #request-consultation-btn {
-        @include button();
-        background-color: var(--white-color);
-        color: var(--green-color);
-        width: 157px;
-        height: 44px;
-        margin: 0 0 0 25px;
-    }
+.date-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    margin: 10px 145px 0 0;
+}
 
-    .date-container {
-        display: flex;
-        flex-direction: row;
-        justify-content: end;
-        margin: 10px 145px 0 0;
-    }
+.count-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    margin: 10px 150px 0 0;
+}
 
-    .count-container {
-        display: flex;
-        flex-direction: row;
-        justify-content: end;
-        margin: 10px 150px 0 0;
-    }
+.count-div {
+    display: flex;
+    width: 70px;
+    justify-content: space-around;
+    margin: 13px 40px 0 0;
+}
 
-    .count-div {
-        display: flex;
-        width: 70px;
-        justify-content: space-around;
-        margin: 13px 40px 0 0;
-    }
+.counter-control {
+    margin: 10px 0 0 0;
+}
 
-    .counter-control {
-        margin: 10px 0 0 0;
-    }
+#counter-plus,
+.count-zero,
+#counter-minus {
+    background: none;
+    border: none;
+    margin: 0 20px 0 0;
+    color: var(--white-color);
+    cursor: pointer;
+}
 
-    #counter-plus,
-    .count-zero,
-    #counter-minus {
-        background: none;
-        border: none;
-        margin: 0 20px 0 0;
-        color: var(--white-color);
-        cursor: pointer;
-    }
+.run-time {
+    margin: 12px 40px 0 0;
+    color: var(--white-color);
+}
 
-    .run-time {
-        margin: 12px 40px 0 0;
-        color: var(--white-color);
-    }
-
-    #date-toggle-btn,
-    #count-toggle-btn {
-        @include button();
-        color: var(--green-color);
-        background-color: var(--white-color);
-        width: 158px;
-        height: 40px;
-        cursor: pointer;
-    }
-
-    .main-title {
-        display: flex;
-        padding: 423px 100px 21px 0;
-        margin: 0 auto;
-        width: 1080px;
-        font-size: 50px;
-        line-height: 150%;
-        text-transform: uppercase;
-        color: var(--white-color);
-    }
-
-    .sub-form {
-        display: flex;
-        gap: 24px;
-    }
-
-    .sub-title {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0 auto;
-        width: 1180px;
-        height: 161px;
-        backdrop-filter: blur(6px);
-        border-radius: 10px;
-        background-color: #FFFFFF33;
-        backdrop-filter: blur(6px);
-    }
-
-    .search-select {
-        display: flex;
-        flex-direction: column;
-    }
-
-    #select-destination {
-        appearance: none;
-        padding-left: 16px;
-        background-color: #FFFFFF33;
-        width: 270px;
-        height: 52px;
-        color: var(--white-color);
-        border-color: var(--white-color);
-        border-radius: 8px;
-    }
-
-    .select-tour-date {
-        padding: 0 25px 0 16px;
-        appearance: none;
-        width: 270px;
-        height: 52px;
-        border-color: var(--white-color);
-        border-radius: 8px;
-    }
-
-    #select-tour-participants {
-        padding: 0 20px 0 16px;
-        appearance: none;
-        background-color: #FFFFFF33;
-        width: 270px;
-        height: 52px;
-        color: var(--white-color);
-        border-color: var(--white-color);
-        border-radius: 8px;
-    }
-
-    .pointer-icon-left {
-        position: absolute;
-        left: 265px;
-        top: 41%;
-        transform: translateY(-50%);
-        pointer-events: none;
-    }
-
-    .pointer-icon-right {
-        position: absolute;
-        right: 273px;
-        top: 41%;
-        transform: translateY(-50%);
-        pointer-events: none;
-    }
-
-    .calendar-icon {
-        position: absolute;
-        right: 570px;
-        top: 36%;
-    }
-
-    #select-date {
-        width: 270px;
-        height: 51px;
-        border: 1px solid var(--white-color);
-        border-radius: 8px;
-        background-color: #FFFFFF33;
-        color: var(--white-color);
-        padding-left: 16px;
-    }
-
-    input[type="date"]::-webkit-calendar-picker-indicator {
-        display: none;
-        -webkit-appearance: none;
-    }
-
-    .sub-select {
-        display: block;
-        line-height: 150%;
-        color: var(--white-color);
-        padding-left: 4px;
-        margin-top: 8px;
-    }
-
-    #search-program-btn {
-        width: 213px;
-        height: 53px;
-        background-color: var(--white-color) !important;
-        color: var(--green-color) !important;
-        transition: all 0.7s ease;
-        @include button();
-
-        &:disabled {
-            background-color: var(--green-color) !important;
-            color: var(--white-color) !important;
-        }
-    }
-
-    .input-container {
-        display: flex;
-        flex-direction: row;
-        margin: 15px 0 0 150px;
-        height: 52px;
-        width: 454px;
-    }
-
-    #input-text {
-        height: 25px;
-        width: 244px;
-        color: transparent;
-    }
-
-    .text {
-        color: var(--white-color);
-        margin: 5px 0 0 40px;
-    }
+#date-toggle-btn,
+#count-toggle-btn {
+    @include button();
+    color: var(--green-color);
+    background-color: var(--white-color);
+    width: 158px;
+    height: 40px;
+    cursor: pointer;
 }

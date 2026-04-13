@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { RouterLink, RouterLinkActive } from "@angular/router";
 import { FormsModule, NgModel } from '@angular/forms';
 import { ISearchQuery } from '../../interfaces/ISearchQuery';
 import { INav } from '../../interfaces/INav';
-import { RouterLink, RouterLinkActive } from "@angular/router";
+import { LoaderService } from '../loader.service';
 
 @Component({
   selector: 'app-header',
@@ -18,23 +19,17 @@ export class HeaderComponent {
     }, 1000)
   }
 
+  private loaderService = inject(LoaderService);
   companyName: string = 'РУМТИБЕТ';
   isClickerMode: boolean = true;
   date: string = '';
   counter: number = 0;
-  userText: string = '';
-
-  searchQuery: ISearchQuery = {
-    townName: '',
-    tourDate: '',
-    humanCount: '',
-  }
 
   navigations: INav[] = [
     {
       id: 1,
       text: 'Главная',
-      link: '/'
+      link: '/',
     },
     {
       id: 2,
@@ -43,8 +38,14 @@ export class HeaderComponent {
     }
   ]
 
-  handleFormSubmit(form: any) {
-    console.log(form.value);
-  }
+  onMain(link: string) {
+   if (link === '/') {
+    this.loaderService.showLoader();
 
+     setTimeout(() => {
+      this.loaderService.hideLoader();
+    }, 2000)
+  }
+  }
+  
 }

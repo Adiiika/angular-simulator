@@ -1,5 +1,161 @@
 @use '../../assets/mixins.scss' as *;
 
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    background-image: url('/bg-mountains.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    max-width: 1470px;
+    width: 100%;
+    height: 825px;
+    background-size: cover;
+
+    .main-title {
+        display: flex;
+        padding: 423px 100px 21px 0;
+        margin: 0 auto;
+        width: 1080px;
+        font-size: 50px;
+        line-height: 150%;
+        text-transform: uppercase;
+        color: var(--white-color);
+    }
+
+    .sub-form {
+        display: flex;
+        gap: 24px;
+    }
+
+    .sub-title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        width: 1180px;
+        height: 161px;
+        backdrop-filter: blur(6px);
+        border-radius: 10px;
+        background-color: #FFFFFF33;
+        backdrop-filter: blur(6px);
+    }
+
+    .search-select {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #select-destination {
+        appearance: none;
+        padding-left: 16px;
+        background-color: #FFFFFF33;
+        width: 270px;
+        height: 52px;
+        color: var(--white-color);
+        border-color: var(--white-color);
+        border-radius: 8px;
+    }
+
+    .select-tour-date {
+        padding: 0 25px 0 16px;
+        appearance: none;
+        width: 270px;
+        height: 52px;
+        border-color: var(--white-color);
+        border-radius: 8px;
+    }
+
+    #select-tour-participants {
+        padding: 0 20px 0 16px;
+        appearance: none;
+        background-color: #FFFFFF33;
+        width: 270px;
+        height: 52px;
+        color: var(--white-color);
+        border-color: var(--white-color);
+        border-radius: 8px;
+    }
+
+    .pointer-icon-left {
+        position: absolute;
+        left: 265px;
+        top: 41%;
+        transform: translateY(-50%);
+        pointer-events: none;
+    }
+
+    .pointer-icon-right {
+        position: absolute;
+        right: 273px;
+        top: 41%;
+        transform: translateY(-50%);
+        pointer-events: none;
+    }
+
+    .calendar-icon {
+        position: absolute;
+        right: 570px;
+        top: 36%;
+    }
+
+    #select-date {
+        width: 270px;
+        height: 51px;
+        border: 1px solid var(--white-color);
+        border-radius: 8px;
+        background-color: #FFFFFF33;
+        color: var(--white-color);
+        padding-left: 16px;
+    }
+
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        display: none;
+        -webkit-appearance: none;
+    }
+
+    .sub-select {
+        display: block;
+        line-height: 150%;
+        color: var(--white-color);
+        padding-left: 4px;
+        margin-top: 8px;
+    }
+
+    #search-program-btn {
+        width: 213px;
+        height: 53px;
+        background-color: var(--white-color) !important;
+        color: var(--green-color) !important;
+        transition: all 0.7s ease;
+        @include button();
+
+        &:disabled {
+            background-color: var(--green-color) !important;
+            color: var(--white-color) !important;
+        }
+    }
+
+    .input-container {
+        display: flex;
+        flex-direction: row;
+        margin: 15px 0 0 150px;
+        height: 52px;
+        width: 454px;
+    }
+
+    #input-text {
+        height: 25px;
+        width: 244px;
+        color: transparent;
+    }
+
+    .text {
+        color: var(--white-color);
+        margin: 5px 0 0 40px;
+    }
+}
+
 .container-description {
     display: flex;
     justify-content: center;

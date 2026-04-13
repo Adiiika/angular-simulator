@@ -1,22 +1,24 @@
 import { Component, inject } from '@angular/core';
+import { FormsModule, NgModel } from '@angular/forms';
 import { MessageService } from '../message.service';
 import { IOffer } from '../../interfaces/IOffer';
 import { MessageType } from '../../enums/MessageType';
 import { IPath } from '../../interfaces/IPaths';
 import { IBlog } from '../../interfaces/IBlog';
+import { ISearchQuery } from '../../interfaces/ISearchQuery';
 
 @Component({
   selector: 'app-home-page',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
 })
-
 export class HomePageComponent {
 
   messageService: MessageService = inject(MessageService);
   selectedOfferId: number | null = null;
   msgType: typeof MessageType = MessageType;
+  userText: string = '';
 
   offers: IOffer[] = [
     {
@@ -97,8 +99,18 @@ export class HomePageComponent {
     }
   ]
 
+   searchQuery: ISearchQuery = {
+      townName: '',
+      tourDate: '',
+      humanCount: '',
+    }
+
   selectOfferCard(offerId: number): void {
     this.selectedOfferId = offerId;
+  }
+
+  handleFormSubmit(form: any) {
+    console.log(form.value);
   }
   
 }
