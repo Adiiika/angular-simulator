@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { FormsModule, NgModel } from '@angular/forms';
+import { Form, FormArray, FormGroup, FormsModule, NgForm, NgModel } from '@angular/forms';
 import { MessageService } from '../message.service';
 import { IOffer } from '../../interfaces/IOffer';
 import { MessageType } from '../../enums/MessageType';
@@ -109,8 +109,8 @@ export class HomePageComponent {
     this.selectedOfferId = offerId;
   }
 
-  handleFormSubmit(form: any) {
-    console.log(form.value);
+  handleFormSubmit(form: NgForm): void {
+    form.value;
   }
   
 }

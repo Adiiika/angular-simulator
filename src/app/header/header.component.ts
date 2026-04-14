@@ -37,15 +37,4 @@ export class HeaderComponent {
       link: '/users'
     }
   ]
-
-  onMain(link: string) {
-   if (link === '/') {
-    this.loaderService.showLoader();
-
-     setTimeout(() => {
-      this.loaderService.hideLoader();
-    }, 2000)
-  }
-  }
-  
 }
