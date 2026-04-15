@@ -1,9 +1,9 @@
 import { inject, Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, catchError, Observable, tap, of, finalize } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, of, finalize } from 'rxjs';
 import { UserApiService } from './user-api.service';
 import { LoaderService } from './loader.service';
 import { IUser } from '../interfaces/IUser';
+import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +12,8 @@ export class UserService {
 
   private loaderService: LoaderService = inject(LoaderService);
   private usersApi: UserApiService = inject(UserApiService);
+  private messagesService: MessageService = inject(MessageService);
+
   private usersSubject: BehaviorSubject<IUser[]> = new BehaviorSubject<IUser[]>([]);
   users$: Observable<IUser[]> = this.usersSubject.asObservable();
 
@@ -20,20 +22,19 @@ export class UserService {
   }
 
   getUsers(user: IUser[]): void {
-    this.usersSubject.getValue()
+    this.usersSubject.getValue();
   }
 
   loadUsers(): Observable<IUser[]> {
-    this.loaderService.showLoader()
+    this.loaderService.showLoader();
     return this.usersApi.getUsers()
       .pipe(
-        catchError((error) => {
+        catchError((error): Observable<IUser[]> => {
+          this.messagesService.showError('Нет пользователей');
           console.error('ошибка', error);
-          return of([] as IUser[]);
+          return of([]);
         }),
-        finalize(() => {
-            this.loaderService.hideLoader();
-        })
+        finalize(() => { this.loaderService.hideLoader })
       )
   }
 
