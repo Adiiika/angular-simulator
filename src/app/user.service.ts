@@ -11,8 +11,8 @@ import { MessageService } from './message.service';
 export class UserService {
 
   private loaderService: LoaderService = inject(LoaderService);
-  private usersApi: UserApiService = inject(UserApiService);
-  private messagesService: MessageService = inject(MessageService);
+  private userApi: UserApiService = inject(UserApiService);
+  private messageService: MessageService = inject(MessageService);
 
   private usersSubject: BehaviorSubject<IUser[]> = new BehaviorSubject<IUser[]>([]);
   users$: Observable<IUser[]> = this.usersSubject.asObservable();
@@ -21,20 +21,20 @@ export class UserService {
     this.usersSubject.next(user);
   }
 
-  getUsers(user: IUser[]): void {
+  getUsers(): void {
     this.usersSubject.getValue();
   }
 
   loadUsers(): Observable<IUser[]> {
     this.loaderService.showLoader();
-    return this.usersApi.getUsers()
+    return this.userApi.getUsers()
       .pipe(
         catchError((error): Observable<IUser[]> => {
-          this.messagesService.showError('Нет пользователей');
+          this.messageService.showError('Нет пользователей');
           console.error('ошибка', error);
           return of([]);
         }),
-        finalize(() => { this.loaderService.hideLoader })
+        finalize(() => this.loaderService.hideLoader())
       )
   }
 

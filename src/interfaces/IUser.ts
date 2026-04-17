@@ -5,7 +5,7 @@ export interface IUser {
     email: string;
     address: {
         street: string;
-        suite: string | number;
+        suite: string;
         city: string;
         zipcode: string;
         geo: {

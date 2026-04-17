@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
-import { Form, FormArray, FormGroup, FormsModule, NgForm, NgModel } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { MessageService } from '../message.service';
-import { IOffer } from '../../interfaces/IOffer';
 import { MessageType } from '../../enums/MessageType';
+import { IOffer } from '../../interfaces/IOffer';
 import { IPath } from '../../interfaces/IPaths';
 import { IBlog } from '../../interfaces/IBlog';
 import { ISearchQuery } from '../../interfaces/ISearchQuery';
@@ -18,7 +18,7 @@ export class HomePageComponent {
   messageService: MessageService = inject(MessageService);
   selectedOfferId: number | null = null;
   msgType: typeof MessageType = MessageType;
-  userText: string = '';
+  liveInputValue: string = '';
 
   offers: IOffer[] = [
     {
@@ -107,10 +107,6 @@ export class HomePageComponent {
 
   selectOfferCard(offerId: number): void {
     this.selectedOfferId = offerId;
-  }
-
-  handleFormSubmit(form: NgForm): void {
-    form.value;
   }
   
 }

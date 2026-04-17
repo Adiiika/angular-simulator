@@ -3,11 +3,11 @@
         Насладись прогулкой в горах <br> с командой единомышленников
     </h1>
     <div class="sub-title">
-        <form class="sub-form" #subForm="ngForm" (ngSubmit)="handleFormSubmit(subForm)">
+        <form class="sub-form" #subForm="ngForm">
             <div class="search-select">
                 <div class="field-wrapper">
                     <select 
-                        [(ngModel)]="searchQuery.townName"
+                        [(ngModel)]="searchQuery.townName!"
                         name="town"
                         #nameModel="ngModel" 
                         id="select-destination" 
@@ -26,7 +26,7 @@
             <div class="field-wrapper">
                 <div class="select-tour-date">
                     <input
-                        [(ngModel)]="searchQuery.tourDate" 
+                        [(ngModel)]="searchQuery.tourDate!" 
                         id="select-date" 
                         name="tour"  
                         type="date" 
@@ -41,7 +41,7 @@
             <div class="field-wrapper">
                 <div class="search-select">
                     <select 
-                        [(ngModel)]="searchQuery.humanCount"  
+                        [(ngModel)]="searchQuery.humanCount!"  
                         name="human" 
                         id="select-tour-participants"
                         required
@@ -59,8 +59,8 @@
         </form>
     </div>
     <div class="input-container">
-        <input [(ngModel)]="userText" id="input-text">
-        <span class="text fs-16 fw-700">{{ userText }}</span>
+        <input [(ngModel)]="liveInputValue" id="input-text">
+        <span class="text fs-16 fw-700">{{ liveInputValue }}</span>
     </div>
 </div>
 
