@@ -21,15 +21,15 @@ export class UserService {
     this.usersSubject.next(user);
   }
 
-  getUsers(): void {
-    this.usersSubject.getValue();
+  getUsers(): IUser[] {
+    return this.usersSubject.getValue();
   }
 
   loadUsers(): Observable<IUser[]> {
     this.loaderService.showLoader();
     return this.userApi.getUsers()
       .pipe(
-        catchError((error): Observable<IUser[]> => {
+        catchError(error => {
           this.messageService.showError('Нет пользователей');
           console.error('ошибка', error);
           return of([]);

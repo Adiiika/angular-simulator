@@ -16,7 +16,9 @@ export class UsersPageComponent {
   users$: Observable<IUser[]> = this.userService.users$;
 
   constructor() {
-    this.userService.loadUsers().pipe(
+
+    this.userService.loadUsers()
+    .pipe(
       tap((data: IUser[]) => {
         this.userService.setUsers(data);
       })

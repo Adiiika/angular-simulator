@@ -99,14 +99,10 @@ export class HomePageComponent {
     }
   ]
 
-   searchQuery: ISearchQuery = {
-      townName: '',
-      tourDate: '',
-      humanCount: '',
-    }
+  searchQuery!: ISearchQuery;
 
   selectOfferCard(offerId: number): void {
     this.selectedOfferId = offerId;
   }
-  
+
 }
