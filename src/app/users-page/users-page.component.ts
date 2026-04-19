@@ -18,11 +18,10 @@ export class UsersPageComponent {
   constructor() {
 
     this.userService.loadUsers()
-    .pipe(
-      tap((data: IUser[]) => {
+      .pipe(tap((data: IUser[]) => {
         this.userService.setUsers(data);
       })
-    ).subscribe();
+      ).subscribe();
   }
 
 }

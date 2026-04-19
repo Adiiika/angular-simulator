@@ -29,7 +29,7 @@ export class UserService {
     this.loaderService.showLoader();
     return this.userApi.getUsers()
       .pipe(
-        catchError(error => {
+        catchError((error): Observable<IUser[]> => {
           this.messageService.showError('Нет пользователей');
           console.error('ошибка', error);
           return of([]);
