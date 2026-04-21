@@ -9,10 +9,11 @@ import { LocalStorageService } from './services/local-storage.service.js';
 import { MessageService } from './message.service';
 import { Color } from '../enums/Color.js';
 import { MessageType } from '../enums/MessageType';
+import { LoaderComponent } from "./loader/loader.component";
 
 @Component({
   selector: 'app-root',
-  imports: [FormsModule, CommonModule, RouterOutlet, FooterComponent, HeaderComponent, MessageComponent],
+  imports: [FormsModule, CommonModule, RouterOutlet, FooterComponent, HeaderComponent, MessageComponent, LoaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -21,16 +22,11 @@ export class AppComponent {
   messageService: MessageService = inject(MessageService);
   localStorageService: LocalStorageService = inject(LocalStorageService);
 
-  loadPage: boolean = true;
   isClickerMode: boolean = true;
 
   constructor() {
     this.lastVisit();
     this.countLogin();
-
-    setTimeout(() => {
-      this.loadPage = false;
-    }, 2000);
   }
 
   private isPrimaryColor(color: Color): boolean {

@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { FormsModule, NgModel } from '@angular/forms';
-import { ISearchQuery } from '../../interfaces/ISearchQuery';
-import { INav } from '../../interfaces/INav';
 import { RouterLink, RouterLinkActive } from "@angular/router";
+import { FormsModule } from '@angular/forms';
+import { INav } from '../../interfaces/INav';
 
 @Component({
   selector: 'app-header',
@@ -22,19 +21,12 @@ export class HeaderComponent {
   isClickerMode: boolean = true;
   date: string = '';
   counter: number = 0;
-  userText: string = '';
-
-  searchQuery: ISearchQuery = {
-    townName: '',
-    tourDate: '',
-    humanCount: '',
-  }
 
   navigations: INav[] = [
     {
       id: 1,
       text: 'Главная',
-      link: '/'
+      link: '/',
     },
     {
       id: 2,
@@ -42,9 +34,5 @@ export class HeaderComponent {
       link: '/users'
     }
   ]
-
-  handleFormSubmit(form: any) {
-    console.log(form.value);
-  }
-
+  
 }

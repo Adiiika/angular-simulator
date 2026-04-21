@@ -2,10 +2,4 @@
 <router-outlet></router-outlet>
 <app-footer></app-footer>
 <app-message></app-message>
-
-@if (loadPage) {
-    <div class="modal-overlay">
-        <img class="loading-icon" src="./loading-icon.svg" width="51px" height="51px">
-        <h2 class="loading-title">Загрузка страницы</h2>
-    </div>
-}
+<app-loader></app-loader>

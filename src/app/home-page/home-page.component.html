@@ -1,3 +1,69 @@
+<div class="container">    
+    <h1 class="main-title fw-400">
+        Насладись прогулкой в горах <br> с командой единомышленников
+    </h1>
+    <div class="sub-title">
+        <form class="sub-form" #subForm="ngForm">
+            <div class="search-select">
+                <div class="field-wrapper">
+                    <select 
+                        [(ngModel)]="searchQuery.townName"
+                        name="town"
+                        #nameModel="ngModel" 
+                        id="select-destination" 
+                        required
+                    >
+                        <option [ngValue]="''" disabled selected>Локация для тура</option>
+                        <option value="moscow">Москва</option>
+                        <option value="spb">Санкт-Петербург</option>
+                        <option value="sochi">Сочи</option>
+                    </select>
+                    <img class="pointer-icon-left" src="./down-arrow-icon.svg" width="15px" height="8px">
+                </div>
+                <span class="sub-select fs-14 fw-400">выберите из списка</span>
+            </div>
+
+            <div class="field-wrapper">
+                <div class="select-tour-date">
+                    <input
+                        [(ngModel)]="searchQuery.tourDate" 
+                        id="select-date" 
+                        name="tour"  
+                        type="date" 
+                        placeholder="Дата похода" 
+                        required
+                    >
+                    <img class="calendar-icon" src="./calendar-icon.svg" width="18px" height="18px">
+                    <span class="sub-select fs-14">укажите дату</span>
+                </div>
+            </div>
+
+            <div class="field-wrapper">
+                <div class="search-select">
+                    <select 
+                        [(ngModel)]="searchQuery.humanCount"  
+                        name="human" 
+                        id="select-tour-participants"
+                        required
+                    >
+                        <option [ngValue]="''" disabled selected>Участники</option>
+                        <option value="1">1 человек</option>
+                        <option value="2">2 человека</option>
+                        <option value="3">3 человека</option>
+                    </select>
+                    <img class="pointer-icon-right" src="./down-arrow-icon.svg" width="15px" height="8px">
+                </div>
+                <span class="sub-select fs-14">выберите из списка</span>
+            </div>
+            <button id="search-program-btn" [disabled]="subForm.invalid" class="fs-16 fw-700">Найти программу</button>
+        </form>
+    </div>
+    <div class="input-container">
+        <input [(ngModel)]="liveInputValue" id="input-text">
+        <span class="text fs-16 fw-700">{{ liveInputValue }}</span>
+    </div>
+</div>
+
 <section class="container-description" width="1180px" height="526px">
     <div class="description-content-left">
         <img class="snow-mountain" src="./snow-mountain.jpg" width="350px" height="400px">
@@ -109,7 +175,7 @@
         <img class="wide-photo" src="/photo-reports/ballons-sky.jpg">
         <img src="/photo-reports/travel-stuff.jpg">
         <img src="/photo-reports/ship-hotel.jpg">
-        <img src="/photo-reports/boast-coast.jpg">
+        <img src="/photo-reports/boast  -coast.jpg">
         <img class="wide-photo" src="/photo-reports/canyon.jpg">
         <img src="/photo-reports/traveler-notebook.jpg">
     </div>
