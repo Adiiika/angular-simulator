@@ -1,28 +1,62 @@
 import { Component, inject } from '@angular/core';
-import { IUser } from '../../interfaces/IUser';
 import { AsyncPipe } from '@angular/common';
-import { Observable, tap } from 'rxjs';
+import { RouterOutlet } from '@angular/router';
+import { BehaviorSubject, map, Observable, tap, combineLatest } from 'rxjs';
+import { IUser } from '../../interfaces/IUser';
 import { UserService } from '../user.service';
+import { UserCardComponent } from '../user-card/user-card.component';
+import { UserCreateComponent } from "../user-create/user-create.component";
+import { UserFilterComponent } from '../user-filter/user-filter.component';
 
 @Component({
   selector: 'app-users-page',
-  imports: [AsyncPipe],
+  standalone: true,
+  imports: [AsyncPipe, RouterOutlet, UserCardComponent, UserCreateComponent, UserFilterComponent],
   templateUrl: './users-page.component.html',
   styleUrl: './users-page.component.scss',
 })
 export class UsersPageComponent {
 
   userService: UserService = inject(UserService);
+  filterSubject$: BehaviorSubject<string | null> = new BehaviorSubject<string | null>('');
   users$: Observable<IUser[]> = this.userService.users$;
+  filteredUsers$: Observable<IUser[]> = combineLatest([
+    this.users$,
+    this.filterSubject$,
+  ]).pipe(
+    map(([users, filterItems]: [IUser[], string | null]) => {
+      const userfilter: string = (filterItems || '').trim().toLowerCase();
+      return users.filter((user: IUser) =>
+        user.name.toLowerCase().includes(userfilter));
+    }
+    ));
 
-  constructor() {
+  ngOnInit(): void {
 
     this.userService.loadUsers()
-    .pipe(
-      tap((data: IUser[]) => {
-        this.userService.setUsers(data);
-      })
-    ).subscribe();
+      .pipe(
+        tap((data: IUser[]) => this.userService.setUsers(data))
+      ).subscribe();
+
+  }
+
+  handleSearch(value: any): void {
+    this.filterSubject$.next(value);
+  }
+
+  onDelete(id: number): void {
+    const currentUsers: IUser[] = this.userService.usersSubject.value;
+    const updatedUsers: IUser[] = currentUsers.filter((user): boolean => user.id !== id);
+    this.userService.usersSubject.next(updatedUsers);
+  }
+
+  addUsers(newUser: IUser): void {
+
+    const currentUsers: IUser[] = this.userService.usersSubject.value;
+    this.userService.usersSubject.next([newUser, ...currentUsers]);
+
+    const updatedUsers: IUser[] = [...currentUsers, newUser];
+    this.userService.setUsers(updatedUsers);
   }
 
 }

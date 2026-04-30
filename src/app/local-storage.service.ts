@@ -10,7 +10,7 @@ export class LocalStorageService {
   }
 
   getItem<T>(key: string): T | null {
-    const data = localStorage.getItem(key)
+    const data = localStorage.getItem(key);
     if (!data) return null;
 
     try {
@@ -29,4 +29,5 @@ export class LocalStorageService {
   clearAll(): void {
     localStorage.clear();
   }
+
 }

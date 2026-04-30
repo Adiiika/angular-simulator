@@ -1,0 +1,74 @@
+<div class="container-user">
+    <div class="user-list">
+        <div class="user-card">
+            <div class="user-card__intro">
+                <h2 class="user-card__name">{{ user.name }}</h2>
+                <span class="user-card__username fs-16 fw-700">{{ user.username }}</span>
+            </div>
+            <div class="user-card__header">
+                <div class="user-card__section">
+                    <span class="user-card__title-text">КОНТАКТЫ</span>
+                    <div class="user-card__line"></div>
+                </div>
+                <div class="user-card__wrapper">
+                    <span class="user-card__key">Эл.почта:</span>
+                    <span class="user-card__value">{{ user.email }}</span>
+                </div>
+                <div class="user-card__wrapper">
+                    <span class="user-card__key">Телефон:</span>
+                    <span class="user-card__value text-dark">{{ user.phone }}</span>
+                </div>
+                <div class="user-card__wrapper">
+                    <span class="user-card__key">Веб-сайт:</span>
+                    <span class="user-card__value">{{ user.website || 'Неизвестно' }}</span>
+                </div>
+                <div class="user-card__section">
+                    <span class="user-card__title-text">АДРЕС ПРОЖИВАНИЯ</span>
+                    <div class="user-card__line"></div>
+                </div>
+                <div class="user-card__wrapper">
+                    <span class="user-card__key">Город:</span>
+                    <span class="user-card__value text-dark">{{ user.address.city }}</span>
+                </div>
+                <div class="user-card__wrapper">
+                    <span class="user-card__key">Улица:</span>
+                    <span class="user-card__value text-dark">{{ user.address.street }}</span>
+                </div>
+                <div class="user-card__wrapper">
+                    <span class="user-card__key">Офис:</span>
+                    <span class="user-card__value text-dark">{{ user.address.suite || 'Неизвестно' }}</span>
+                </div>
+                <div class="user-card__wrapper">
+                    <span class="user-card__key">Индекс:</span>
+                    <span class="user-card__value text-dark">{{ user.address.zipcode }}</span>
+                </div>
+                <div class="user-card__wrapper">
+                    <span class="user-card__key">Координаты:</span>
+                    <div class="user-card__buttons">
+                        <button class="user-card__value text-btn">{{ user.address.geo.lat }} </button>
+                        <button class="user-card__value text-btn">{{ user.address.geo.lng }}</button>
+                    </div>
+                </div>
+                <div class="user-card__section">
+                    <span class="user-card__title-text">МЕСТО РАБОТЫ</span>
+                    <div class="user-card__line"></div>
+                </div>
+                <div class="user-card__wrapper">
+                    <span class="user-card__key">Компания:</span>
+                    <span class="user-card__value text-dark">{{ user.company.name }}</span>
+                </div>
+                <div class="user-card__wrapper">
+                    <span class="user-card__key">Миссия:</span>
+                    <span class="user-card__value text-gray">{{ user.company.catchPhrase || 'Неизвестно' }}</span>
+                </div>
+                <div class="user-card__wrapper">
+                    <span class="user-card__key">Специализация:</span>
+                    <span class="user-card__value text-dark">{{ user.company.bs || 'Неизвестно' }}</span>
+                </div>
+                <div>
+                    <button id="delete-user-btn" (click)="OnUserDelete()" class="fs-14 fw-700">Удалить пользователя</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

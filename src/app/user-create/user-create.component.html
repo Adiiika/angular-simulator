@@ -1,0 +1,79 @@
+<div class="container-user">
+    <div class="user-list">
+        <div class="user-card">
+            <h1 class="registration-title">Регистрация пользователя</h1>
+            <form [formGroup]="registerUser">
+                <div class="create-user__field">
+                    <label for="name" class="create-user__label">Имя:</label>
+                    <input id="create-user__input" type="text" placeholder="Введите имя" formControlName="name">
+                </div>
+                <div class="create-user__field">
+                    <label for="username" class="create-user__label">Логин:</label>
+                    <input id="create-user__input" type="text" placeholder="Введите логин" formControlName="username">
+                </div>
+                <div class="create-user__field">
+                    <label for="email" class="create-user__label">Эл. Почта:</label>
+                    <input id="create-user__input" type="text" placeholder="Введите email" formControlName="email">
+                </div>
+                <div class="create-user__field">
+                    <label for="phone" class="create-user__label">Телефон:</label>
+                    <input id="create-user__input" type="text" placeholder="Введите номер телефона"
+                        formControlName="phone">
+                </div>
+                <div class="create-user__field">
+                    <label for="website" class="create-user__label">Веб сайт:</label>
+                    <input id="create-user__input" type="text" placeholder="Введите веб-сайт" formControlName="website">
+                </div>
+
+                <div formGroupName="address">
+                    <div class="create-user__field">
+                        <label for="city" class="create-user__label">Город:</label>
+                        <input id="create-user__input" type="text" placeholder="Введите город" formControlName="city">
+                    </div>
+                    <div class="create-user__field">
+                        <label for="street" class="create-user__label">Улица:</label>
+                        <input id="create-user__input" type="text" placeholder="Введите улицу" formControlName="street">
+                    </div>
+                    <div class="create-user__field">
+                        <label for="suite" class="create-user__label">Офис:</label>
+                        <input id="create-user__input" type="text" placeholder="Введите офис" formControlName="suite">
+                    </div>
+                    <div class="create-user__field">
+                        <label for="zipcode" class="create-user__label">Индекс:</label>
+                        <input id="create-user__input" type="text" placeholder="Введите индекс"
+                            formControlName="zipcode">
+                    </div>
+
+                    <div formGroupName="geo">
+                        <div class="create-user__field">
+                            <label for="lat" class="create-user__label">Координаты:</label>
+                            <input id="create-user__input-adress" type="text" placeholder="Введите широту"
+                                formControlName="lat">
+                            <input for="lng" id="create-user__input-adress" type="text" placeholder="Введите долготу"
+                                formControlName="lng">
+                        </div>
+                    </div>
+                </div>
+
+                <div formGroupName="company">
+                    <div class="create-user__field">
+                        <label for="companyName" class="create-user__label">Компания:</label>
+                        <input id="create-user__input" type="text" placeholder="Укажите компанию"
+                            formControlName="name">
+                    </div>
+                    <div class="create-user__field">
+                        <label for="catchPhrase" class="create-user__label">Миссия:</label>
+                        <input id="create-user__input" type="text" placeholder="Расскажите о миссии"
+                            formControlName="catchPhrase">
+                    </div>
+                    <div class="create-user__field">
+                        <label for="companyBs" for="companyBs" class="create-user__label">Специализация:</label>
+                        <input id="create-user__input" type="text" placeholder="Введите специализацию"
+                            formControlName="companyBs">
+                    </div>
+                </div>
+            </form>
+            <button (click)="onSubmit()" type="button" id="create-user__btn">Зарегистрировать пользователя</button>
+        </div>
+    </div>
+</div>
