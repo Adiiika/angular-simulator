@@ -32,12 +32,10 @@ export class UsersPageComponent {
     ));
 
   ngOnInit(): void {
-
     this.userService.loadUsers()
       .pipe(
         tap((data: IUser[]) => this.userService.setUsers(data))
       ).subscribe();
-
   }
 
   handleSearch(value: any): void {
@@ -51,7 +49,6 @@ export class UsersPageComponent {
   }
 
   addUsers(newUser: IUser): void {
-
     const currentUsers: IUser[] = this.userService.usersSubject.value;
     this.userService.usersSubject.next([newUser, ...currentUsers]);
 

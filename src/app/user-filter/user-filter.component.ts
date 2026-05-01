@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, DestroyRef, EventEmitter, inject, Output } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, tap } from 'rxjs';
 
@@ -12,20 +13,20 @@ export class UserFilterComponent {
 
   @Output() searchUser: EventEmitter<string | null> = new EventEmitter<string | null>();
 
-  userName: FormControl = new FormControl('');
+  userNameControl: FormControl = new FormControl('');
+  destroyRef: DestroyRef = inject(DestroyRef)
 
   ngOnInit(): void {
-
-    this.userName.valueChanges
+    this.userNameControl.valueChanges
       .pipe(
         debounceTime(200),
         distinctUntilChanged(),
-        tap((value: any) => {
+        takeUntilDestroyed(this.destroyRef),
+        tap((value: string | '') => {
           value.toLowerCase().trim();
           this.searchUser.emit(value);
         }),
       ).subscribe();
-
-  }
+    }
 
 }
