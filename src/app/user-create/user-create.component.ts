@@ -39,9 +39,8 @@ export class UserCreateComponent {
   });
 
   onSubmit(): void {
-    const userId: number = Date.now();
     const newUser: IUser = this.userForm.getRawValue();
-    const userData: any = { ...newUser, userId }
+    const userData: IUser = { ...newUser, id: Date.now() }
     this.createUser.emit(userData);
   }
 

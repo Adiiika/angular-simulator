@@ -38,22 +38,8 @@ export class UsersPageComponent {
       ).subscribe();
   }
 
-  handleSearch(value: any): void {
+  handleSearch(value: string): void {
     this.filterSubject$.next(value);
-  }
-
-  onDelete(id: number): void {
-    const currentUsers: IUser[] = this.userService.usersSubject.value;
-    const updatedUsers: IUser[] = currentUsers.filter((user): boolean => user.id !== id);
-    this.userService.usersSubject.next(updatedUsers);
-  }
-
-  addUsers(newUser: IUser): void {
-    const currentUsers: IUser[] = this.userService.usersSubject.value;
-    this.userService.usersSubject.next([newUser, ...currentUsers]);
-
-    const updatedUsers: IUser[] = [...currentUsers, newUser];
-    this.userService.setUsers(updatedUsers);
   }
 
 }
