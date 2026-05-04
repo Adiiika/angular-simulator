@@ -19,9 +19,9 @@ export class UserService {
   usersSubject: BehaviorSubject<IUser[]> = new BehaviorSubject<IUser[]>([]);
   users$: Observable<IUser[]> = this.usersSubject.asObservable();
 
-  onDelete(id: number): void {
+  deleteUsers(id: number): void {
     const currentUsers: IUser[] = this.usersSubject.value;
-    const updatedUsers: IUser[] = currentUsers.filter((user): boolean => user.id !== id);
+    const updatedUsers: IUser[] = currentUsers.filter((user: IUser) => user.id !== id);
     this.usersSubject.next(updatedUsers);
   }
 
@@ -45,15 +45,12 @@ export class UserService {
   loadUsers(): Observable<IUser[]> {
     this.loaderService.showLoader();
 
-    const savedUsers: string | null | IUser[] = this.localStorageService.getItem('users');
-
-    if (savedUsers) {
-      this.usersSubject.next(savedUsers as IUser[]);
-    }
-
+    const savedUsers: null | IUser[] = this.localStorageService.getItem('users');
+    this.usersSubject.next(savedUsers as IUser[]);
+  
     return this.userApi.getUsers()
       .pipe(
-        catchError(error => {
+        catchError((error): Observable<IUser[]> => {
           this.messageService.showError('Нет пользователей');
           console.error('ошибка', error);
           return of([]);

@@ -40,7 +40,7 @@ export class UserCreateComponent {
 
   onSubmit(): void {
     const newUser: IUser = this.userForm.getRawValue();
-    const userData: IUser = { ...newUser, id: Date.now() }
+    const userData: IUser = { ...newUser, id: Date.now() };
     this.createUser.emit(userData);
   }
 

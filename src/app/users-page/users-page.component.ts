@@ -18,13 +18,13 @@ import { UserFilterComponent } from '../user-filter/user-filter.component';
 export class UsersPageComponent {
 
   userService: UserService = inject(UserService);
-  filterSubject$: BehaviorSubject<string | null> = new BehaviorSubject<string | null>('');
+  filterSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
   users$: Observable<IUser[]> = this.userService.users$;
   filteredUsers$: Observable<IUser[]> = combineLatest([
     this.users$,
-    this.filterSubject$,
+    this.filterSubject,
   ]).pipe(
-    map(([users, filterItems]: [IUser[], string | null]) => {
+    map(([users, filterItems]: [IUser[], string]) => {
       const userfilter: string = (filterItems || '').trim().toLowerCase();
       return users.filter((user: IUser) =>
         user.name.toLowerCase().includes(userfilter));
@@ -38,8 +38,8 @@ export class UsersPageComponent {
       ).subscribe();
   }
 
-  handleSearch(value: string): void {
-    this.filterSubject$.next(value);
+  onFilter(value: string): void {
+    this.filterSubject.next(value);
   }
 
 }

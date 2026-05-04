@@ -11,7 +11,7 @@ import { debounceTime, distinctUntilChanged, tap } from 'rxjs';
 })
 export class UserFilterComponent {
 
-  @Output() searchUser: EventEmitter<string> = new EventEmitter<string>();
+  @Output() filterUser: EventEmitter<string> = new EventEmitter<string>();
 
   userNameControl: FormControl = new FormControl('');
   destroyRef: DestroyRef = inject(DestroyRef)
@@ -24,7 +24,7 @@ export class UserFilterComponent {
         takeUntilDestroyed(this.destroyRef),
         tap((value: string) => {
           value.toLowerCase().trim();
-          this.searchUser.emit(value);
+          this.filterUser.emit(value);
         }),
       ).subscribe();
     }
