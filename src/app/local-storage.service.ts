@@ -12,7 +12,7 @@ export class LocalStorageService {
   getItem<T>(key: string): T | null {
     const data: string | null = localStorage.getItem(key);
     if (!data) {
-      return null
+      return null;
     };
 
     try {

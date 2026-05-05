@@ -5,7 +5,7 @@
     <h1 class="user-title">Список пользователей</h1>
     <div class="user-list">
         @for (user of filteredUsers$ | async; track user.id) {
-            <app-user-card [user]="user" (deleteUser)="userService.deleteUsers(user.id)"></app-user-card>
+            <app-user-card [user]="user" (deleteUser)="userService.deleteUser(user.id)"></app-user-card>
             } @empty {
             <div class="error-message fw-800 fs-26">
                 Нет пользователей
