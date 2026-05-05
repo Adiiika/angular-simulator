@@ -13,7 +13,7 @@
                         id="select-destination" 
                         required
                     >
-                        <option [ngValue]="''" disabled selected>Локация для тура</option>
+                        <option disabled selected>Локация для тура</option>
                         <option value="moscow">Москва</option>
                         <option value="spb">Санкт-Петербург</option>
                         <option value="sochi">Сочи</option>
@@ -46,7 +46,7 @@
                         id="select-tour-participants"
                         required
                     >
-                        <option [ngValue]="''" disabled selected>Участники</option>
+                        <option  disabled selected>Участники</option>
                         <option value="1">1 человек</option>
                         <option value="2">2 человека</option>
                         <option value="3">3 человека</option>
@@ -102,7 +102,7 @@
                     (mouseleave)="selectedOfferId = null"
                 >
                     <div class="offer-cards-icons">
-                        <img class="offer-icon" [src]="`./${ offer.icon }.svg`" width="50px" height="50px">
+                        <img class="offer-icon" [src]="`./offers/${ offer.icon }.svg`" width="50px" height="50px">
                     </div>
                     <div class="offer-cards-content">
                         <h3 class="offer-title fs-18 fw-700">{{ offer.title }}</h3>
@@ -114,10 +114,10 @@
         <button (click)="messageService.showWarn('Программа недоступна')" id="program-price-btn" class="fw-600 fs-16">Стоимость программ</button>
     </div>
     <div class="offers-content-right">
-        <img class="river-coffe" src="./coffee-blue-sea.jpg" width="250px" height="250px">
-        <img class="man-canyon" src="./man-canyon.jpg" width="250px" height="250px">
-        <img class="man-snowmobile" src="./man-snowmobile.jpg" width="250px" height="250px">
-        <img class="orange-stream" src="./orange-stream.jpg" width="250px" height="250px">
+        <img class="river-coffe" src="/offers/coffee-blue-sea.jpg" width="250px" height="250px">
+        <img class="man-canyon" src="/offers/man-canyon.jpg" width="250px" height="250px">
+        <img class="man-snowmobile" src="/offers/man-snowmobile.jpg" width="250px" height="250px">
+        <img class="orange-stream" src="/offers/orange-stream.jpg" width="250px" height="250px">
     </div>
 </section>
 
@@ -175,7 +175,7 @@
         <img class="wide-photo" src="/photo-reports/ballons-sky.jpg">
         <img src="/photo-reports/travel-stuff.jpg">
         <img src="/photo-reports/ship-hotel.jpg">
-        <img src="/photo-reports/boast  -coast.jpg">
+        <img src="/photo-reports/boast-coast.jpg">
         <img class="wide-photo" src="/photo-reports/canyon.jpg">
         <img src="/photo-reports/traveler-notebook.jpg">
     </div>

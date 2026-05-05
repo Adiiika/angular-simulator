@@ -85,21 +85,25 @@ export class HomePageComponent {
     },
     {
       id: 3,
-      image: 'person-between-buildings',
+      image: 'street',
       title: 'Как подготовиться к путешествию в одиночку?',
       description: 'Для современного мира базовый вектор развития предполагает.',
       date: '01/04/2023'
     },
     {
       id: 4,
-      image: 'india-mosque',
+      image: 'india',
       title: 'Индия ... летим?',
       description: 'Для современного мира базовый.',
       date: '01/04/2023'
     }
   ]
 
-  searchQuery!: ISearchQuery;
+  searchQuery: ISearchQuery = {
+    townName: '',
+    tourDate: '',
+    humanCount: '',
+  }
 
   selectOfferCard(offerId: number): void {
     this.selectedOfferId = offerId;
