@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
+
 export class LocalStorageService {
 
   setItem<T>(key: string, value: T): void {
@@ -12,7 +13,7 @@ export class LocalStorageService {
   getItem<T>(key: string): T | null {
     const data: string | null = localStorage.getItem(key);
     if (!data) {
-      return null
+      return null;
     };
 
     try {

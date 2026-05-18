@@ -14,6 +14,18 @@
     --orange-color: #D4A373;
 }
 
+.dark-mode {
+    --white-color: #000000;
+    --green-color: #4DB6AC;
+    --yellow-color: #FFD54F;
+    --black-color: #6c6161;
+    --gray-color: #121212;
+    --orange-color: #b0b0b0;
+
+    background-color: #212020;
+    color: #ddd7e2
+}
+
 .fs-14 {
     font-size: 14px
 }

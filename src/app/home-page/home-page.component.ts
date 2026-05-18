@@ -6,16 +6,24 @@ import { IOffer } from '../../interfaces/IOffer';
 import { IPath } from '../../interfaces/IPaths';
 import { IBlog } from '../../interfaces/IBlog';
 import { ISearchQuery } from '../../interfaces/ISearchQuery';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faPeopleLine, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { faSave } from '@fortawesome/free-regular-svg-icons';
+import { faYoutube } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-home-page',
-  imports: [FormsModule],
+  imports: [FormsModule, FontAwesomeModule],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
 })
 export class HomePageComponent {
 
   messageService: MessageService = inject(MessageService);
+
+  faPeopleLine: IconDefinition = faPeopleLine;
+  faSave: IconDefinition = faSave;
+  faYoutube: IconDefinition = faYoutube;
   selectedOfferId: number | null = null;
   msgType: typeof MessageType = MessageType;
   liveInputValue: string = '';
@@ -23,23 +31,23 @@ export class HomePageComponent {
   offers: IOffer[] = [
     {
       id: 1,
-      icon: 'people-green-icon',
+      icon: faPeopleLine,
       title: 'Опытный гид',
       description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.'
     },
     {
       id: 2,
-      icon: 'safe-blue-icon',
+      icon: faSave,
       title: 'Безопасный поход',
       description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.'
     },
     {
       id: 3,
-      icon: 'price-yellow-icon',
+      icon: faYoutube,
       title: 'Лояльные цены',
       description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.'
-    }
-  ]
+    },
+  ];
 
   paths: IPath[] = [
     {
@@ -65,8 +73,8 @@ export class HomePageComponent {
       title: 'Растяжка в горах',
       subtitle: 'для тех, кто забоится о себе',
       price: '230'
-    }
-  ]
+    },
+  ];
 
   blogs: IBlog[] = [
     {
@@ -96,17 +104,17 @@ export class HomePageComponent {
       title: 'Индия ... летим?',
       description: 'Для современного мира базовый.',
       date: '01/04/2023'
-    }
-  ]
+    },
+  ];
 
   searchQuery: ISearchQuery = {
     townName: '',
     tourDate: '',
     humanCount: '',
-  }
+  };
 
   selectOfferCard(offerId: number): void {
     this.selectedOfferId = offerId;
-  }
+  };
 
 }
