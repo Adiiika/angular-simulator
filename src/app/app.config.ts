@@ -3,7 +3,22 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { providePrimeNG } from 'primeng/config';
-import { auraPreset } from './theme.service';
+import Aura from '@primeuix/themes/aura';
+import Nora from '@primeuix/themes/nora';
+import Lara from '@primeuix/themes/lara';
+import { Theme } from '../enums/Theme';
+import { Preset } from '@primeuix/themes/types';
+
+const initTheme = (): Preset => {
+  const themeFromStorage: string | null = localStorage.getItem('theme');
+  const savedTheme: Theme = themeFromStorage ? JSON.parse(themeFromStorage) : Theme.AURA;
+
+  switch (savedTheme) {
+    case Theme.NORA: return Nora;
+    case Theme.LARA: return Lara;
+    default: return Aura;
+  }
+}
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -13,7 +28,7 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection(),
     providePrimeNG({
       theme: {
-        preset: auraPreset,
+        preset: initTheme(),
         options: {
           darkModeSelector: false,
         }

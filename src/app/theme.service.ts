@@ -1,84 +1,39 @@
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { LocalStorageService } from './local-storage.service';
-import { definePreset } from '@primeuix/themes';
+import { usePreset } from '@primeuix/themes';
 import { Preset } from '@primeuix/themes/types';
-import { PrimeNG } from 'primeng/config';
-import { SelectButtonChangeEvent } from 'primeng/selectbutton';
-import Aura from '@primeuix/themes/aura';
-import Lara from '@primeng/themes/lara';
-import Nora from '@primeng/themes/nora';
-
-export const auraPreset: Preset = definePreset(Aura, {
-  semantic: {
-    colorScheme: {
-      light: {
-        primary: {
-          color: '{sky.400}',
-          hoverColor: '{sky.500}',
-        }
-      },
-      dark: {
-        primary: {
-          color: '{sky.300}',
-          hoverColor: '{sky.400}',
-        }
-      }
-    }
-  }
-});
-
-export const laraPreset: Preset = definePreset(Lara, {
-  semantic: {
-    colorScheme: {
-      light: {
-        primary: {
-          color: '{sky.800}',
-          hoverColor: '{sky.900}'
-        }
-      },
-      dark: {
-        primary: {
-          color: '{sky.600}',
-          hoverColor: '{sky.700}'
-        }
-      }
-    }
-  }
-});
-
-export const noraPreset: Preset = definePreset(Nora, {
-  semantic: {
-    colorScheme: {
-      light: {
-        primary: {
-          color: '{sky.600}',
-          hoverColor: '{sky.500}'
-        }
-      },
-      dark: {
-        primary: {
-          color: '{sky.400}',
-          hoverColor: '{sky.300}',
-        }
-      }
-    }
-  }
-});
+import { laraPreset, noraPreset, auraPreset } from '../assets/themes-preset';
+import { ITheme } from '../interfaces/IThemes';
+import { Theme } from '../enums/Theme';
 
 @Injectable({
   providedIn: 'root',
 })
 
 export class ThemeService {
-
+  
   private localStorageService: LocalStorageService = inject(LocalStorageService);
-  private primeng: PrimeNG = inject(PrimeNG);
 
-  private themeState: BehaviorSubject<string> = new BehaviorSubject<string>('aura');
+  private themeState: BehaviorSubject<ITheme | null> = new BehaviorSubject<ITheme | null>(this.activeTheme());
   private modeState: BehaviorSubject<string> = new BehaviorSubject<string>('light-mode');
 
   isDarkMode: boolean = true;
+
+  themes: ITheme[] = [
+    {
+      theme: Theme.NORA,
+      preset: noraPreset,
+    },
+    {
+      theme: Theme.AURA,
+      preset: auraPreset,
+    },
+    {
+      theme: Theme.LARA,
+      preset: laraPreset,
+    },
+  ];
 
   constructor() {
     this.activeTheme();
@@ -97,50 +52,24 @@ export class ThemeService {
     }
   };
 
-  activeTheme(): void {
-    const savedTheme: string | null = this.localStorageService.getItem('theme');
-    const presets: Record<string, Preset> = {
-      nora: noraPreset,
-      lara: laraPreset,
-      aura: auraPreset,
+  activeTheme(): ITheme | null {
+    return this.localStorageService.getItem('theme');
+  };
+
+  changeTheme(theme: Theme): void {
+    const themes: { Aura: Preset, Lara: Preset, Nora: Preset } = {
+      [Theme.AURA]: auraPreset,
+      [Theme.LARA]: laraPreset,
+      [Theme.NORA]: noraPreset,
     };
 
-    if (savedTheme) {
-      const currentTheme: Preset = presets[savedTheme] || auraPreset;
-
-      this.localStorageService.setItem('theme', savedTheme);
-      this.primeng.theme.set({
-        preset: currentTheme, options: { darkModeSelector: false }
-      });
-      this.themeState.next(savedTheme);
-    }
+    const preset: Preset = themes[theme];
+    usePreset(preset);
+    this.localStorageService.setItem('theme', theme);
   };
 
-  changeTheme(event: SelectButtonChangeEvent): void {
-    const selectedPreset: string | Preset = event.value;
-
-    if (selectedPreset === noraPreset) {
-      this.localStorageService.setItem('theme', 'nora');
-      this.primeng.theme.set({
-        preset: noraPreset, options: { darkModeSelector: false }
-      });
-    }
-    else if (selectedPreset === laraPreset) {
-      this.localStorageService.setItem('theme', 'lara');
-      this.primeng.theme.set({
-        preset: laraPreset, options: { darkModeSelector: false }
-      });
-    }
-    else if (selectedPreset === auraPreset) {
-      this.localStorageService.setItem('theme', 'aura');
-      this.primeng.theme.set({
-        preset: auraPreset, options: { darkModeSelector: false }
-      });
-    }
-  };
-
-  toggleDarkMode(): void {
-    if (this.isDarkMode === true) {
+  toggleDarkMode(value: boolean): void {
+    if (this.isDarkMode === value) {
       this.localStorageService.setItem('mode', 'dark-mode');
       document.body.classList.add('dark-mode');
     }

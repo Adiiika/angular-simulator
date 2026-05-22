@@ -6,8 +6,7 @@ import { SelectButtonModule } from 'primeng/selectbutton';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { faSun, faMoon, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { FaIconComponent } from "@fortawesome/angular-fontawesome";
-import { auraPreset, laraPreset, noraPreset, ThemeService } from '../theme.service';
-import { Preset } from '@primeuix/themes/types';
+import { ThemeService } from '../theme.service';
 
 @Component({
   selector: 'app-header',
@@ -27,18 +26,13 @@ export class HeaderComponent {
   counter: number = 0;
   isClickerMode: boolean = true;
 
-  themes: { label: string, value: Preset }[] = [
-    { label: 'Nora', value: noraPreset },
-    { label: 'Aura', value: auraPreset },
-    { label: 'Lara', value: laraPreset },
-  ];
 
   constructor() {
     setInterval(() => {
       this.date = new Date().toString().slice(0, 24);
     }, 1000)
   }
-  
+
   navigations: INav[] = [
     {
       id: 1,

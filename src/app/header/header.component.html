@@ -4,24 +4,27 @@
             <img class="company-icon" src="./mountain-logo.svg" width="137px" height="72px">
             <span class="company-name fs-18">{{ companyName }}</span>
             <p-selectbutton 
-            [options]="themes"
-            optionLabel="label" 
-            (onChange)="themeService.changeTheme($event)"
-            optionValue="value" 
+                id="select-themes-btn"
+                (onChange)="themeService.changeTheme($event.value)"
+                [options]="themeService.themes"
+                optionLabel="theme" 
+                optionValue="theme" 
             /> 
         </div>
         <div class="toogle-container">
             <nav class="header-right-navigation fs-18">
                 @for (navigation of navigations; track navigation.id) {
-                    <a [routerLink]="navigation.link"
-                    routerLinkActive="active-navigation-text"
-                    [routerLinkActiveOptions]="{ exact: true }"
-                    id="navigation-text"
-                    >{{ navigation.text }}</a>
+                    <a 
+                        [routerLink]="navigation.link"
+                        routerLinkActive="active-navigation-text"
+                        [routerLinkActiveOptions]="{ exact: true }"
+                        id="navigation-text"
+                        >{{ navigation.text }}
+                    </a>
                 }
                 <p-toggleswitch
-                (onChange)="themeService.toggleDarkMode()"
-                [(ngModel)]="themeService.isDarkMode"
+                    (onChange)="themeService.toggleDarkMode(true)"
+                    [(ngModel)]="themeService.isDarkMode"
                 />
                 <fa-icon [icon]="themeService.isDarkMode === true ? faMoon : faSun"/>
                 <button id="request-consultation-btn" class="fs-16 fw-600" width="157px" height="44px">Консультация</button>
