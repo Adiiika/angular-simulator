@@ -7,10 +7,11 @@ import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { faSun, faMoon, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { FaIconComponent } from "@fortawesome/angular-fontawesome";
 import { ThemeService } from '../theme.service';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-header',
-  imports: [FormsModule, RouterLink, RouterLinkActive, SelectButtonModule, ToggleSwitchModule, FaIconComponent],
+  imports: [FormsModule, RouterLink, RouterLinkActive, SelectButtonModule, ToggleSwitchModule, FaIconComponent, AsyncPipe],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
@@ -25,7 +26,6 @@ export class HeaderComponent {
   date: string = '';
   counter: number = 0;
   isClickerMode: boolean = true;
-
 
   constructor() {
     setInterval(() => {

@@ -10,7 +10,7 @@ import { Theme } from '../enums/Theme';
 import { Preset } from '@primeuix/themes/types';
 
 const initTheme = (): Preset => {
-  const themeFromStorage: string | null = localStorage.getItem('theme');
+  const themeFromStorage: Theme | null = localStorage.getItem('theme') as Theme;
   const savedTheme: Theme = themeFromStorage ? JSON.parse(themeFromStorage) : Theme.AURA;
 
   switch (savedTheme) {
