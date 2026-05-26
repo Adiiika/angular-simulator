@@ -25,9 +25,9 @@
                 }
                 <p-toggleswitch
                     (onChange)="themeService.toggleDarkMode($event.checked)"
-                    [ngModel]="themeService.isDarkMode$ | async"
+                    [ngModel]="themeService.isDarkModeSubject$ | async"
                 />
-                <fa-icon [icon]="(themeService.isDarkMode$ | async) ? faMoon : faSun"/>
+                <fa-icon [icon]="(themeService.isDarkModeSubject$ | async) ? faMoon : faSun"/>
                 <button id="request-consultation-btn" class="fs-16 fw-600" width="157px" height="44px">Консультация</button>
             </nav>
             @if (!isClickerMode) {

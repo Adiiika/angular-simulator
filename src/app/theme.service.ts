@@ -11,12 +11,12 @@ import { Theme } from '../enums/Theme';
 })
 
 export class ThemeService {
-  
+
   private localStorageService: LocalStorageService = inject(LocalStorageService);
 
-  private themeState: BehaviorSubject<ITheme | null> = new BehaviorSubject<ITheme | null>(this.activeTheme());
-  private modeState: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  isDarkMode$: Observable<boolean> = this.modeState.asObservable();
+  private themeState: BehaviorSubject<ITheme | null> = new BehaviorSubject<ITheme | null>(this.getSavedTheme());
+  private modeState: BehaviorSubject<boolean | void> = new BehaviorSubject<boolean | void>(this.getSavedMode());
+  isDarkModeSubject$: Observable<boolean | void> = this.modeState.asObservable();
 
   themes: ITheme[] = [
     {
@@ -33,45 +33,35 @@ export class ThemeService {
     },
   ];
 
-  constructor() {
-    this.activeTheme();
-    this.activeMode();
-  }
-
-  activeMode(): void {
+  getSavedMode(): boolean | void {
     const savedMode: string | null = this.localStorageService.getItem('mode');
+    const isDark: boolean = savedMode === 'true';
 
-    if (savedMode) {
-      const isDark: boolean = savedMode === 'dark-mode';
-      this.modeState.next(isDark);
-      this.localStorageService.setItem('mode', savedMode);
-      document.body.classList.add(savedMode);
+    if (isDark) {
+      document.body.classList.add('dark-mode');
     }
+
+    return isDark;
   };
 
-  activeTheme(): ITheme | null {
+  getSavedTheme(): ITheme | null {
     return this.localStorageService.getItem('theme');
   };
 
   changeTheme(theme: Theme): void {
-    const currentTheme: ITheme | undefined = this.themes.find(preset => preset.theme === theme);
+    const currentTheme: ITheme | undefined = this.themes.find((preset: ITheme) => preset.theme === theme);
 
     if (currentTheme) {
-    usePreset(currentTheme.preset);
-    this.localStorageService.setItem('theme', theme);
+      usePreset(currentTheme.preset);
+      this.localStorageService.setItem('theme', theme);
     }
   };
 
   toggleDarkMode(value: boolean): void {
     this.modeState.next(value);
-    if (value) {
-      this.localStorageService.setItem('mode', 'dark-mode');
-      document.body.classList.add('dark-mode');
-    }
-    else {
-      this.localStorageService.setItem('mode', 'light-mode');
-      document.body.classList.remove('dark-mode');
-    }
+    this.localStorageService.setItem('mode', String(value));
+
+    value ? document.body.classList.add('dark-mode') : document.body.classList.remove('dark-mode');
   };
 
 }
