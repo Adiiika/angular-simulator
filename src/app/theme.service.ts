@@ -15,8 +15,8 @@ export class ThemeService {
   private localStorageService: LocalStorageService = inject(LocalStorageService);
 
   private themeState: BehaviorSubject<ITheme | null> = new BehaviorSubject<ITheme | null>(this.getSavedTheme());
-  private isDarkModeSubject: BehaviorSubject<boolean | void> = new BehaviorSubject<boolean | void>(this.getSavedMode(true));
-  isDarkMode$: Observable<boolean | void> = this.isDarkModeSubject.asObservable();
+  private isDarkModeSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.getSavedMode());
+  isDarkMode$: Observable<boolean> = this.isDarkModeSubject.asObservable();
 
   themes: ITheme[] = [
     {
@@ -33,9 +33,9 @@ export class ThemeService {
     },
   ];
 
-  getSavedMode(value: Boolean): boolean | void {
-    const savedMode: string | null | Boolean = this.localStorageService.getItem('mode');
-    const isDark: boolean = savedMode === value;
+  getSavedMode(): boolean {
+    const savedMode: boolean | null = this.localStorageService.getItem('mode');
+    const isDark: boolean = savedMode === true;
 
     if (isDark) {
       document.body.classList.add('dark-mode');
