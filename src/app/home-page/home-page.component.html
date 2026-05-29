@@ -102,7 +102,7 @@
                     (mouseleave)="selectedOfferId = null"
                 >
                     <div class="offer-cards-icons">
-                        <img class="offer-icon" [src]="`./offers/${ offer.icon }.svg`" width="50px" height="50px">
+                          <fa-icon class="offer-icon" [icon]="offer.icon"/> 
                     </div>
                     <div class="offer-cards-content">
                         <h3 class="offer-title fs-18 fw-700">{{ offer.title }}</h3>
