@@ -1,9 +1,9 @@
 <div class="container-user">
     <div class="user-list">
-        <div class="user-card">
+        <div appGradient [GradientConfiguration]="{ delay: 1000, colors: ['#ee7352', '#23d5ab'], thickness: 2 }" class="user-card">
             <div class="user-card__intro">
-                <h2 class="user-card__name">{{ user.name }}</h2>
-                <span class="user-card__username fs-16 fw-700">{{ user.username }}</span>
+                <h2 class="user-card__name">{{ user.name | uppercase }}</h2>
+                <span class="user-card__username fs-16 fw-700">{{ user.username | uppercase }}</span>
             </div>
             <div class="user-card__header">
                 <div class="user-card__section">
@@ -16,7 +16,7 @@
                 </div>
                 <div class="user-card__wrapper">
                     <span class="user-card__key">Телефон:</span>
-                    <span class="user-card__value text-dark">{{ user.phone }}</span>
+                    <span class="user-card__value text-dark">{{ user.phone | phone: 'masked' }}</span>
                 </div>
                 <div class="user-card__wrapper">
                     <span class="user-card__key">Веб-сайт:</span>
@@ -66,7 +66,7 @@
                     <span class="user-card__value text-dark">{{ user.company.bs || 'Неизвестно' }}</span>
                 </div>
                 <div>
-                    <button id="delete-user-btn" (click)="onUserDelete()" class="fs-14 fw-700">Удалить пользователя</button>
+                    <button appHover id="delete-user-btn"  (click)="onUserDelete()" class="fs-14 fw-500">Удалить пользователя</button>
                 </div>
             </div>
         </div>

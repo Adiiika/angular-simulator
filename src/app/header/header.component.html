@@ -2,7 +2,7 @@
     <div class="header-navigation">
         <div class="header-left">
             <img class="company-icon" src="./mountain-logo.svg" width="137px" height="72px">
-            <span class="company-name fs-18">{{ companyName }}</span>
+            <span class="company-name fs-18">{{ companyName | uppercase }}</span>
             <p-selectbutton 
                 id="select-themes-btn"
                 (onChange)="themeService.changeTheme($event.value)"
