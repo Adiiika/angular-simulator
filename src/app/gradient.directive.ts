@@ -1,12 +1,12 @@
 import { Directive, HostBinding, HostListener, Input } from '@angular/core';
-import { IBorder } from '../interfaces/IBorder';
+import { IBorderSetting } from '../interfaces/IBorder';
 
 @Directive({
   selector: '[appGradient]',
 })
 export class GradientDirective {
 
-  @Input('GradientConfiguration') animatedGradient: IBorder = {
+  @Input('gradientConfiguration') animatedGradient: IBorderSetting = {
     delay: 1000,
     colors: ['#ee7752', '#23d5ab'],
     thickness: 2,
