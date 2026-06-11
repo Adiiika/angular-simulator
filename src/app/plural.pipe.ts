@@ -8,14 +8,23 @@ export class PluralPipe implements PipeTransform {
 
     const remainder100: number = value % 100;
     const remainder10: number = value % 10;
+    const numbers: { [key: string]: number} = {
+      zero: 0,
+      one: 1,
+      two: 2,
+      four: 4,
+      eleven: 11,
+      fourteen: 14,
+    } as const
 
-     if (value === 0) {
+
+     if (value === numbers['zero']) {
       return 'Нет пользователей';
-    } else if (remainder100 >= 11 && remainder100 <= 14) {
+    } else if (remainder100 >= numbers['eleven'] && remainder100 <= numbers['fourteen']) {
       return thirdForm;
-    } else if (remainder10 === 1) {
+    } else if (remainder10 === numbers['one']) {
       return firstForm;
-    } else if (remainder10 >= 2 && remainder10 <= 4) {
+    } else if (remainder10 >= numbers['two'] && remainder10 <= numbers['four']) {
       return secondForm;
     } 
 
