@@ -16,7 +16,7 @@ export class PluralPipe implements PipeTransform {
     const isMany: boolean = remainder100 >= 11 && remainder100 <= 14;
 
     if (isZero) {
-      return 'Нет пользователей';
+      return 'Данные отсутствуют';
     } else if (isMany) {
       return thirdForm;
     } else if (isOne) {
