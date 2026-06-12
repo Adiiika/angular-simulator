@@ -7,7 +7,7 @@
     <div>
         <h1 class="current-users">Количество:</h1>
         <h2 *ngIf="userService.users$ | async as users">
-             {{ users.length }} {{ users.length | plural: 'Пользователь' : 'Пользователя' : 'Пользователей' }}
+             {{ users.length === 0 ? null : users.length}} {{ users.length | plural: 'Нет пользователей' : 'Пользователь' : 'Пользователя' : 'Пользователей' }}
         </h2> 
     </div>
 </div>
