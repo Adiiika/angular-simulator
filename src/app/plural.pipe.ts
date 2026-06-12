@@ -18,14 +18,14 @@ export class PluralPipe implements PipeTransform {
     if (isZero) {
       return emptyForm;
     } else if (isMany) {
-      return thirdForm;
+      return `${ value }  ${ thirdForm }`;
     } else if (isOne) {
-      return firstForm;
+      return  `${ value } ${ firstForm }`;
     } else if (isFew) {
-      return secondForm;
+      return `${ value } ${ secondForm }`;
     }
 
-    return thirdForm;
+    return `${ value } ${ thirdForm }`;
   }
 
 }
