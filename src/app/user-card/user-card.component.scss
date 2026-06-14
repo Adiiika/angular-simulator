@@ -1,3 +1,6 @@
+@use '../../assets/mixins.scss' as *;
+
+
 .container-user {
     background-color: var(--gray-color);
     padding: 0 0 0 0;
@@ -18,7 +21,7 @@
     .user-card {
         width: 440px;
         height: 620px;
-        background-color: #FFFFFF;
+        background-color: var(--white-color);
         border-top: 5px solid var(--orange-color);
         border-radius: 4px;
     }
@@ -123,9 +126,7 @@
 
     .error-message {
         margin: 0 0 200px 420px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include flex();
         border-radius: 20px;
         background-color: #B15757;
         color: #FFFFFF;
@@ -142,5 +143,6 @@
         border: none;
         border-radius: 4px;
         background-color: var(--green-color);
+        
     }
 }

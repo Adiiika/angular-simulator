@@ -100,7 +100,7 @@ export class HomePageComponent {
     },
     {
       id: 4,
-      image: 'india',
+      image: 'india-mosque',
       title: 'Индия ... летим?',
       description: 'Для современного мира базовый.',
       date: '01/04/2023'
