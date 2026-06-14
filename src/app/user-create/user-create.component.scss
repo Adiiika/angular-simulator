@@ -1,0 +1,55 @@
+.container-user {
+    background-color: var(--gray-color);
+    padding: 40px 0 100px 0;
+    height: 600px;
+
+    .user-list {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .registration-title {
+        display: flex;
+        justify-content: center;
+    }
+
+    .user-card {
+        width: 500px;
+        height: 620px;
+        background-color: #FFFFFF;
+        border-top: 5px solid var(--orange-color);
+        border-radius: 4px;
+    }
+
+    .create-user__field {
+        display: flex;
+        justify-content: space-between;
+        margin: 15px 15px 0 15px;
+    }
+
+    .create-user__label {
+        font-size: 17px;
+    }
+
+    #create-user__input {
+        text-align: center;
+        width: 250px;
+    }
+
+    #create-user__input-adress {
+        text-align: center;
+        width: 150px;
+    }
+
+    #create-user__btn {
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        color: var(--gray-color);
+        background-color: var(--green-color);
+        margin: 25px 0 0 28px;
+        width: 450px;
+        height: 40px;
+    }
+}

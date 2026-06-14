@@ -1,0 +1,13 @@
+<div class="users-container">
+    <div class="user-filter-container">
+        <h1 class="user-filter-title">Поиск пользователя</h1>
+        <input id="user-filter-input" type="text" [formControl]="userNameControl"
+            placeholder="Введите имя пользователя">
+    </div>
+    <div>
+        <h1 class="current-users">Количество:</h1>
+        <h2 *ngIf="userService.users$ | async as users">
+             {{ users.length | plural: 'Пользователь' : 'Пользователя' : 'Пользователей' }}
+        </h2> 
+    </div>
+</div>

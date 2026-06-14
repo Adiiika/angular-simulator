@@ -11,6 +11,19 @@
     --yellow-color: #F2BE22;
     --black-color: #18121E;
     --gray-color: #F3F5F4;
+    --orange-color: #D4A373;
+}
+
+.dark-mode {
+    --white-color: #000000;
+    --green-color: #4DB6AC;
+    --yellow-color: #FFD54F;
+    --black-color: #6c6161;
+    --gray-color: #121212;
+    --orange-color: #b0b0b0;
+
+    background-color: #212020;
+    color: #ddd7e2
 }
 
 .fs-14 {
@@ -25,6 +38,18 @@
     font-size: 18px;
 }
 
+.fs-20 {
+    font-size: 20px;
+}
+
+.fs-24 {
+    font-size: 24px;
+}
+
+.fs-26 {
+    font-size: 26px;
+}
+
 .fw-400 {
     font-weight: 400;
 }
@@ -37,12 +62,6 @@
     font-weight: 700;
 }
 
-@keyframes spin {
-    from {
-        transform: rotate(360deg);
-    }
-
-    to {
-        transform: rotate(0deg);
-    }
+.fw-800 {
+    font-weight: 800;
 }

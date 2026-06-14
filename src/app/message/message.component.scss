@@ -1,0 +1,55 @@
+.container-message {
+    animation: slideIn 0.4s ease;
+    pointer-events: auto;
+    position: relative;
+    width: 350px;
+    min-height: 70px;
+    background-color: #0F172AD9;
+    border: 1px solid #FFFFFF;
+    border-radius: 10px;
+    box-sizing: border-box;
+    display: flex;
+    padding: 10px;
+}
+
+.natice-block {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.message-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: static;
+}
+
+.message-content-info {
+    margin: 0 0 0 10px;
+}
+
+.message-title {
+    color: #E8E9EB;
+    margin: 0 0 2px 0;
+}
+
+.message-description {
+    color: #E8E9EB;
+    margin: 0;
+    width: 250px;
+}
+
+#message-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
