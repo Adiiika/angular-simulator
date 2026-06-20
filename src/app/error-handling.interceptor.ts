@@ -11,7 +11,9 @@ export const errorHandlingInterceptor: HttpInterceptorFn = (req: HttpRequest<unk
     catchError((error: HttpErrorResponse) => {
       if (error.status >= 500 && error.status < 600) {
         messageService.showError(`Ошибка ${error.status}`);
-      } return throwError(() => error);
+      }
+      return throwError(() => error);
     }),
   )
+
 }
