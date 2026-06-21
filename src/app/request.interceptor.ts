@@ -13,7 +13,7 @@ export const requestInterceptor: HttpInterceptorFn = (req: HttpRequest<unknown>,
       }
     }),
     catchError((error: HttpErrorResponse) => {
-      console.error(`Ошибка ${req.method} ${error.url} ${error.status}`, Date.now() - requestTime);
+      console.error(`Ошибка ${ req.method } ${ error.url } ${ error.status }`, Date.now() - requestTime);
       return throwError(() => error);
     })
   );
