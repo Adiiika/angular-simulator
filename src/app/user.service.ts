@@ -19,7 +19,7 @@ export class UserService {
   usersSubject: BehaviorSubject<IUser[]> = new BehaviorSubject<IUser[]>([]);
   users$: Observable<IUser[]> = this.usersSubject.asObservable();
 
-  deleteUsers(id: number): void {
+  deleteUser(id: number): void {
     const currentUsers: IUser[] = this.usersSubject.value;
     const updatedUsers: IUser[] = currentUsers.filter((user: IUser) => user.id !== id);
     this.usersSubject.next(updatedUsers);
