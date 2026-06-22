@@ -1,23 +1,24 @@
+@use '../../assets/mixins.scss' as *;
+
+
 .container-user {
     background-color: var(--gray-color);
     padding: 40px 0 100px 0;
     height: 600px;
 
     .user-list {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    @include flex();
     }
 
     .registration-title {
-        display: flex;
-        justify-content: center;
+            @include flex();
+
     }
 
     .user-card {
         width: 500px;
         height: 620px;
-        background-color: #FFFFFF;
+        background-color: var(--white-color);
         border-top: 5px solid var(--orange-color);
         border-radius: 4px;
     }
@@ -35,6 +36,7 @@
     #create-user__input {
         text-align: center;
         width: 250px;
+        border-radius: 5px;
     }
 
     #create-user__input-adress {

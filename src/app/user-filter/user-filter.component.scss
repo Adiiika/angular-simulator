@@ -1,14 +1,25 @@
-.user-filter-container {
+@use '../../assets/mixins.scss' as *;
+
+.users-container {
+    margin: 125px 250px 125px 200px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center
+}
+
+.user-filter-container {
+    @include flex();
     flex-direction: column;
-    margin: 50px 0 100px 0;
+    margin: 50px 0 40px 0;
 
     #user-filter-input {
         height: 25px;
         width: 250px;
         text-align: center;
-        border: none;
     }
+}
+
+.current-users {
+   padding: 35px 0 0 0;
 }

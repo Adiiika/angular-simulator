@@ -47,7 +47,7 @@
 
     .subscription-form {
         display: flex;
-        flex-direction: roww;
+        flex-direction: row;
     }
 
     #email-input {
@@ -85,7 +85,7 @@
     padding-top: 180px;
     z-index: 0;
     position: absolute;
-    height: 380px;
+    height: 500px;
     max-width: 1470px;
     width: 100%;
     background-color: var(--green-color);

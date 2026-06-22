@@ -1,14 +1,18 @@
-import { Component } from '@angular/core';
 import { Routes } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
-import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
-import { FooterComponent } from './footer/footer.component';
-import { HeaderComponent } from './header/header.component';
-import { UsersPageComponent } from './users-page/users-page.component';
-import { MessageComponent } from './message/message.component';
 
 export const routes: Routes = [
-    { path: '', component: HomePageComponent },
-    { path: 'users', component: UsersPageComponent },
-    { path: '**', component: NotFoundPageComponent },
+    {
+        path: '',
+        component: HomePageComponent,
+        loadComponent: () => import('./home-page/home-page.component').then((m) => m.HomePageComponent),
+    },
+    {
+        path: 'users',
+        loadComponent: () => import('./users-page/users-page.component').then((m) => m.UsersPageComponent),
+    },
+    {
+        path: '**',
+        loadComponent: () => import('./not-found-page/not-found-page.component').then((m) => m.NotFoundPageComponent),
+    },
 ];
