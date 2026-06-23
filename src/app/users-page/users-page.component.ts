@@ -3,7 +3,7 @@ import { AsyncPipe } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { BehaviorSubject, map, Observable, tap, combineLatest } from 'rxjs';
 import { IUser } from '../../interfaces/IUser';
-import { UserService } from '../user.service';
+import { UserService } from '../services/user.service';
 import { UserCardComponent } from '../user-card/user-card.component';
 import { UserCreateComponent } from "../user-create/user-create.component";
 import { UserFilterComponent } from '../user-filter/user-filter.component';

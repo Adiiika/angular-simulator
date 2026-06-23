@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
-import { LoaderService } from '../loader.service';
+import { LoaderService } from '../services/loader.service';
 import { Observable, tap } from 'rxjs';
 
 @Component({

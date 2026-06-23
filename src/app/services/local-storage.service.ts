@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
+
 export class LocalStorageService {
 
   setItem<T>(key: string, value: T): void {
@@ -11,13 +12,15 @@ export class LocalStorageService {
 
   getItem<T>(key: string): T | null {
     const data: string | null = localStorage.getItem(key);
-    if (!data) return null;
+    if (!data) {
+      return null;
+    };
 
     try {
-      return JSON.parse(data);
+      return JSON.parse(data) as T;
     }
-    catch (error) {
-      console.error(`Error parsing storage key "${key}":`, error);
+    catch (e) {
+      console.error(`error parsing storage key ${key}`, e);
       return null;
     }
   }

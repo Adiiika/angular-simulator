@@ -1,10 +1,14 @@
 import { Routes } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
+// import { PostsComponent } from './features/posts/posts/posts.component';
 
 export const routes: Routes = [
-
     {
-        path: '',
+        path: 'posts',
+        loadComponent: () => import('./features/posts/posts/posts.component').then((m) => m.PostsComponent)
+    },
+    {
+        path: 'homePage',
         loadComponent: () => import('./home-page/home-page.component').then((m) => m.HomePageComponent),
     },
     {

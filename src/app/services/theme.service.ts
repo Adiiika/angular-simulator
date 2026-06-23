@@ -2,9 +2,9 @@ import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { LocalStorageService } from './local-storage.service';
 import { usePreset } from '@primeuix/themes';
-import { laraPreset, noraPreset, auraPreset } from '../assets/themes-preset';
-import { ITheme } from '../interfaces/ITheme';
-import { Theme } from '../enums/Theme';
+import { laraPreset, noraPreset, auraPreset } from '../../assets/themes-preset';
+import { ITheme } from '../../interfaces/ITheme';
+import { Theme } from '../../enums/Theme';
 
 @Injectable({
   providedIn: 'root',

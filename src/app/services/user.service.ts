@@ -4,7 +4,7 @@ import { UserApiService } from './user-api.service';
 import { LoaderService } from './loader.service';
 import { MessageService } from './message.service';
 import { LocalStorageService } from './local-storage.service';
-import { IUser } from '../interfaces/IUser';
+import { IUser } from '../../interfaces/IUser';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +19,7 @@ export class UserService {
   usersSubject: BehaviorSubject<IUser[]> = new BehaviorSubject<IUser[]>([]);
   users$: Observable<IUser[]> = this.usersSubject.asObservable();
 
-  deleteUser(id: number): void {
+  deleteUsers(id: number): void {
     const currentUsers: IUser[] = this.usersSubject.value;
     const updatedUsers: IUser[] = currentUsers.filter((user: IUser) => user.id !== id);
     this.usersSubject.next(updatedUsers);
