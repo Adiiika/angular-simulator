@@ -1,9 +1,8 @@
+import { IPost } from "./IPost";
+
 export interface IPostResponce {
-    id: number;
-    title: string;
-    body: string;
-    tags: string[];
-    reactions: object;
-    views: number;
-    userId: number;
+  posts: IPost[];
+  total: number;
+  skip: number;
+   limit: number;
 }

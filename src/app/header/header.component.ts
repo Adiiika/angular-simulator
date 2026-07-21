@@ -36,19 +36,24 @@ export class HeaderComponent {
   navigations: INav[] = [
     {
       id: 1,
-      text: 'Posts',
-      link: '/posts'
+      text: 'Создание поста',
+      link: '/posts/create'
     },
     {
       id: 2,
+      text: 'Посты',
+      link: '/posts'
+    },
+    {
+      id: 3,
       text: 'Главная',
       link: '/homePage',
     },
     {
-      id: 3,
+      id: 4,
       text: 'Пользователи',
       link: '/users'
-    }
+    },
   ]
 
 }

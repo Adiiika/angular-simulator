@@ -1,1 +1,36 @@
-<p>post-create works!</p>
+<div class="post-create-container">
+    <h1>Создание поста</h1>
+    <form [formGroup]="postCreateForm" (ngSubmit)="onSubmit()">
+        <div>
+            <h2>Title</h2>
+            <input formControlName="title" placeholder="Введите title" type="text">
+        </div>
+        <div>
+            <h2>Body</h2>
+            <input formControlName="body" placeholder="Введите body" type="text">
+        </div>
+        <div>
+            <h2>Tags</h2>
+            <input formControlName="tags" placeholder="Введите tags" type="text">
+        </div>
+        <div formGroupName="reactions">
+            <h2>Reactions</h2>
+            
+            <label>Likes: &nbsp;</label>
+            <input formControlName="likes" placeholder="Введите likes" type="number">
+
+            <label>&nbsp;&nbsp; Dilikes: &nbsp;</label>
+            <input formControlName="dislikes" placeholder="Введите dislikes" type="number">
+        </div>
+        <div>
+            <h2>Views</h2>
+            <input formControlName="views" placeholder="Введите views" type="number">
+        </div>
+        <div>
+            <h2>UserId</h2>
+            <input formControlName="userId" placeholder="Введите userId" type="number">
+        </div>
+
+        <button class="create-form-btn" type="submit">Создать пост</button>
+    </form>
+</div>
