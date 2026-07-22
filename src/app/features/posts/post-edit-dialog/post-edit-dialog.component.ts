@@ -1,9 +1,10 @@
 import { FormGroup, ReactiveFormsModule, FormsModule, FormBuilder } from '@angular/forms';
 import { Component, inject, NgModule } from '@angular/core';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { tap } from 'rxjs';
+import { catchError, tap, throwError } from 'rxjs';
 import { PostService } from '../post.service';
 import { IPost } from '../IPost';
+import { MessageService } from '../../../services/message.service';
 
 @Component({
   selector: 'app-post-edit-dialog',
@@ -19,6 +20,7 @@ export class PostEditDialogComponent {
   dynamicDialogRef: DynamicDialogRef = inject(DynamicDialogRef);
   formBuilder: FormBuilder = inject(FormBuilder);
   postService: PostService = inject(PostService);
+  messageService: MessageService = inject(MessageService);
 
   posts: Partial<IPost[]> = [];
 
@@ -45,7 +47,12 @@ export class PostEditDialogComponent {
       .pipe(
         tap(() => {
           this.dynamicDialogRef.close();
+        }),
+        catchError(() => {
+          return throwError(() => {
+            this.messageService.showError('Не удалось обновить пост!');
+          })
         })
-      ).subscribe()
+      ).subscribe();
   }
 }

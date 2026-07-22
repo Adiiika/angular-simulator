@@ -4,5 +4,5 @@ export interface IPostResponce {
   posts: IPost[];
   total: number;
   skip: number;
-   limit: number;
+  limit: number;
 }

@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, EMPTY, Observable, of, tap, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, EMPTY, Observable, of, tap } from 'rxjs';
 import { MessageService } from '../../services/message.service';
+import { LoaderService } from '../../services/loader.service';
 import { PostApiService } from './post-api.service';
 import { IPostResponce } from './IPostResponce';
 import { IPost } from './IPost';
@@ -13,6 +14,7 @@ export class PostService {
 
   private postApiService: PostApiService = inject(PostApiService);
   private messageService: MessageService = inject(MessageService);
+  private loadService: LoaderService = inject(LoaderService);
 
   postSubject: BehaviorSubject<IPost[]> = new BehaviorSubject<IPost[]>([]);
   posts$: Observable<IPost[]> = this.postSubject.asObservable();
@@ -45,38 +47,33 @@ export class PostService {
 
   getPostById(id: number | string): Observable<IPost> {
     const numericId: number = Number(id);
-    const localPost: IPost | undefined = this.posts.find(p => p.id === numericId);
+    const localPost: IPost | undefined = this.posts.find((p: IPost) => p.id === numericId);
 
-    if (localPost) { 
-      return of(localPost); 
+    if (localPost) {
+      return of(localPost);
     }
 
     return this.postApiService.getPostById(numericId);
   }
 
   updatePostInList(id: number, data: Partial<IPost>): Observable<IPost> {
-    const isLocal: IPost | undefined = this.posts.find(p => p.id === id);
-    const update$: Observable<IPost> = isLocal ? of({ ...this.posts.find(p => p.id === id)!, ...data }) : this.postApiService.updatePosts(id, data);
+    const isLocal: IPost | undefined = this.posts.find((p: IPost) => p.id === id);
+    const update$: Observable<IPost> = isLocal ? of({ ...this.posts.find((p: IPost) => p.id === id)!, ...data }) : this.postApiService.updatePosts(id, data);
 
     return update$.pipe(
       tap((updatedPost: IPost) => {
         this.updateState(id, updatedPost);
-      }), 
-      catchError(() => {
-        return throwError(() => {
-          this.messageService.showError('Не удалось обновить пост');
-        })
       })
     )
   }
 
   updateState(id: number, updatedPost: IPost): void {
     const currentPosts: IPost[] = this.postSubject.value;
-    const updatedPosts: IPost[] = currentPosts.map(p => p.id === id ? { ...p, ...updatedPost } : p);
+    const updatedPosts: IPost[] = currentPosts.map((p: IPost) => p.id === id ? { ...p, ...updatedPost } : p);
     this.postSubject.next(updatedPosts);
 
-    const localIndex: number = this.posts.findIndex(p => p.id === id);
-    
+    const localIndex: number = this.posts.findIndex((p: IPost) => p.id === id);
+
     if (localIndex !== -1) {
       this.posts[localIndex] = { ...this.posts[localIndex], ...updatedPost };
     }
@@ -89,10 +86,23 @@ export class PostService {
           const fullPost: IPost = { ...postData, ...newPost };
           this.addPost(fullPost);
         }),
-        catchError(() => {
-          this.messageService.showError('Не удалось создать пост');
-          return EMPTY;
-        })
       )
+  }
+
+  deletePost(id: number): Observable<IPost> {
+    const currentPosts: IPost[] = this.postSubject.value;
+    const updatedLocalPosts: IPost[] = currentPosts.filter((p: IPost) => p.id !== id);
+    this.postSubject.next(updatedLocalPosts);
+
+    this.posts = this.posts.filter((p: IPost) => p.id !== id);
+    this.loadService.hideLoader();
+
+    return this.postApiService.deletePost(id).pipe(
+      tap(() => {
+        const updatedPosts: IPost[] = currentPosts.filter((p: IPost) => p.id !== id);
+        this.postSubject.next(updatedPosts);
+        this.loadService.hideLoader();
+      }),
+    )
   }
 }

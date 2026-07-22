@@ -4,14 +4,11 @@ import { of } from 'rxjs';
 import { PostService } from './post.service';
 import { IPost } from './IPost';
 
-export const postResolver: ResolveFn<any> = (route) => {
+export const postResolver: ResolveFn<IPost> = (route) => {
 
   const postId: string | null = route.paramMap.get('id');
   const postService: PostService = inject(PostService);
-
-  if (!postId) return null as any;
-
-  const localPost: IPost | undefined = postService.posts.find(p => p.id === Number(postId));
+  const localPost: IPost | undefined = postService.posts.find((p: IPost) => p.id === Number(postId));
 
   if (localPost) {
     return of(localPost);

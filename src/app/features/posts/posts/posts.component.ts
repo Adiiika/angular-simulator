@@ -2,19 +2,20 @@ import { Component, inject, } from '@angular/core';
 import { AsyncPipe, NgFor } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { finalize, map } from 'rxjs';
-import { DynamicDialogRef, DialogService } from 'primeng/dynamicdialog'
+import { catchError, finalize, map, throwError } from 'rxjs';
+import { DialogService } from 'primeng/dynamicdialog'
 import { ContextMenuModule } from 'primeng/contextmenu';
 import { TableModule } from 'primeng/table';
 import { PaginatorModule } from 'primeng/paginator';
 import { SkeletonModule } from 'primeng/skeleton';
-import { MenuItem } from 'primeng/api';
+import { MenuItem, LazyLoadEvent } from 'primeng/api';
 import { PostService } from '../post.service';
 import { PostApiService } from '../post-api.service';
 import { MessageService } from '../../../services/message.service';
 import { LoaderService } from '../../../services/loader.service';
 import { IPost } from '../IPost';
 import { PostEditDialogComponent } from '../post-edit-dialog/post-edit-dialog.component';
+import { IPostResponce } from '../IPostResponce';
 
 @Component({
   selector: 'app-posts',
@@ -34,7 +35,7 @@ export class PostsComponent {
   router: Router = inject(Router);
   http: HttpClient = inject(HttpClient);
 
-  selectedProduct: IPost = {} as IPost;
+  selectedProduct: IPost | null = {} as IPost;
   skeletonRows: Array<string> = new Array(10);
   pageSize: number = 5;
   posts: IPost[] = [];
@@ -44,7 +45,9 @@ export class PostsComponent {
     {
       label: 'Просмотр',
       command: () => {
-        this.viewPost(this.selectedProduct.id);
+        if (this.selectedProduct?.id) {
+          this.viewPost(this.selectedProduct?.id);
+        }
       }
     },
     {
@@ -56,7 +59,7 @@ export class PostsComponent {
     {
       label: 'Удалить',
       command: () => {
-        this.deletePost(this.selectedProduct.id);
+        this.onDelete();
       }
     }
   ]
@@ -68,8 +71,9 @@ export class PostsComponent {
   loadPosts(limit: number, skip: number): void {
     this.postService.loadNewPosts(limit, skip)
       .pipe(
-        map((response: any) => {
-          this.postService.setPosts(response.posts, response.total);
+        map((response: IPostResponce | { posts: never[] }) => {
+          const total: number = 'total' in response ? response.total : 0;
+          this.postService.setPosts(response.posts, total);
           this.loadService.showLoader();
         }),
         finalize(() => {
@@ -91,21 +95,25 @@ export class PostsComponent {
     })
   }
 
-  onPageChange(event: any): void {
-    this.loadPosts(event.rows, event.first);
-    this.loadService.hideLoader();
+  onPageChange(event: LazyLoadEvent): void {
+    if (event.rows && event.first) {
+      this.loadPosts(event.rows, event.first);
+      this.loadService.hideLoader();
+    }
   }
 
   viewPost(id: number): void {
     this.router.navigate([`/post/${id}`]);
   }
 
-  deletePost(id: number): void {
-    const currentPosts: IPost[] = this.postService.postSubject.value;
-    const updatedPosts: IPost[] = currentPosts.filter(p => p.id !== id);
-    this.postService.postSubject.next(updatedPosts);
-
-    this.posts = this.posts.filter(p => p.id !== id);
-    this.loadService.hideLoader();
+  onDelete(): void {
+    if (this.selectedProduct) {
+      this.postService.deletePost(this.selectedProduct.id).pipe(
+        catchError(() => {
+          return throwError(() => {
+            this.messageService.showError('Не удалось удалить пост!');
+          })
+        }))
+    }
   }
 }
