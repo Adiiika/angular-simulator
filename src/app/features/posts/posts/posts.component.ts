@@ -1,8 +1,7 @@
 import { Component, inject, } from '@angular/core';
-import { AsyncPipe, NgFor } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { catchError, finalize, map, throwError } from 'rxjs';
+import { finalize, tap } from 'rxjs';
 import { DialogService } from 'primeng/dynamicdialog'
 import { ContextMenuModule } from 'primeng/contextmenu';
 import { TableModule } from 'primeng/table';
@@ -19,23 +18,22 @@ import { IPostResponce } from '../IPostResponce';
 
 @Component({
   selector: 'app-posts',
-  imports: [TableModule, AsyncPipe, SkeletonModule, ContextMenuModule, NgFor, PaginatorModule, RouterLink],
+  imports: [TableModule, AsyncPipe, SkeletonModule, ContextMenuModule, PaginatorModule, RouterLink],
   providers: [DialogService],
   templateUrl: './posts.component.html',
   styleUrl: './posts.component.scss',
 })
 export class PostsComponent {
 
-  postService: PostService = inject(PostService);
-  loadService: LoaderService = inject(LoaderService);
   dialogService: DialogService = inject(DialogService);
   postApiService: PostApiService = inject(PostApiService);
   messageService: MessageService = inject(MessageService);
+  loadService: LoaderService = inject(LoaderService);
+  postService: PostService = inject(PostService);
 
   router: Router = inject(Router);
-  http: HttpClient = inject(HttpClient);
 
-  selectedProduct: IPost | null = {} as IPost;
+  selectedProduct: IPost | null = null;
   skeletonRows: Array<string> = new Array(10);
   pageSize: number = 5;
   posts: IPost[] = [];
@@ -59,7 +57,9 @@ export class PostsComponent {
     {
       label: 'Удалить',
       command: () => {
-        this.onDelete();
+        if (this.selectedProduct?.id) {
+          this.onDelete(this.selectedProduct?.id);
+        }
       }
     }
   ]
@@ -71,10 +71,9 @@ export class PostsComponent {
   loadPosts(limit: number, skip: number): void {
     this.postService.loadNewPosts(limit, skip)
       .pipe(
-        map((response: IPostResponce | { posts: never[] }) => {
-          const total: number = 'total' in response ? response.total : 0;
-          this.postService.setPosts(response.posts, total);
+        tap((response: IPostResponce) => {
           this.loadService.showLoader();
+          this.postService.setPosts(response.posts, response.total);
         }),
         finalize(() => {
           this.loadService.hideLoader();
@@ -96,24 +95,17 @@ export class PostsComponent {
   }
 
   onPageChange(event: LazyLoadEvent): void {
-    if (event.rows && event.first) {
+    if (event.rows !== undefined && event.first !== undefined) {
       this.loadPosts(event.rows, event.first);
       this.loadService.hideLoader();
     }
   }
 
   viewPost(id: number): void {
-    this.router.navigate([`/post/${id}`]);
+    this.router.navigate([`/post/${ id }`]);
   }
 
-  onDelete(): void {
-    if (this.selectedProduct) {
-      this.postService.deletePost(this.selectedProduct.id).pipe(
-        catchError(() => {
-          return throwError(() => {
-            this.messageService.showError('Не удалось удалить пост!');
-          })
-        }))
-    }
+  onDelete(id: number): void {
+    this.postService.deletePost(id)
   }
 }

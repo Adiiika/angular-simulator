@@ -30,7 +30,7 @@ export class PostEditDialogComponent {
 
   postForm: FormGroup = this.formBuilder.group({
     title: this.dynamicDialogConfig.data.title,
-    tags: this.dynamicDialogConfig.data.tags.join(', '),
+    tags: [this.dynamicDialogConfig.data.tags],
     views: this.dynamicDialogConfig.data.views,
   })
 
@@ -38,8 +38,8 @@ export class PostEditDialogComponent {
     const formValue: IPost = this.postForm.value;
 
     const convertedData: Partial<IPost> = {
-      title: this.postForm.value.title,
-      tags: this.postForm.value.tags.split(', '),
+      title: formValue.title,
+      tags: formValue.tags,
       views: Number(formValue.views),
     }
 

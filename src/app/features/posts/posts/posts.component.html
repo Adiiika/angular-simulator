@@ -9,11 +9,13 @@
                 </tr>
             </ng-template>
             <ng-template  pTemplate="loadingbody">
-                <tr *ngFor="let item of skeletonRows">
-                    <td> <p-skeleton/> </td>
-                    <td> <p-skeleton/> </td>
-                    <td> <p-skeleton/> </td>
-                </tr>
+                @for (let of skeletonRows; track skeletonRows) {
+                    <tr>
+                        <td> <p-skeleton/> </td>
+                        <td> <p-skeleton/> </td>
+                        <td> <p-skeleton/> </td>
+                    </tr>
+                }
             </ng-template>
         </p-table>
 } @else {

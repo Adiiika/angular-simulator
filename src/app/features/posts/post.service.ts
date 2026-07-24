@@ -16,38 +16,44 @@ export class PostService {
   private messageService: MessageService = inject(MessageService);
   private loadService: LoaderService = inject(LoaderService);
 
-  postSubject: BehaviorSubject<IPost[]> = new BehaviorSubject<IPost[]>([]);
-  posts$: Observable<IPost[]> = this.postSubject.asObservable();
+  postsSubject: BehaviorSubject<IPost[]> = new BehaviorSubject<IPost[]>([]);
+  posts$: Observable<IPost[]> = this.postsSubject.asObservable();
 
   totalSubject: BehaviorSubject<IPostResponce['total']> = new BehaviorSubject<IPostResponce['total']>(0);
   totalRecords$: Observable<number> = this.totalSubject.asObservable();
 
-  posts: IPost[] = [];
+  localCreatedPosts: IPost[] = [];
 
   setPosts(posts: IPost[], total: number): void {
-    const combinedPosts = [...this.posts, ...posts];
-    this.postSubject.next(combinedPosts);
-    this.totalSubject.next(total + this.posts.length);
+    const combinedPosts: IPost[] = [...this.localCreatedPosts, ...posts];
+    
+    this.postsSubject.next(combinedPosts);
+    this.totalSubject.next(total + this.localCreatedPosts.length);
   }
 
   addPost(newPost: IPost): void {
-    this.posts = [newPost, ...this.posts];
-    this.setPosts(this.postSubject.value, this.totalSubject.value - this.posts.length + 1);
+    this.localCreatedPosts = [newPost, ...this.localCreatedPosts];
+    
+    const currentPosts: IPost[] = this.postsSubject.value;
+    this.postsSubject.next([newPost, ...currentPosts]);
+    this.totalSubject.next(this.totalSubject.value + 1);
   }
 
-  loadNewPosts(limit: number, skip: number): Observable<IPostResponce | { posts: never[] }> {
+  loadNewPosts(limit: number, skip: number): Observable<IPostResponce> {
     return this.postApiService.getPosts(limit, skip)
       .pipe(
         catchError(() => {
           this.messageService.showError('Не удалось загрузить посты');
-          return of({ posts: [] });
+          return of();
         })
       )
   }
 
-  getPostById(id: number | string): Observable<IPost> {
+  getPostById(id: number): Observable<IPost> {
+    const currentPosts: IPost[] = this.postsSubject.value;
+
     const numericId: number = Number(id);
-    const localPost: IPost | undefined = this.posts.find((p: IPost) => p.id === numericId);
+    const localPost: IPost | undefined = currentPosts.find((p: IPost) => p.id === numericId);
 
     if (localPost) {
       return of(localPost);
@@ -57,8 +63,10 @@ export class PostService {
   }
 
   updatePostInList(id: number, data: Partial<IPost>): Observable<IPost> {
-    const isLocal: IPost | undefined = this.posts.find((p: IPost) => p.id === id);
-    const update$: Observable<IPost> = isLocal ? of({ ...this.posts.find((p: IPost) => p.id === id)!, ...data }) : this.postApiService.updatePosts(id, data);
+    const currentPosts: IPost[] = this.postsSubject.value;
+
+    const isLocal: IPost | undefined = currentPosts.find((p: IPost) => p.id === id);
+    const update$: Observable<IPost> = isLocal ? of({ ...isLocal, ...data }) : this.postApiService.updatePosts(id, data);
 
     return update$.pipe(
       tap((updatedPost: IPost) => {
@@ -67,16 +75,10 @@ export class PostService {
     )
   }
 
-  updateState(id: number, updatedPost: IPost): void {
-    const currentPosts: IPost[] = this.postSubject.value;
+  updateState(id: number, updatedPost: Partial<IPost>) {
+    const currentPosts: IPost[] = this.postsSubject.value;
     const updatedPosts: IPost[] = currentPosts.map((p: IPost) => p.id === id ? { ...p, ...updatedPost } : p);
-    this.postSubject.next(updatedPosts);
-
-    const localIndex: number = this.posts.findIndex((p: IPost) => p.id === id);
-
-    if (localIndex !== -1) {
-      this.posts[localIndex] = { ...this.posts[localIndex], ...updatedPost };
-    }
+    this.postsSubject.next(updatedPosts);
   }
 
   createPostForm(postData: Partial<IPost>): Observable<Object> {
@@ -90,19 +92,17 @@ export class PostService {
   }
 
   deletePost(id: number): Observable<IPost> {
-    const currentPosts: IPost[] = this.postSubject.value;
+    const currentPosts: IPost[] = this.postsSubject.value;
     const updatedLocalPosts: IPost[] = currentPosts.filter((p: IPost) => p.id !== id);
-    this.postSubject.next(updatedLocalPosts);
-
-    this.posts = this.posts.filter((p: IPost) => p.id !== id);
-    this.loadService.hideLoader();
+    this.postsSubject.next(updatedLocalPosts);
 
     return this.postApiService.deletePost(id).pipe(
       tap(() => {
         const updatedPosts: IPost[] = currentPosts.filter((p: IPost) => p.id !== id);
-        this.postSubject.next(updatedPosts);
+        this.postsSubject.next(updatedPosts);
         this.loadService.hideLoader();
       }),
     )
   }
+
 }
