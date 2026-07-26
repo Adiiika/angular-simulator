@@ -22,18 +22,18 @@ export class PostService {
   totalSubject: BehaviorSubject<IPostResponce['total']> = new BehaviorSubject<IPostResponce['total']>(0);
   totalRecords$: Observable<number> = this.totalSubject.asObservable();
 
-  localCreatedPosts: IPost[] = [];
-
   setPosts(posts: IPost[], total: number): void {
-    const combinedPosts: IPost[] = [...this.localCreatedPosts, ...posts];
-    
-    this.postsSubject.next(combinedPosts);
-    this.totalSubject.next(total + this.localCreatedPosts.length);
+    const currentPosts: IPost[] = this.postsSubject.value;
+    const newlyCreatedPost: IPost = currentPosts[0];
+
+    const isCreatedPost: boolean = newlyCreatedPost && !posts.some(p => p.id === newlyCreatedPost.id);
+    const finalPosts: IPost[] = isCreatedPost ? [newlyCreatedPost, ...posts] : posts;
+
+    this.postsSubject.next(finalPosts);
+    this.totalSubject.next(isCreatedPost ? total + 1 : total);
   }
 
   addPost(newPost: IPost): void {
-    this.localCreatedPosts = [newPost, ...this.localCreatedPosts];
-    
     const currentPosts: IPost[] = this.postsSubject.value;
     this.postsSubject.next([newPost, ...currentPosts]);
     this.totalSubject.next(this.totalSubject.value + 1);
@@ -81,7 +81,7 @@ export class PostService {
     this.postsSubject.next(updatedPosts);
   }
 
-  createPostForm(postData: Partial<IPost>): Observable<Object> {
+  createPostForm(postData: Partial<IPost>): Observable<IPost> {
     return this.postApiService.createPost(postData)
       .pipe(
         tap((newPost: IPost) => {

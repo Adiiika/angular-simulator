@@ -1,7 +1,7 @@
 @if (loadService.isLoading$| async) {
+        <h1 class="post-title">Список постов:</h1>
         <p-table  [loading]="loadService.isLoading$">
             <ng-template pTemplate="header">
-                <h1 class="total-records">Постов на текущей странице: {{ (postService.posts$ | async)?.length }}</h1>                
                 <tr>
                     <th>title</th>
                     <th>tags</th>
@@ -19,6 +19,7 @@
             </ng-template>
         </p-table>
 } @else {
+    <h1 class="post-title">Список постов:</h1>
     <p-table 
         dataKey="id"
         [(contextMenuSelection)]="selectedProduct"
@@ -26,15 +27,16 @@
         [totalRecords]="(postService.totalRecords$ | async) || 0"
         [contextMenu]="contextMenu" 
         [loading]="loadService.isLoading$" 
+        [showCurrentPageReport]="true"
         [paginator]="true" 
         (onPage)="onPageChange($event)" 
         [lazy]="true"
         [(rows)]="pageSize"
         [(first)]="first" 
         [value]="(postService.posts$ | async) || []"
+        id="p-table-container"
     >
         <ng-template #header>
-            <h1 class="total-records">Постов на текущей странице: {{ (postService.posts$ | async)?.length }}</h1>      
             <tr>
                 <th>title</th>
                 <th>tags</th>
