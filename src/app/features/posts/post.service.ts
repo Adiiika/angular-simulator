@@ -26,7 +26,7 @@ export class PostService {
     const currentPosts: IPost[] = this.postsSubject.value;
     const newlyCreatedPost: IPost = currentPosts[0];
 
-    const isCreatedPost: boolean = newlyCreatedPost && !posts.some(p => p.id === newlyCreatedPost.id);
+    const isCreatedPost: boolean = newlyCreatedPost && !posts.some((p: IPost) => p.id === newlyCreatedPost.id);
     const finalPosts: IPost[] = isCreatedPost ? [newlyCreatedPost, ...posts] : posts;
 
     this.postsSubject.next(finalPosts);
