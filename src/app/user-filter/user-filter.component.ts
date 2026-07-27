@@ -2,10 +2,10 @@ import { Component, DestroyRef, EventEmitter, inject, Output } from '@angular/co
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, tap } from 'rxjs';
-import { UserService } from '../user.service';
+import { UserService } from '../services/user.service';
 import { AsyncPipe } from '@angular/common';
 import { CommonModule } from '@angular/common';
-import { PluralPipe } from '../plural.pipe';
+import { PluralPipe } from '../pipes/plural.pipe';
 
 @Component({
   selector: 'app-user-filter',

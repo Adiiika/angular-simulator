@@ -6,7 +6,7 @@ import { SelectButtonModule } from 'primeng/selectbutton';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { faSun, faMoon, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { FaIconComponent } from "@fortawesome/angular-fontawesome";
-import { ThemeService } from '../theme.service';
+import { ThemeService } from '../services/theme.service';
 import { AsyncPipe, UpperCasePipe } from '@angular/common';
 
 @Component({
@@ -36,14 +36,19 @@ export class HeaderComponent {
   navigations: INav[] = [
     {
       id: 1,
-      text: 'Главная',
-      link: '/',
+      text: 'Посты',
+      link: '/posts'
     },
     {
       id: 2,
+      text: 'Главная',
+      link: '/homePage',
+    },
+    {
+      id: 3,
       text: 'Пользователи',
       link: '/users'
-    }
+    },
   ]
 
 }

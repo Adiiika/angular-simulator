@@ -9,8 +9,8 @@ import Nora from '@primeuix/themes/nora';
 import Lara from '@primeuix/themes/lara';
 import { Theme } from '../enums/Theme';
 import { Preset } from '@primeuix/themes/types';
-import { requestInterceptor } from './request.interceptor';
-import { errorHandlingInterceptor } from './error-handling.interceptor';
+import { requestInterceptor } from './interceptors/request.interceptor';
+import { errorHandlingInterceptor } from './interceptors/error-handling.interceptor';
 
 const initTheme = (): Preset => {
   const themeFromStorage: Theme | null = localStorage.getItem('theme') as Theme;

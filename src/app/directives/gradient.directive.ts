@@ -1,5 +1,5 @@
 import { Directive, HostBinding, HostListener, Input } from '@angular/core';
-import { IGradientSettings } from '../interfaces/IGradientSettings';
+import { IGradientSettings } from '../../interfaces/IGradientSettings';
 
 @Directive({
   selector: '[appGradient]',

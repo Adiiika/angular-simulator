@@ -1,9 +1,9 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { IUser } from '../../interfaces/IUser';
 import { UpperCasePipe } from '@angular/common';
-import { PhonePipe } from '../phone.pipe';
-import { HoverDirective } from '../hover.directive';
-import { GradientDirective } from '../gradient.directive';
+import { PhonePipe } from '../pipes/phone.pipe';
+import { HoverDirective } from '../directives/hover.directive';
+import { GradientDirective } from '../directives/gradient.directive';
 
 @Component({
   selector: 'app-user-card',

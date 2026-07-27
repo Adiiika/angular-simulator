@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { MessageType } from '../../enums/MessageType';
-import { MessageService } from '../message.service';
+import { MessageService } from '../services/message.service';
 import { CommonModule } from '@angular/common';
 
 @Component({

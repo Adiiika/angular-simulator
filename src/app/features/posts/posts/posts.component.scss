@@ -1,0 +1,45 @@
+.p-datatable {
+    width: 1200px;
+    margin-left: 120px;
+}
+
+.post-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0 0 0;
+    font-size: 45px
+}
+
+:host ::ng-deep .p-datatable-loading-overlay:host ::ng-deep .pi-spin,
+:host ::ng-deep .p-datatable-loading-icon,
+:host ::ng-deep .p-datatable-mask,
+:host ::ng-deep .p-overlay-mask,
+:host ::ng-deep .ui-datatable-loading-overlay {
+    background-color: transparent !important;
+    pointer-events: none !important;
+    opacity: 1 !important;
+    display: none !important;
+    animation: none !important;
+    transition: none !important
+}
+
+#create-post-btn {
+    margin: 0 0 0 585px;
+    border: none;
+    background-color: var(--green-color);
+    color: var(--white-color);
+    border-radius: 4px;
+    line-height: 20px;
+    font-size: 25px;
+    cursor: pointer;
+    height: 52px;
+    color: var(--white-color);
+    width: 258px;
+    height: 70px;
+    cursor: pointer;
+}
+
+#p-table-container {
+    margin: 50px auto;
+}

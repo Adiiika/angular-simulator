@@ -5,8 +5,8 @@ import { CommonModule, NgComponentOutlet, NgTemplateOutlet } from '@angular/comm
 import { FooterComponent } from "./footer/footer.component";
 import { HeaderComponent } from "./header/header.component";
 import { MessageComponent } from "./message/message.component";
-import { LocalStorageService } from './services/local-storage.service.js';
-import { MessageService } from './message.service';
+import { LocalStorageService } from './services/local-storage.service';
+import { MessageService } from './services/message.service';
 import { Color } from '../enums/Color.js';
 import { LoaderComponent } from "./loader/loader.component";
 
