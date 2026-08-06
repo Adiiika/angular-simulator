@@ -10,5 +10,4 @@ export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: R
   const isAuth: boolean = authService.isAuthenticated();
 
   return isAuth ? true :  router.createUrlTree(['/login']);
-
-};
+}

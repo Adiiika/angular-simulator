@@ -1,51 +1,56 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { inject, Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, Observable, tap, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, EMPTY, Observable, tap, throwError } from 'rxjs';
 import { LocalStorageService } from '../../services/local-storage.service';
 import { MessageService } from '../../services/message.service';
-import { IUserData } from './IUserData';
+import { IAuthUser } from './IAuthUser';
 import { ILogin } from './ILogin';
+import { IToken } from './IToken';
 
 @Injectable({
     providedIn: 'root'
 })
-
 export class AuthService {
 
-    localStorageService: LocalStorageService = inject(LocalStorageService);
-    messageService: MessageService = inject(MessageService);
-    http: HttpClient = inject(HttpClient);
-    router: Router = inject(Router);
+    private localStorageService: LocalStorageService = inject(LocalStorageService);
+    private messageService: MessageService = inject(MessageService);
+    private http: HttpClient = inject(HttpClient);
+    private router: Router = inject(Router);
 
-    private readonly api_url: string = 'https://dummyjson.com/auth';
+    private readonly API_URL: string = 'https://dummyjson.com/auth';
 
-    isAuthenticatedSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(!!this.localStorageService.getItem('access_token'));
-    isAuthenticated$: Observable<boolean> = this.isAuthenticatedSubject.asObservable();
-  
-    login(userData: ILogin): Observable<IUserData> {
-        return this.http.post<IUserData>(`${ this.api_url }/login`, userData)
+    currentUserSubject: BehaviorSubject<IAuthUser | null> = new BehaviorSubject<IAuthUser | null>(this.localStorageService.getItem('currentUser'));
+    isAuthenticated$: Observable<IAuthUser | null> = this.currentUserSubject.asObservable();
+
+    login(userData: ILogin): Observable<IAuthUser> {
+        return this.http.post<IAuthUser>(`${ this.API_URL }/login`, userData)
             .pipe(
-                tap((response: IUserData) => this.setSession(response))
+                tap((response: IAuthUser) => {
+                    this.setSession(response);
+                })
             )
     }
 
-     refreshToken(): Observable<{ accessToken: string; refreshToken: string; }> {
+    refreshToken(): Observable<IToken> {
+        const currentUser: IAuthUser | null = this.localStorageService.getItem('currentUser');
+        const refreshToken: string | undefined = currentUser?.refreshToken;
 
-        const refreshToken: string | null = this.localStorageService.getItem('refresh_token');
-
-        return this.http.post<{ accessToken: string, refreshToken: string}>(`${ this.api_url }/refresh`, {
+        return this.http.post<IToken>(`${ this.API_URL }/refresh`, {
             refreshToken,
             expiresInMins: 30,
         }).pipe(
-            tap((response: { accessToken: string; refreshToken: string; }) => {
-
-                this.localStorageService.setItem('access_token', response.accessToken);
-
-                if (response.refreshToken) {
-                    this.localStorageService.setItem('refresh_token', response.refreshToken);
+            tap((response: IToken) => {
+                if (currentUser) {
+                    const updatedUser: IAuthUser = {
+                        ...currentUser,
+                        accessToken: response.accessToken,
+                        refreshToken: response.refreshToken || currentUser?.refreshToken || ''
+                    }
+                    this.localStorageService.setItem('currentUser', updatedUser);
+                    this.currentUserSubject.next(updatedUser);
                 }
-                this.isAuthenticatedSubject.next(true);
+
             }),
             catchError((error: HttpErrorResponse) => {
                 this.logoutToken();
@@ -54,23 +59,36 @@ export class AuthService {
         )
     }
 
+    getCurrentUser(): Observable<IAuthUser> {
+        return this.http.get<IAuthUser>(`${ this.API_URL }/me`)
+            .pipe(
+                tap((result: IAuthUser) => {
+                    this.currentUserSubject.next(result);
+                }),
+                catchError(() => {
+                    this.currentUserSubject.next(null);
+                    return EMPTY;
+                })
+            )
+    }
+
     logoutToken(): void {
-        this.localStorageService.removeItem('token');
-        this.isAuthenticatedSubject.next(false);
+        this.localStorageService.removeItem('currentUser');
+        this.currentUserSubject.next(null);
         this.router.navigate(['/login']);
     }
 
-     setSession(authResult: IUserData): void {
-        this.localStorageService.setItem('access_token', authResult.accessToken);
-        this.localStorageService.setItem('refresh_token', authResult.refreshToken);
-        this.isAuthenticatedSubject.next(true);
+    setSession(authResult: IAuthUser): void {
+        this.localStorageService.setItem('currentUser', authResult);
+        this.currentUserSubject.next(authResult);
     }
 
     getToken(): string | null {
-        return this.localStorageService.getItem('access_token');
+        const currentUser: IAuthUser | null = this.localStorageService.getItem('currentUser');
+        return currentUser?.accessToken || null;
     }
 
     isAuthenticated(): boolean {
-        return this.isAuthenticatedSubject.value;
+        return !!this.currentUserSubject.value;
     }
 }

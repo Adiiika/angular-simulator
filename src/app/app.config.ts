@@ -1,4 +1,4 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideAppInitializer, provideZoneChangeDetection, inject } from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
@@ -12,6 +12,7 @@ import { Theme } from '../enums/Theme';
 import { requestInterceptor } from './interceptors/request.interceptor';
 import { errorHandlingInterceptor } from './interceptors/error-handling.interceptor';
 import { authInterceptor } from './features/auth/auth.interceptor';
+import { AuthService } from './features/auth/auth.service';
 
 const initTheme = (): Preset => {
   const themeFromStorage: Theme | null = localStorage.getItem('theme') as Theme;
@@ -39,7 +40,11 @@ export const appConfig: ApplicationConfig = {
           darkModeSelector: false,
         }
       }
-    })
+    }),
+     provideAppInitializer(() => {
+      const authService: AuthService = inject(AuthService);
+      return authService.getCurrentUser()
+    }),
   ]
 
 };
