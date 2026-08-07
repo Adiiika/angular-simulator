@@ -1,17 +1,45 @@
-import { HttpInterceptorFn, HttpRequest, HttpHandlerFn } from '@angular/common/http';
+import { HttpInterceptorFn, HttpRequest, HttpHandlerFn, HttpErrorResponse } from '@angular/common/http';
 import { inject } from '@angular/core';
+import { catchError, EMPTY, Observable, switchMap, throwError } from 'rxjs';
 import { AuthService } from './auth.service';
 
 export const authInterceptor: HttpInterceptorFn = (req: HttpRequest<unknown>, next: HttpHandlerFn) => {
 
   const authService: AuthService = inject(AuthService);
 
-  let clonedReq: HttpRequest<unknown> = req;
-  const token: string | null = authService.getToken();
+  function cloneWithToken(): HttpRequest<unknown> {
+    const originalRequestCopy: HttpRequest<unknown> = req.clone({
+      setHeaders: {
+       Authorization: `Bearer ${ authService.getAccessToken() }`
+      }
+    })
+    return originalRequestCopy;
+  }
 
-  clonedReq = req.clone({
-    setHeaders: { Authorization: `Bearer ${token}` }
-  });
+  function logoutAndRedirect(): Observable<never> {
+    authService.logout();
+    return EMPTY;
+  }
 
-  return next(clonedReq);
+ const finalRequest: HttpRequest<unknown> = authService.getAccessToken() ? cloneWithToken() : req;
+
+  return next(finalRequest)
+    .pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 401) {
+          if(!authService.getRefreshToken()) {
+            return logoutAndRedirect();
+          }
+          return authService.refreshToken()
+            .pipe(
+              switchMap(() => {
+                return next(cloneWithToken());
+              }),
+              catchError(() => logoutAndRedirect()),
+            );
+          } else {
+            return throwError(() => error);
+          }
+        })
+      )
 };
