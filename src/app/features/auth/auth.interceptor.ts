@@ -6,11 +6,13 @@ import { AuthService } from './auth.service';
 export const authInterceptor: HttpInterceptorFn = (req: HttpRequest<unknown>, next: HttpHandlerFn) => {
 
   const authService: AuthService = inject(AuthService);
+  const accessToken: string | null = authService.getToken('access');
+  const refreshToken: string | null = authService.getToken('refresh');
 
   function cloneWithToken(): HttpRequest<unknown> {
     const originalRequestCopy: HttpRequest<unknown> = req.clone({
       setHeaders: {
-       Authorization: `Bearer ${ authService.getAccessToken() }`
+       Authorization: `Bearer ${ refreshToken }`
       }
     })
     return originalRequestCopy;
@@ -21,13 +23,13 @@ export const authInterceptor: HttpInterceptorFn = (req: HttpRequest<unknown>, ne
     return EMPTY;
   }
 
- const finalRequest: HttpRequest<unknown> = authService.getAccessToken() ? cloneWithToken() : req;
+ const finalRequest: HttpRequest<unknown> = accessToken ? cloneWithToken() : req;
 
   return next(finalRequest)
     .pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401) {
-          if(!authService.getRefreshToken()) {
+          if(!refreshToken) {
             return logoutAndRedirect();
           }
           return authService.refreshToken()

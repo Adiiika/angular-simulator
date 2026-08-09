@@ -34,7 +34,7 @@ export class AuthService {
     }
 
     refreshToken(): Observable<IToken> {
-        const tokens: IToken | null = this.getToken();
+        const tokens: IToken | null = this.getTokens();
 
         return this.http.post<IAuthResponse>(`${ this.API_URL }/refresh`, {
             refreshToken: tokens?.refreshToken
@@ -60,28 +60,25 @@ export class AuthService {
     }
 
     logout(): void {
-        this.localStorageService.removeItem('currentUser');
+        this.localStorageService.removeItem('token');
         this.currentUserSubject.next(null);
         this.router.navigate(['/login']);
     }
 
-    getAccessToken(): string | null {
-        const tokens: IToken | null = this.getToken();
-        return tokens?.accessToken ?? null;
-    }
+    getToken(type: 'access' | 'refresh'): string | null {
+        const tokens: IToken | null = this.getTokens();
 
-    getRefreshToken(): string | null {
-        const tokens: IToken | null = this.getToken();
-        return tokens?.refreshToken ?? null;
+        if (!tokens) return null;
+        return type === 'access' ? tokens.accessToken : tokens.refreshToken;
     }
 
     setSession(response: IAuthResponse): void {
         const tokens: IToken = { accessToken: response.accessToken, refreshToken: response.refreshToken };
-        this.localStorageService.setItem('currentUser', tokens);
+        this.localStorageService.setItem('token', tokens);
     }
 
-    getToken(): IToken | null {
-        return this.localStorageService.getItem('currentUser');
+    getTokens(): IToken | null {
+        return this.localStorageService.getItem('token');
     }
 
     isAuthenticated(): boolean {
