@@ -1,0 +1,12 @@
+import { Router, RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { HeaderComponent } from "../../../header/header.component";
+import { FooterComponent } from "../../../footer/footer.component";
+
+@Component({
+  selector: 'app-layout',
+  imports: [RouterOutlet, HeaderComponent, FooterComponent],
+  templateUrl: './layout.component.html',
+  styleUrl: './layout.component.scss',
+})
+export class LayoutComponent {}
