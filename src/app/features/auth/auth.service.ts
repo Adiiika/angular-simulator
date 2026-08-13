@@ -19,7 +19,7 @@ export class AuthService {
 
     private readonly API_URL: string = 'https://dummyjson.com/auth';
 
-    currentUserSubject: BehaviorSubject<IAuthUser | null> = new BehaviorSubject<IAuthUser | null>(this.localStorageService.getItem('userRole'));
+    currentUserSubject: BehaviorSubject<IAuthUser | null> = new BehaviorSubject<IAuthUser | null>(null);
     isAuthenticated$: Observable<IAuthUser | null> = this.currentUserSubject.asObservable();
 
     login(userData: ILogin): Observable<IAuthResponse> {
@@ -29,7 +29,6 @@ export class AuthService {
                     const { accessToken, refreshToken, ...userInfo } = response;
 
                     this.setSession(response);
-                    this.localStorageService.setItem('userRole', response.role);
                     this.currentUserSubject.next(response);
                 }),
                 switchMap(() => this.getCurrentUser())
@@ -53,7 +52,6 @@ export class AuthService {
         return this.http.get<IAuthResponse>(`${ this.API_URL }/me`)
             .pipe(
                 tap((result: IAuthResponse) => {
-                    this.localStorageService.setItem('userRole', result.role);
                     this.currentUserSubject.next(result);
                 }),
                 catchError(() => {
@@ -65,7 +63,6 @@ export class AuthService {
 
     logout(): void {
         this.localStorageService.removeItem('token');
-        this.localStorageService.removeItem('userRole');
         this.currentUserSubject.next(null);
         this.router.navigate(['/login']);
     }
