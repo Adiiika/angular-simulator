@@ -1,57 +1,57 @@
-@if (loadService.isLoading$| async) {
-        <h1 class="post-title">Список постов:</h1>
-        <p-table  [loading]="loadService.isLoading$">
-            <ng-template pTemplate="header">
-                <tr>
-                    <th>title</th>
-                    <th>tags</th>
-                    <th>views</th>
-                </tr>
-            </ng-template>
-            <ng-template  pTemplate="loadingbody">
-                @for (let of skeletonRows; track skeletonRows) {
-                    <tr>
-                        <td> <p-skeleton/> </td>
-                        <td> <p-skeleton/> </td>
-                        <td> <p-skeleton/> </td>
-                    </tr>
-                }
-            </ng-template>
-        </p-table>
+@if (loadService.isLoading$ | async) {
+  <h1 class="post-title">Список постов:</h1>
+  <p-table [loading]="loadService.isLoading$">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>title</th>
+        <th>tags</th>
+        <th>views</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="loadingbody">
+      @for (let of skeletonRows; track skeletonRows) {
+        <tr>
+          <td><p-skeleton /></td>
+          <td><p-skeleton /></td>
+          <td><p-skeleton /></td>
+        </tr>
+      }
+    </ng-template>
+  </p-table>
 } @else {
-    <h1 class="post-title">Список постов:</h1>
-    <p-table 
-        dataKey="id"
-        [(contextMenuSelection)]="selectedProduct"
-        [rowsPerPageOptions]="[5, 10, 30]" 
-        [totalRecords]="(postService.totalRecords$ | async) || 0"
-        [contextMenu]="contextMenu" 
-        [loading]="loadService.isLoading$" 
-        [showCurrentPageReport]="true"
-        [paginator]="true" 
-        (onPage)="onPageChange($event)" 
-        [lazy]="true"
-        [(rows)]="pageSize"
-        [(first)]="first" 
-        [value]="(postService.posts$ | async) || []"
-        id="p-table-container"
-    >
-        <ng-template #header>
-            <tr>
-                <th>title</th>
-                <th>tags</th>
-                <th>views</th>
-            </tr>
-        </ng-template>
+  <h1 class="post-title">Список постов:</h1>
+  <p-table
+    dataKey="id"
+    [(contextMenuSelection)]="selectedProduct"
+    [rowsPerPageOptions]="[5, 10, 30]"
+    [totalRecords]="(postService.totalRecords$ | async) || 0"
+    [contextMenu]="contextMenu"
+    [loading]="loadService.isLoading$"
+    [showCurrentPageReport]="true"
+    [paginator]="true"
+    (onPage)="onPageChange($event)"
+    [lazy]="true"
+    [(rows)]="pageSize"
+    [(first)]="first"
+    [value]="(postService.posts$ | async) || []"
+    id="p-table-container"
+  >
+    <ng-template #header>
+      <tr>
+        <th>title</th>
+        <th>tags</th>
+        <th>views</th>
+      </tr>
+    </ng-template>
 
-        <ng-template #body let-post>
-            <tr (dblclick)="viewPost(post.id)" [pContextMenuRow]="post">
-                <td> {{ post.title }} </td> 
-                <td> {{ post.tags }} </td> 
-                <td> {{ post.views }} </td> 
-            </tr>
-        </ng-template>
-    </p-table>
-    <button id="create-post-btn" routerLink="/posts/create">Создать пост</button>
-    <p-contextmenu [model]="menuPost" #contextMenu/>
+    <ng-template #body let-post>
+      <tr (dblclick)="viewPost(post.id)" [pContextMenuRow]="post">
+        <td>{{ post.title }}</td>
+        <td>{{ post.tags }}</td>
+        <td>{{ post.views }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <button id="create-post-btn" routerLink="/posts/create">Создать пост</button>
+  <p-contextmenu [model]="menuPost" #contextMenu />
 }

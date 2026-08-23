@@ -1,139 +1,138 @@
 @use '../../assets/mixins.scss' as *;
 
 .container-header {
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    height: 140px;
-    width: 1470px;
-    background-color: #18121E80;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  height: 140px;
+  width: 1470px;
+  background-color: #18121e80;
 }
 
 .header-left {
-    display: flex;
-    align-items: start;
-    flex-direction: column;
+  display: flex;
+  align-items: start;
+  flex-direction: column;
 }
 
 .header-right-navigation {
-    display: flex;
-    align-items: start;
-    gap: 24px;
-    cursor: pointer;
-    padding: 10px 0 0 0;
+  display: flex;
+  align-items: start;
+  gap: 24px;
+  cursor: pointer;
+  padding: 10px 0 0 0;
 }
 
 .header-navigation {
-    display: flex;
-    justify-content: space-between;
-    align-items: start;
-    padding: 10px 150px 0 250px;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  padding: 10px 150px 0 250px;
 }
 
 #navigation-text {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .active-navigation-text {
-    color: var(--white-color);
-    text-decoration: none;
+  color: var(--white-color);
+  text-decoration: none;
 }
 
 .company-icon {
-    width: 137px;
-    height: 48px;
+  width: 137px;
+  height: 48px;
 }
 
 .company-name {
-    letter-spacing: 6px;
-    color: var(--white-color);
+  letter-spacing: 6px;
+  color: var(--white-color);
 }
 
 :host::ng-deep {
+  #toogle-theme-btn {
+    margin-top: 15px;
+  }
 
-    #toogle-theme-btn {
-        margin-top: 15px;
-    }
-
-    .p-ripple {
-        border: none;
-        margin-right: 5px !important;
-        border-radius: 5px !important;
-        background-color: rgb(80, 35, 14) !important;
-        margin: 13px 0 0 0;
-        color: #fafafa !important;
-    }
+  .p-ripple {
+    border: none;
+    margin-right: 5px !important;
+    border-radius: 5px !important;
+    background-color: rgb(80, 35, 14) !important;
+    margin: 13px 0 0 0;
+    color: #fafafa !important;
+  }
 }
 
 #request-consultation-btn {
-    @include button();
-    background-color: var(--white-color);
-    color: var(--green-color);
-    width: 157px;
-    height: 44px;
-    margin: 0px 67px 20px 30px;
+  @include button();
+  background-color: var(--white-color);
+  color: var(--green-color);
+  width: 157px;
+  height: 44px;
+  margin: 0px 67px 20px 30px;
 }
 
 .toogle-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .date-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    padding: 0px 6px 0 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  padding: 0px 6px 0 80px;
 }
 
 .count-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: end;
-    margin: 0 0 0 193px;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  margin: 0 0 0 193px;
 }
 
 .count-div {
-    display: flex;
-    width: 70px;
-    justify-content: space-around;
-    margin: 13px 40px 0 0;
+  display: flex;
+  width: 70px;
+  justify-content: space-around;
+  margin: 13px 40px 0 0;
 }
 
 .counter-control {
-    margin: 10px 0 0 0;
+  margin: 10px 0 0 0;
 }
 
 #counter-plus,
 .count-zero,
 #counter-minus {
-    background: none;
-    border: none;
-    margin: 0 20px 0 0;
-    color: var(--white-color);
-    cursor: pointer;
+  background: none;
+  border: none;
+  margin: 0 20px 0 0;
+  color: var(--white-color);
+  cursor: pointer;
 }
 
 .run-time {
-    margin: 12px 40px 0 0;
-    color: var(--white-color);
+  margin: 12px 40px 0 0;
+  color: var(--white-color);
 }
 
 #date-toggle-btn,
 #count-toggle-btn {
-    @include button();
-    color: var(--green-color);
-    background-color: var(--white-color);
-    width: 158px;
-    height: 40px;
-    cursor: pointer;
+  @include button();
+  color: var(--green-color);
+  background-color: var(--white-color);
+  width: 158px;
+  height: 40px;
+  cursor: pointer;
 }
 
 .p-toggleswitch {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .ng-fa-icon {
-    margin-top: 12px;
+  margin-top: 12px;
 }

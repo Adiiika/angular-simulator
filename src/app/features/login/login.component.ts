@@ -1,4 +1,10 @@
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, EMPTY, tap } from 'rxjs';
@@ -20,19 +26,21 @@ export class LoginComponent {
   authform: FormGroup = new FormGroup({
     username: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
-  })
+  });
 
   onSubmit(): void {
-    this.authService.login(this.authform.value)
+    this.authService
+      .login(this.authform.value)
       .pipe(
         tap(() => {
           this.router.navigate(['/']);
         }),
         catchError(() => {
-           this.messageService.showError('Не удалось войти');
-           return EMPTY;
-        })
-      ).subscribe()
+          this.messageService.showError('Не удалось войти');
+          return EMPTY;
+        }),
+      )
+      .subscribe();
   }
 
 }

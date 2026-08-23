@@ -9,85 +9,91 @@ import { IToken } from './IToken';
 import { IAuthUser } from './IAuthUser';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
 
-    private localStorageService: LocalStorageService = inject(LocalStorageService);
-    private http: HttpClient = inject(HttpClient);
-    private router: Router = inject(Router);
+  private localStorageService: LocalStorageService = inject(LocalStorageService);
+  private http: HttpClient = inject(HttpClient);
+  private router: Router = inject(Router);
 
-    private readonly API_URL: string = 'https://dummyjson.com/auth';
+  readonly API_URL: string = 'https://dummyjson.com/auth';
 
-    currentUserSubject: BehaviorSubject<IAuthUser | null> = new BehaviorSubject<IAuthUser | null>(null);
-    isAuthenticated$: Observable<IAuthUser | null> = this.currentUserSubject.asObservable();
+  currentUserSubject: BehaviorSubject<IAuthUser | null> = new BehaviorSubject<IAuthUser | null>(
+    null,
+  );
 
-    login(userData: ILogin): Observable<IAuthResponse> {
-        return this.http.post<IAuthResponse>(`${ this.API_URL }/login`, userData)
-            .pipe(
-                tap((response: IAuthResponse) => {
-                    const { accessToken, refreshToken, ...userInfo } = response;
+  isAuthenticated$: Observable<IAuthUser | null> = this.currentUserSubject.asObservable();
 
-                    this.setSession(response);
-                    this.currentUserSubject.next(response);
-                }),
-                switchMap(() => this.getCurrentUser())
-            )
-    }
+  login(userData: ILogin): Observable<IAuthResponse> {
+    return this.http.post<IAuthResponse>(`${this.API_URL}/login`, userData).pipe(
+      tap((response: IAuthResponse) => {
+        const { accessToken, refreshToken, ..._userInfo } = response;
 
-    refreshToken(): Observable<IToken> {
-        const tokens: IToken | null = this.getTokens();
+        this.setSession(response);
+        this.currentUserSubject.next(response);
+      }),
+      switchMap(() => this.getCurrentUser()),
+    );
+  }
 
-        return this.http.post<IAuthResponse>(`${ this.API_URL }/refresh`, {
-            refreshToken: tokens?.refreshToken
-        })
-        .pipe(
-            tap((response: IAuthResponse) => {
-                this.setSession(response);
-            })
-        )  
-    }
+  refreshToken(): Observable<IToken> {
+    const tokens: IToken | null = this.getTokens();
 
-    getCurrentUser(): Observable<IAuthResponse> {
-        return this.http.get<IAuthResponse>(`${ this.API_URL }/me`)
-            .pipe(
-                tap((result: IAuthResponse) => {
-                    this.currentUserSubject.next(result);
-                }),
-                catchError(() => {
-                    this.currentUserSubject.next(null);
-                    return EMPTY;
-                })
-            )
-    }
+    return this.http
+      .post<IAuthResponse>(`${this.API_URL}/refresh`, {
+        refreshToken: tokens?.refreshToken,
+      })
+      .pipe(
+        tap((response: IAuthResponse) => {
+          this.setSession(response);
+        }),
+      );
+  }
 
-    logout(): void {
-        this.localStorageService.removeItem('token');
+  getCurrentUser(): Observable<IAuthResponse> {
+    return this.http.get<IAuthResponse>(`${this.API_URL}/me`).pipe(
+      tap((result: IAuthResponse) => {
+        this.currentUserSubject.next(result);
+      }),
+      catchError(() => {
         this.currentUserSubject.next(null);
-        this.router.navigate(['/login']);
-    }
+        return EMPTY;
+      }),
+    );
+  }
 
-    getToken(type: 'access' | 'refresh'): string | null {
-        const tokens: IToken | null = this.getTokens();
+  logout(): void {
+    this.localStorageService.removeItem('token');
+    this.currentUserSubject.next(null);
+    this.router.navigate(['/login']);
+  }
 
-        if (!tokens) return null;
-        return type === 'access' ? tokens.accessToken : tokens.refreshToken;
-    }
+  getToken(type: 'access' | 'refresh'): string | null {
+    const tokens: IToken | null = this.getTokens();
 
-    setSession(response: IAuthResponse): void {
-        const tokens: IToken = { accessToken: response.accessToken, refreshToken: response.refreshToken};
-        this.localStorageService.setItem('token', tokens);
-    }
+    if (!tokens) return null;
+    return type === 'access' ? tokens.accessToken : tokens.refreshToken;
+  }
 
-    getTokens(): IToken | null {
-        return this.localStorageService.getItem('token');
-    }
+  setSession(response: IAuthResponse): void {
+    const tokens: IToken = {
+      accessToken: response.accessToken,
+      refreshToken: response.refreshToken,
+    };
+    this.localStorageService.setItem('token', tokens);
+  }
 
-    isAuthenticated(): boolean {
-        return !!this.currentUserSubject.value;
-    }
- 
-    getUser(): IAuthUser | null {
-        return this.currentUserSubject.value;
-    }
+  getTokens(): IToken | null {
+    return this.localStorageService.getItem('token');
+  }
+
+  isAuthenticated(): boolean {
+    return !!this.currentUserSubject.value;
+  }
+
+  getUser(): IAuthUser | null {
+    return this.currentUserSubject.value;
+  }
+
 }

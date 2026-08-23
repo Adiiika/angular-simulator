@@ -16,4 +16,5 @@ export class HoverDirective {
   mouseLeave(): void {
     this.fontWeight = 'normal';
   }
+
 }

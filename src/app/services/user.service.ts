@@ -47,16 +47,15 @@ export class UserService {
 
     const savedUsers: null | IUser[] = this.localStorageService.getItem('users');
     this.usersSubject.next(savedUsers as IUser[]);
-  
-    return this.userApi.getUsers()
-      .pipe(
-        catchError((error: IUser) => {
-          this.messageService.showError('Нет пользователей');
-          console.error('ошибка', error);
-          return of([]);
-        }),
-        finalize(() => this.loaderService.hideLoader())
-      )
+
+    return this.userApi.getUsers().pipe(
+      catchError((error: IUser) => {
+        this.messageService.showError('Нет пользователей');
+        console.error('ошибка', error);
+        return of([]);
+      }),
+      finalize(() => this.loaderService.hideLoader()),
+    );
   }
 
 }

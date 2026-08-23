@@ -8,11 +8,22 @@ export default tseslint.config(
   {
     ignores: ['dist/**', 'node_modules/**', '.angular/**'],
   },
-
   ...tseslint.configs.recommended.map((config) => ({ ...config, files: ['**/*.ts'] })),
   ...tseslint.configs.stylistic.map((config) => ({ ...config, files: ['**/*.ts'] })),
   ...angular.configs.tsRecommended.map((config) => ({ ...config, files: ['**/*.ts'] })),
-
+  {
+    files: ['**/*.html'],
+    rules: {
+      '@angular-eslint/template/banana-in-box': 'error',
+      '@angular-eslint/template/eqeqeq': 'warn',
+      '@angular-eslint/template/prefer-self-closing-tags': 'error',
+    },
+  },
+  eslintConfigPrettier,
+  {
+    ...eslintPluginPrettierRecommended,
+    ignores: ['**/*.ts', '**/*.tsx'],
+  },
   {
     files: ['**/*.ts', '**/*.tsx'],
     languageOptions: {
@@ -30,7 +41,7 @@ export default tseslint.config(
       '@stylistic': stylistic,
     },
     rules: {
-      // Удалено ручное правило 'prettier/prettier' — его применит плагин в конце
+      'prettier/prettier': 'off',
       '@typescript-eslint/naming-convention': [
         'error',
         { selector: 'enumMember', format: ['UPPER_CASE'], leadingUnderscore: 'forbid' },
@@ -49,6 +60,9 @@ export default tseslint.config(
         'error',
         { argsIgnorePattern: '^_', varsIgnorePattern: '^_', ignoreRestSiblings: true },
       ],
+      '@stylistic/semi': ['warn', 'always'],
+      '@stylistic/object-curly-spacing': ['warn', 'always'],
+      '@stylistic/template-curly-spacing': ['warn', 'always'],
       '@stylistic/lines-between-class-members': [
         'error',
         'always',
@@ -60,21 +74,9 @@ export default tseslint.config(
         { avoidEscape: true, allowTemplateLiterals: 'always' },
       ],
       '@stylistic/padded-blocks': ['error', { classes: 'always' }],
-      'no-console': ['error', { allow: ['warn', 'error'] }],
+      'no-console': ['warn', { allow: ['warn', 'error'] }],
     },
   },
   ...angular.configs.templateRecommended.map((config) => ({ ...config, files: ['**/*.html'] })),
   ...angular.configs.templateAccessibility.map((config) => ({ ...config, files: ['**/*.html'] })),
-  {
-    files: ['**/*.html'],
-    rules: {
-      '@angular-eslint/template/banana-in-box': 'error',
-      '@angular-eslint/template/eqeqeq': 'warn',
-      '@angular-eslint/template/prefer-self-closing-tags': 'error',
-      // Удалено ручное правило 'prettier/prettier' для html
-    },
-  },
-
-  eslintConfigPrettier,
-  eslintPluginPrettierRecommended, // Этот плагин сам добавит нужные правила для всех файлов
 );

@@ -1,4 +1,4 @@
-import { Component, DestroyRef, EventEmitter, inject, Output } from '@angular/core';
+import { Component, DestroyRef, EventEmitter, inject, OnInit, Output } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, tap } from 'rxjs';
@@ -13,13 +13,13 @@ import { PluralPipe } from '../pipes/plural.pipe';
   templateUrl: './user-filter.component.html',
   styleUrl: './user-filter.component.scss',
 })
-export class UserFilterComponent {
+export class UserFilterComponent implements OnInit {
 
   @Output() filterUser: EventEmitter<string> = new EventEmitter<string>();
 
   destroyRef: DestroyRef = inject(DestroyRef);
   userService: UserService = inject(UserService);
-  
+
   userNameControl: FormControl = new FormControl('');
 
   ngOnInit(): void {
@@ -32,7 +32,8 @@ export class UserFilterComponent {
           value.toLowerCase().trim();
           this.filterUser.emit(value);
         }),
-      ).subscribe();
-    }
-    
+      )
+      .subscribe();
+  }
+
 }

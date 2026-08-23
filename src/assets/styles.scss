@@ -2,66 +2,66 @@
 @use './normalize.scss';
 
 * {
-    font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
 }
 
 :root {
-    --white-color: #FDFDFD;
-    --green-color: #1A3E3E;
-    --yellow-color: #F2BE22;
-    --black-color: #18121E;
-    --gray-color: #F3F5F4;
-    --orange-color: #D4A373;
+  --white-color: #fdfdfd;
+  --green-color: #1a3e3e;
+  --yellow-color: #f2be22;
+  --black-color: #18121e;
+  --gray-color: #f3f5f4;
+  --orange-color: #d4a373;
 }
 
 .dark-mode {
-    --white-color: #000000;
-    --green-color: #4DB6AC;
-    --yellow-color: #FFD54F;
-    --black-color: #6c6161;
-    --gray-color: #121212;
-    --orange-color: #b0b0b0;
+  --white-color: #000000;
+  --green-color: #4db6ac;
+  --yellow-color: #ffd54f;
+  --black-color: #6c6161;
+  --gray-color: #121212;
+  --orange-color: #b0b0b0;
 
-    background-color: #212020;
-    color: #ddd7e2
+  background-color: #212020;
+  color: #ddd7e2;
 }
 
 .fs-14 {
-    font-size: 14px
+  font-size: 14px;
 }
 
 .fs-16 {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 .fs-18 {
-    font-size: 18px;
+  font-size: 18px;
 }
 
 .fs-20 {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .fs-24 {
-    font-size: 24px;
+  font-size: 24px;
 }
 
 .fs-26 {
-    font-size: 26px;
+  font-size: 26px;
 }
 
 .fw-400 {
-    font-weight: 400;
+  font-weight: 400;
 }
 
 .fw-600 {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 .fw-700 {
-    font-weight: 700;
+  font-weight: 700;
 }
 
 .fw-800 {
-    font-weight: 800;
+  font-weight: 800;
 }

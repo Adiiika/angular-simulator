@@ -9,7 +9,6 @@ import { CommonModule } from '@angular/common';
   templateUrl: './message.component.html',
   styleUrl: './message.component.scss',
 })
-
 export class MessageComponent {
 
   messageService: MessageService = inject(MessageService);

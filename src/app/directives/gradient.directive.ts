@@ -6,7 +6,7 @@ import { IGradientSettings } from '../../interfaces/IGradientSettings';
 })
 export class GradientDirective {
 
-  @Input('gradientConfiguration') animatedGradient: IGradientSettings = {
+  @Input() gradientConfiguration: IGradientSettings = {
     delay: 1000,
     colors: ['#ee7752', '#23d5ab'],
     thickness: 2,
@@ -17,9 +17,9 @@ export class GradientDirective {
   @HostBinding('style.border-image')
   get elementBorder(): string | null {
     if (this.isActive) {
-      return `linear-gradient(${this.animatedGradient.colors}) ${this.animatedGradient.thickness}`;
+      return `linear-gradient(${ this.gradientConfiguration.colors }) ${ this.gradientConfiguration.thickness }`;
     } else {
-      return null
+      return null;
     }
   }
 
@@ -27,13 +27,13 @@ export class GradientDirective {
   onEnter(): void {
     setTimeout(() => {
       this.isActive = true;
-    }, this.animatedGradient.delay);
+    }, this.gradientConfiguration.delay);
   }
 
   @HostListener('mouseleave')
   onLeave(): void {
     this.isActive = false;
-    clearTimeout(this.animatedGradient.delay);
+    clearTimeout(this.gradientConfiguration.delay);
   }
-  
+
 }

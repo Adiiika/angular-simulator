@@ -1,4 +1,10 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideAppInitializer, provideZoneChangeDetection, inject } from '@angular/core';
+import {
+  ApplicationConfig,
+  provideBrowserGlobalErrorListeners,
+  provideAppInitializer,
+  provideZoneChangeDetection,
+  inject,
+} from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
@@ -19,16 +25,20 @@ const initTheme = (): Preset => {
   const savedTheme: Theme = themeFromStorage ? JSON.parse(themeFromStorage) : Theme.AURA;
 
   switch (savedTheme) {
-    case Theme.NORA: return Nora;
-    case Theme.LARA: return Lara;
-    default: return Aura;
+    case Theme.NORA:
+      return Nora;
+    case Theme.LARA:
+      return Lara;
+    default:
+      return Aura;
   }
-}
+};
 
 export const appConfig: ApplicationConfig = {
-
   providers: [
-    provideHttpClient(withInterceptors([requestInterceptor, errorHandlingInterceptor, authInterceptor])),
+    provideHttpClient(
+      withInterceptors([requestInterceptor, errorHandlingInterceptor, authInterceptor]),
+    ),
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
     provideAnimationsAsync(),
@@ -38,13 +48,12 @@ export const appConfig: ApplicationConfig = {
         preset: initTheme(),
         options: {
           darkModeSelector: false,
-        }
-      }
+        },
+      },
     }),
-     provideAppInitializer(() => {
+    provideAppInitializer(() => {
       const authService: AuthService = inject(AuthService);
-      return authService.getCurrentUser()
+      return authService.getCurrentUser();
     }),
-  ]
-
+  ],
 };

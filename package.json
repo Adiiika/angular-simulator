@@ -1,12 +1,18 @@
 {
   "name": "angular-simulator",
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "lint:clean": "rimraf .eslintcache && eslint . --fix",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write \"**/*.{ts,html,scss,json,md}\"",
+    "format:check": "prettier --check ."
   },
   "prettier": {
     "printWidth": 100,
@@ -41,11 +47,27 @@
     "zone.js": "0.16.0"
   },
   "devDependencies": {
+    "@angular-eslint/eslint-plugin": "^22.1.0",
     "@angular/build": "^21.0.5",
     "@angular/cli": "^21.0.5",
     "@angular/compiler-cli": "^21.0.0",
+    "@eslint/js": "^10.0.1",
+    "@html-eslint/eslint-plugin": "^0.65.0",
+    "@html-eslint/parser": "^0.65.0",
+    "@stylistic/eslint-plugin": "^5.10.0",
+    "@typescript-eslint/eslint-plugin": "^8.59.2",
+    "@typescript-eslint/parser": "^8.59.2",
+    "angular-eslint": "^21.4.0",
+    "eslint": "^10.8.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.6",
+    "globals": "^17.11.0",
     "jsdom": "^27.1.0",
+    "prettier": "^3.9.6",
+    "prettier-eslint": "^17.1.1",
+    "rimraf": "^5.0.0",
     "typescript": "~5.9.2",
+    "typescript-eslint": "^8.59.2",
     "vitest": "^4.0.8"
   }
 }

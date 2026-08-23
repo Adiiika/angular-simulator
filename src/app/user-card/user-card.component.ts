@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IUser } from '../../interfaces/IUser';
 import { UpperCasePipe } from '@angular/common';
 import { PhonePipe } from '../pipes/phone.pipe';
@@ -11,14 +11,13 @@ import { GradientDirective } from '../directives/gradient.directive';
   templateUrl: './user-card.component.html',
   styleUrl: './user-card.component.scss',
 })
-
 export class UserCardComponent {
 
   @Input({ required: true }) user!: IUser;
-  @Output() onDeleteUser: EventEmitter<IUser> = new EventEmitter<IUser>();
+  @Output() deleteUser: EventEmitter<IUser> = new EventEmitter<IUser>();
 
   onUserDelete(): void {
-    this.onDeleteUser.emit(this.user);
+    this.deleteUser.emit(this.user);
   }
 
 }

@@ -1,22 +1,19 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
-import { CommonModule, NgComponentOutlet, NgTemplateOutlet } from '@angular/common';
-import { FooterComponent } from "./footer/footer.component";
-import { HeaderComponent } from "./header/header.component";
-import { MessageComponent } from "./message/message.component";
+import { CommonModule } from '@angular/common';
+import { MessageComponent } from './message/message.component';
 import { LocalStorageService } from './services/local-storage.service';
 import { MessageService } from './services/message.service';
 import { Color } from '../enums/Color.js';
-import { LoaderComponent } from "./loader/loader.component";
+import { LoaderComponent } from './loader/loader.component';
 
 @Component({
   selector: 'app-root',
-  imports: [FormsModule, CommonModule, RouterOutlet, FooterComponent, HeaderComponent, MessageComponent, LoaderComponent],
+  imports: [FormsModule, CommonModule, RouterOutlet, MessageComponent, LoaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-
 export class AppComponent {
 
   messageService: MessageService = inject(MessageService);
@@ -35,11 +32,10 @@ export class AppComponent {
   }
 
   private lastVisit(): void {
-    let lastLogin: string = new Date().toString();
-    const visitsCount: string | null = this.localStorageService.getItem<string>('last-visit');
+    const lastLogin: string = new Date().toString();
 
     if (lastLogin) {
-      this.localStorageService.setItem('last-visit', lastLogin)
+      this.localStorageService.setItem('last-visit', lastLogin);
     }
   }
 
@@ -50,4 +46,4 @@ export class AppComponent {
     this.localStorageService.setItem('visits', visitsStored);
   }
 
-} 
+}

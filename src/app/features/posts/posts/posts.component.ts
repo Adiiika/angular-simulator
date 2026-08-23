@@ -1,8 +1,8 @@
-import { Component, inject, } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { finalize, tap } from 'rxjs';
-import { DialogService } from 'primeng/dynamicdialog'
+import { DialogService } from 'primeng/dynamicdialog';
 import { ContextMenuModule } from 'primeng/contextmenu';
 import { TableModule } from 'primeng/table';
 import { PaginatorModule } from 'primeng/paginator';
@@ -23,7 +23,7 @@ import { IPostResponce } from '../IPostResponce';
   templateUrl: './posts.component.html',
   styleUrl: './posts.component.scss',
 })
-export class PostsComponent {
+export class PostsComponent implements OnInit {
 
   dialogService: DialogService = inject(DialogService);
   postApiService: PostApiService = inject(PostApiService);
@@ -34,7 +34,7 @@ export class PostsComponent {
   router: Router = inject(Router);
 
   selectedProduct: IPost | null = null;
-  skeletonRows: Array<string> = new Array(10);
+  skeletonRows: string[] = new Array(10);
   pageSize: number = 5;
   posts: IPost[] = [];
   first: number = 0;
@@ -46,13 +46,13 @@ export class PostsComponent {
         if (this.selectedProduct?.id) {
           this.viewPost(this.selectedProduct?.id);
         }
-      }
+      },
     },
     {
       label: 'Редактировать',
       command: () => {
         this.showDialog();
-      }
+      },
     },
     {
       label: 'Удалить',
@@ -60,16 +60,17 @@ export class PostsComponent {
         if (this.selectedProduct?.id) {
           this.onDelete(this.selectedProduct?.id);
         }
-      }
-    }
-  ]
+      },
+    },
+  ];
 
   ngOnInit(): void {
     this.loadPosts(this.pageSize, this.first);
   }
 
   loadPosts(limit: number, skip: number): void {
-    this.postService.loadNewPosts(limit, skip)
+    this.postService
+      .loadNewPosts(limit, skip)
       .pipe(
         tap((response: IPostResponce) => {
           this.loadService.showLoader();
@@ -77,8 +78,9 @@ export class PostsComponent {
         }),
         finalize(() => {
           this.loadService.hideLoader();
-        })
-      ).subscribe();
+        }),
+      )
+      .subscribe();
   }
 
   showDialog(): void {
@@ -87,11 +89,11 @@ export class PostsComponent {
       width: '25vw',
       height: '30vw',
       contentStyle: {
-        overflow: 'auto'
+        overflow: 'auto',
       },
       data: this.selectedProduct,
       draggable: false,
-    })
+    });
   }
 
   onPageChange(event: LazyLoadEvent): void {
@@ -102,10 +104,11 @@ export class PostsComponent {
   }
 
   viewPost(id: number): void {
-    this.router.navigate([`/post/${ id }`]);
+    this.router.navigate([`/post/${id}`]);
   }
 
   onDelete(id: number): void {
-    this.postService.deletePost(id)
+    this.postService.deletePost(id);
   }
+
 }
