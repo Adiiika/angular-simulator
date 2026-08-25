@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { inject, Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, EMPTY, Observable, tap,  } from 'rxjs';
+import { BehaviorSubject, catchError, EMPTY, Observable, switchMap, tap } from 'rxjs';
 import { LocalStorageService } from '../../services/local-storage.service';
 import { IAuthResponse } from './IAuthResponse';
 import { ILogin } from './ILogin';
@@ -26,10 +26,12 @@ export class AuthService {
         return this.http.post<IAuthResponse>(`${ this.API_URL }/login`, userData)
             .pipe(
                 tap((response: IAuthResponse) => {
-                    const { accessToken, refreshToken, ...userInfo }: IAuthResponse = response;
+                    const { accessToken, refreshToken, ...userInfo } = response;
+
                     this.setSession(response);
-                    this.currentUserSubject.next(userInfo);
-                })
+                    this.currentUserSubject.next(response);
+                }),
+                switchMap(() => this.getCurrentUser())
             )
     }
 
@@ -73,7 +75,7 @@ export class AuthService {
     }
 
     setSession(response: IAuthResponse): void {
-        const tokens: IToken = { accessToken: response.accessToken, refreshToken: response.refreshToken };
+        const tokens: IToken = { accessToken: response.accessToken, refreshToken: response.refreshToken};
         this.localStorageService.setItem('token', tokens);
     }
 
@@ -83,5 +85,9 @@ export class AuthService {
 
     isAuthenticated(): boolean {
         return !!this.currentUserSubject.value;
+    }
+ 
+    getUser(): IAuthUser | null {
+        return this.currentUserSubject.value;
     }
 }

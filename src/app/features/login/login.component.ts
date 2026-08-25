@@ -18,8 +18,8 @@ export class LoginComponent {
   router: Router = inject(Router);
 
   authform: FormGroup = new FormGroup({
-    username: new FormControl('emilys', Validators.required),
-    password: new FormControl('emilyspass', Validators.required),
+    username: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
   })
 
   onSubmit(): void {
@@ -34,4 +34,5 @@ export class LoginComponent {
         })
       ).subscribe()
   }
+
 }

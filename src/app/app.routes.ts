@@ -2,6 +2,12 @@ import { Routes } from '@angular/router';
 import { postResolver } from './features/posts/post.resolver';
 import { authGuard } from './features/auth/auth.guard';
 import { LoginComponent } from './features/login/login.component';
+import { adminGuard } from './features/auth/admin.guard';
+import { PostDetailComponent } from './features/posts/post-detail/post-detail.component';
+import { PostCreateComponent } from '../app/features/posts/post-create/post-create.component';
+import { UsersPageComponent } from '../app/users-page/users-page.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { PostsComponent } from '../app/features/posts/posts/posts.component';
 
 export const routes: Routes = [
     {
@@ -20,32 +26,29 @@ export const routes: Routes = [
             },
             {
                 path: 'homePage',
-                loadComponent: () => import('./home-page/home-page.component').then(
-                    (module => module.HomePageComponent),
-                ),
+                component: HomePageComponent,
+            },
+            {
+                path: 'posts',
+                component: PostsComponent,
+                canActivate: [adminGuard],
             },
             {
                 path: 'post/:id',
-                loadComponent: () => import('./features/posts/post-detail/post-detail.component').then(module => module.PostDetailComponent),
+                component: PostDetailComponent,
                 resolve: {
                     postData: postResolver,
                 },
             },
             {
                 path: 'posts/create',
-                loadComponent: () => import('../app/features/posts/post-create/post-create.component').then(module => module.PostCreateComponent),
+                component: PostCreateComponent,
             },
 
             {
-                path: 'posts',
-                loadComponent: () => import('../app/features/posts/posts/posts.component').then(module => module.PostsComponent),
-            },
-            {
                 path: 'users',
-                loadComponent: () =>
-                    import('../app/users-page/users-page.component').then(
-                        (module) => module.UsersPageComponent
-                    ),
+                component: UsersPageComponent,
+                canActivate: [adminGuard],
             },
         ],
     },
