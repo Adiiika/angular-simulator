@@ -1,6 +1,6 @@
 {
+  "padded-block": true,
   "tabWidth": 2,
   "singleQuote": true,
-  "semi": true,
-  "padded-block": true
+  "semi": true
 }

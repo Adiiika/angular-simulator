@@ -1,8 +1,8 @@
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import eslintConfigPrettier from 'eslint-config-prettier';
+import stylistic from '@stylistic/eslint-plugin';
 import tseslint from 'typescript-eslint';
 import angular from 'angular-eslint';
-import stylistic from '@stylistic/eslint-plugin';
 
 export default tseslint.config(
   {
