@@ -8,8 +8,8 @@ import {
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, EMPTY, tap } from 'rxjs';
-import { AuthService } from '../auth/auth.service';
 import { MessageService } from '../../services/message.service';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-login',

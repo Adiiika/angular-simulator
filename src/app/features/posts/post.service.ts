@@ -9,6 +9,7 @@ import { IPost } from './IPost';
 @Injectable({
   providedIn: 'root',
 })
+
 export class PostService {
 
   private postApiService: PostApiService = inject(PostApiService);

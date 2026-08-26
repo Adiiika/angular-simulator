@@ -1,7 +1,7 @@
 import { FormGroup, ReactiveFormsModule, FormsModule, FormBuilder } from '@angular/forms';
 import { Component, inject, NgModule, OnInit } from '@angular/core';
-import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { catchError, tap, throwError } from 'rxjs';
+import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PostService } from '../post.service';
 import { IPost } from '../IPost';
 import { MessageService } from '../../../services/message.service';

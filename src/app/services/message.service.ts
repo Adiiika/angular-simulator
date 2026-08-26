@@ -52,8 +52,4 @@ export class MessageService {
     }, 5000);
   }
 
-  // serverError() {
-  //   errorHandlingInterceptor
-  // }
-
 }

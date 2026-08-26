@@ -1,4 +1,5 @@
 <router-outlet />
+
 <div class="container-user">
   <app-user-create (createUser)="userService.addUsers($event)" />
   <app-user-filter (filterUser)="onFilter($event)" />

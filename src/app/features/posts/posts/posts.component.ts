@@ -4,10 +4,10 @@ import { Router, RouterLink } from '@angular/router';
 import { finalize, tap } from 'rxjs';
 import { DialogService } from 'primeng/dynamicdialog';
 import { ContextMenuModule } from 'primeng/contextmenu';
-import { TableModule } from 'primeng/table';
 import { PaginatorModule } from 'primeng/paginator';
 import { SkeletonModule } from 'primeng/skeleton';
 import { MenuItem, LazyLoadEvent } from 'primeng/api';
+import { TableModule } from 'primeng/table';
 import { PostService } from '../post.service';
 import { PostApiService } from '../post-api.service';
 import { MessageService } from '../../../services/message.service';
@@ -104,7 +104,7 @@ export class PostsComponent implements OnInit {
   }
 
   viewPost(id: number): void {
-    this.router.navigate([`/post/${id}`]);
+    this.router.navigate([`/post/${ id }`]);
   }
 
   onDelete(id: number): void {

@@ -14,6 +14,7 @@ import { IPost } from '../IPost';
   templateUrl: './post-create.component.html',
   styleUrl: './post-create.component.scss',
 })
+
 export class PostCreateComponent {
 
   localStorageService: LocalStorageService = inject(LocalStorageService);

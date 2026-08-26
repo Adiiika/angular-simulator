@@ -4,9 +4,9 @@ import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, EMPTY, Observable, switchMap, tap } from 'rxjs';
 import { LocalStorageService } from '../../services/local-storage.service';
 import { IAuthResponse } from './IAuthResponse';
+import { IAuthUser } from './IAuthUser';
 import { ILogin } from './ILogin';
 import { IToken } from './IToken';
-import { IAuthUser } from './IAuthUser';
 
 @Injectable({
   providedIn: 'root',
@@ -26,7 +26,7 @@ export class AuthService {
   isAuthenticated$: Observable<IAuthUser | null> = this.currentUserSubject.asObservable();
 
   login(userData: ILogin): Observable<IAuthResponse> {
-    return this.http.post<IAuthResponse>(`${this.API_URL}/login`, userData).pipe(
+    return this.http.post<IAuthResponse>(`${ this.API_URL }/login`, userData).pipe(
       tap((response: IAuthResponse) => {
         const { accessToken, refreshToken, ..._userInfo } = response;
 
@@ -41,7 +41,7 @@ export class AuthService {
     const tokens: IToken | null = this.getTokens();
 
     return this.http
-      .post<IAuthResponse>(`${this.API_URL}/refresh`, {
+      .post<IAuthResponse>(`${ this.API_URL }/refresh`, {
         refreshToken: tokens?.refreshToken,
       })
       .pipe(
@@ -52,7 +52,7 @@ export class AuthService {
   }
 
   getCurrentUser(): Observable<IAuthResponse> {
-    return this.http.get<IAuthResponse>(`${this.API_URL}/me`).pipe(
+    return this.http.get<IAuthResponse>(`${ this.API_URL }/me`).pipe(
       tap((result: IAuthResponse) => {
         this.currentUserSubject.next(result);
       }),

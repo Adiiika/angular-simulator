@@ -9,6 +9,7 @@ import { IPost } from '../IPost';
   templateUrl: './post-detail.component.html',
   styleUrl: './post-detail.component.scss',
 })
+
 export class PostDetailComponent implements OnInit {
 
   private route: ActivatedRoute = inject(ActivatedRoute);

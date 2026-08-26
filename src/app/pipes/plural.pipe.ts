@@ -20,16 +20,16 @@ export class PluralPipe implements PipeTransform {
     const isMany: boolean = remainder100 >= 11 && remainder100 <= 14;
 
     if (isZero) {
-      return `${value} ${thirdForm}`;
+      return `${ value } ${ thirdForm }`;
     } else if (isMany) {
-      return `${value}  ${thirdForm}`;
+      return `${ value }  ${ thirdForm }`;
     } else if (isOne) {
-      return `${value} ${firstForm}`;
+      return `${ value } ${ firstForm }`;
     } else if (isFew) {
-      return `${value} ${secondForm}`;
+      return `${ value } ${ secondForm }`;
     }
 
-    return `${value} ${thirdForm}`;
+    return `${ value } ${ thirdForm }`;
   }
 
 }

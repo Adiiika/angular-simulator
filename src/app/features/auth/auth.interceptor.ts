@@ -12,6 +12,7 @@ export const authInterceptor: HttpInterceptorFn = (
   req: HttpRequest<unknown>,
   next: HttpHandlerFn,
 ) => {
+
   const authService: AuthService = inject(AuthService);
   const accessToken: string | null = authService.getToken('access');
   const refreshToken: string | null = authService.getToken('refresh');
@@ -19,7 +20,7 @@ export const authInterceptor: HttpInterceptorFn = (
   function cloneWithToken(): HttpRequest<unknown> {
     const originalRequestCopy: HttpRequest<unknown> = req.clone({
       setHeaders: {
-        Authorization: `Bearer ${refreshToken}`,
+        Authorization: `Bearer ${ refreshToken }`,
       },
     });
     return originalRequestCopy;

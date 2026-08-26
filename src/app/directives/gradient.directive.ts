@@ -4,6 +4,7 @@ import { IGradientSettings } from '../../interfaces/IGradientSettings';
 @Directive({
   selector: '[appGradient]',
 })
+
 export class GradientDirective {
 
   @Input() gradientConfiguration: IGradientSettings = {
