@@ -1,14 +1,14 @@
 <div class="auth-container">
-    <form [formGroup]="authform" (ngSubmit)="onSubmit()" class="augh-form">
-        <h1 class="auth-user">Авторизация пользователя</h1>
-        <div class="auth-field">
-            <h3>Username:</h3>
-            <input id="auth-username" name="username" type="username" formControlName="username">
-        </div>
-         <div class="auth-field">
-            <h3>Password:</h3>
-            <input id="auth-password" name="password" type="password" formControlName="password">
-        </div>
-        <button id="auth-user-btn" type="submit">Login</button>
-    </form>
+  <form [formGroup]="authform" (ngSubmit)="onSubmit()" class="augh-form">
+    <h1 class="auth-user">Авторизация пользователя</h1>
+    <div class="auth-field">
+      <h3>Username:</h3>
+      <input id="auth-username" name="username" type="username" formControlName="username" alt="" />
+    </div>
+    <div class="auth-field">
+      <h3>Password:</h3>
+      <input id="auth-password" name="password" type="password" formControlName="password" alt="" />
+    </div>
+    <button id="auth-user-btn" type="submit">Login</button>
+  </form>
 </div>

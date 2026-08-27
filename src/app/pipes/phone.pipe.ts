@@ -6,10 +6,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class PhonePipe implements PipeTransform {
 
   transform(phone: string, mode: string): string {
-
     const cleanPhone: string = phone.replace(/[()-.]/g, '');
-    const compact: string = `${'+'} + ${cleanPhone.replace(/\s/g, "")}`;
-    const countryPhone: string = `${'+'} ${cleanPhone.slice(0, 2)}`;
+    const compact: string = `${ '+' } + ${ cleanPhone.replace(/\s/g, '') }`;
+    const countryPhone: string = `${ '+' } ${ cleanPhone.slice(0, 2) }`;
 
     const international: string = [
       countryPhone,

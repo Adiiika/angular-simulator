@@ -17,7 +17,7 @@ export class LoaderComponent {
   isLoading$: Observable<boolean> = this.loaderService.isLoading$.pipe(
     tap((active: boolean) => {
       document.body.style.overflow = active ? 'hidden' : 'auto';
-    })
-  )
+    }),
+  );
 
 }

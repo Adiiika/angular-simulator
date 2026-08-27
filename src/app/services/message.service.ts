@@ -2,14 +2,13 @@ import { Injectable } from '@angular/core';
 import { IMessages } from '../../interfaces/IMessage';
 import { MessageType } from '../../enums/MessageType';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { errorHandlingInterceptor } from '../interceptors/error-handling.interceptor';
 
 @Injectable({
   providedIn: 'root',
 })
-
 export class MessageService {
-  static showLoader(): any {
+
+  static showLoader(): void {
     throw new Error('Method not implemented.');
   }
 
@@ -19,19 +18,19 @@ export class MessageService {
   showSuccess(description: string): void {
     this.addMessage(MessageType.SUCCESS, description);
   }
-  
+
   showWarn(description: string): void {
     this.addMessage(MessageType.WARN, description);
   }
-  
+
   showInfo(description: string): void {
     this.addMessage(MessageType.INFO, description);
   }
-  
+
   showError(description: string): void {
     this.addMessage(MessageType.ERROR, description);
   }
-  
+
   closeMessage(id: number): void {
     const currentList: IMessages[] = this.messagesSubject.getValue();
     const filterList: IMessages[] = currentList.filter((message: IMessages) => message.id != id);
@@ -42,19 +41,15 @@ export class MessageService {
     const newMessage: IMessages = {
       id: Date.now(),
       type: type,
-      description: description
-    }
+      description: description,
+    };
 
     const currentMessages: IMessages[] = this.messagesSubject.getValue();
     this.messagesSubject.next([newMessage, ...currentMessages]);
-  
+
     setTimeout(() => {
       this.closeMessage(newMessage.id);
     }, 5000);
   }
-
-  // serverError() {
-  //   errorHandlingInterceptor
-  // }
 
 }

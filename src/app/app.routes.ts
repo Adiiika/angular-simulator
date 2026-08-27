@@ -10,50 +10,52 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { PostsComponent } from '../app/features/posts/posts/posts.component';
 
 export const routes: Routes = [
-    {
-        path: 'login',
-        component: LoginComponent,
-    },
-    {
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: '',
+    canActivate: [authGuard],
+    loadComponent: () =>
+      import('./features/auth/layout/layout.component').then((module) => module.LayoutComponent),
+    children: [
+      {
         path: '',
-        canActivate: [authGuard],
-        loadComponent: () => import('./features/auth/layout/layout.component').then(module => module.LayoutComponent),
-        children: [
-            {
-                path: '',
-                redirectTo: 'homePage',
-                pathMatch: 'full'
-            },
-            {
-                path: 'homePage',
-                component: HomePageComponent,
-            },
-            {
-                path: 'posts',
-                component: PostsComponent,
-                canActivate: [adminGuard],
-            },
-            {
-                path: 'post/:id',
-                component: PostDetailComponent,
-                resolve: {
-                    postData: postResolver,
-                },
-            },
-            {
-                path: 'posts/create',
-                component: PostCreateComponent,
-            },
+        redirectTo: 'homePage',
+        pathMatch: 'full',
+      },
+      {
+        path: 'homePage',
+        component: HomePageComponent,
+      },
+      {
+        path: 'posts',
+        component: PostsComponent,
+        canActivate: [adminGuard],
+      },
+      {
+        path: 'post/:id',
+        component: PostDetailComponent,
+        resolve: {
+          postData: postResolver,
+        },
+      },
+      {
+        path: 'posts/create',
+        component: PostCreateComponent,
+      },
 
-            {
-                path: 'users',
-                component: UsersPageComponent,
-                canActivate: [adminGuard],
-            },
-        ],
-    },
-    {
-        path: '**',
-        loadComponent: () => import('./not-found-page/not-found-page.component').then((m) => m.NotFoundPageComponent),
-    },
+      {
+        path: 'users',
+        component: UsersPageComponent,
+        canActivate: [adminGuard],
+      },
+    ],
+  },
+  {
+    path: '**',
+    loadComponent: () =>
+      import('./not-found-page/not-found-page.component').then((m) => m.NotFoundPageComponent),
+  },
 ];

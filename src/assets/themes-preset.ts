@@ -11,16 +11,16 @@ export const auraPreset: Preset = definePreset(Aura, {
         primary: {
           color: '{sky.400}',
           hoverColor: '{sky.500}',
-        }
+        },
       },
       dark: {
         primary: {
           color: '{sky.300}',
           hoverColor: '{sky.400}',
-        }
-      }
-    }
-  }
+        },
+      },
+    },
+  },
 });
 
 export const laraPreset: Preset = definePreset(Lara, {
@@ -29,17 +29,17 @@ export const laraPreset: Preset = definePreset(Lara, {
       light: {
         primary: {
           color: '{sky.800}',
-          hoverColor: '{sky.900}'
-        }
+          hoverColor: '{sky.900}',
+        },
       },
       dark: {
         primary: {
           color: '{sky.600}',
-          hoverColor: '{sky.700}'
-        }
-      }
-    }
-  }
+          hoverColor: '{sky.700}',
+        },
+      },
+    },
+  },
 });
 
 export const noraPreset: Preset = definePreset(Nora, {
@@ -48,15 +48,15 @@ export const noraPreset: Preset = definePreset(Nora, {
       light: {
         primary: {
           color: '{sky.600}',
-          hoverColor: '{sky.500}'
-        }
+          hoverColor: '{sky.500}',
+        },
       },
       dark: {
         primary: {
           color: '{sky.400}',
           hoverColor: '{sky.300}',
-        }
-      }
-    }
-  }
+        },
+      },
+    },
+  },
 });

@@ -1,15 +1,14 @@
-<router-outlet></router-outlet>
+<router-outlet />
+
 <div class="container-user">
-    <app-user-create (createUser)="userService.addUsers($event)"></app-user-create>
-    <app-user-filter (filterUser)="onFilter($event)"></app-user-filter>
-    <h1 class="user-title">Список пользователей</h1>
-    <div class="user-list">
-        @for (user of filteredUsers$ | async; track user.id) {
-            <app-user-card [user]="user" (onDeleteUser)="userService.deleteUsers(user.id)"></app-user-card>
-            } @empty {
-            <div class="error-message fw-800 fs-26">
-                Нет пользователей
-            </div>
-        }
-    </div>
+  <app-user-create (createUser)="userService.addUsers($event)" />
+  <app-user-filter (filterUser)="onFilter($event)" />
+  <h1 class="user-title">Список пользователей</h1>
+  <div class="user-list">
+    @for (user of filteredUsers$ | async; track user.id) {
+      <app-user-card [user]="user" (onDeleteUser)="userService.deleteUsers(user.id)" />
+    } @empty {
+      <div class="error-message fw-800 fs-26">Нет пользователей</div>
+    }
+  </div>
 </div>

@@ -6,7 +6,6 @@ import { Component } from '@angular/core';
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
 })
-
 export class FooterComponent {
 
   companyName: string = '«РумТибет»';

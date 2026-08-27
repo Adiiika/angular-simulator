@@ -5,8 +5,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class PluralPipe implements PipeTransform {
 
-  transform(value: number, firstForm: string, secondForm: string, thirdForm: string): number | string {
-
+  transform(
+    value: number,
+    firstForm: string,
+    secondForm: string,
+    thirdForm: string,
+  ): number | string {
     const remainder100: number = value % 100;
     const remainder10: number = value % 10;
 
@@ -20,7 +24,7 @@ export class PluralPipe implements PipeTransform {
     } else if (isMany) {
       return `${ value }  ${ thirdForm }`;
     } else if (isOne) {
-      return  `${ value } ${ firstForm }`;
+      return `${ value } ${ firstForm }`;
     } else if (isFew) {
       return `${ value } ${ secondForm }`;
     }
