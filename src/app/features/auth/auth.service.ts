@@ -7,6 +7,8 @@ import { IAuthResponse } from './IAuthResponse';
 import { IAuthUser } from './IAuthUser';
 import { ILogin } from './ILogin';
 import { IToken } from './IToken';
+import { IConfig } from '../../IConfig';
+import { app_configuration } from '../../app-configuration.token';
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +20,9 @@ export class AuthService {
   private router: Router = inject(Router);
 
   readonly API_URL: string = 'https://dummyjson.com/auth';
+  
+  config: IConfig = inject(app_configuration);
+  sessionTimeout: number = this.config.sessionTimeout;
 
   currentUserSubject: BehaviorSubject<IAuthUser | null> = new BehaviorSubject<IAuthUser | null>(
     null,
@@ -29,7 +34,7 @@ export class AuthService {
     return this.http.post<IAuthResponse>(`${ this.API_URL }/login`, userData).pipe(
       tap((response: IAuthResponse) => {
         const { accessToken, refreshToken, ..._userInfo } = response;
-
+        
         this.setSession(response);
         this.currentUserSubject.next(response);
       }),
@@ -43,6 +48,7 @@ export class AuthService {
     return this.http
       .post<IAuthResponse>(`${ this.API_URL }/refresh`, {
         refreshToken: tokens?.refreshToken,
+        expiresInMins: this.sessionTimeout,
       })
       .pipe(
         tap((response: IAuthResponse) => {
@@ -80,6 +86,7 @@ export class AuthService {
     const tokens: IToken = {
       accessToken: response.accessToken,
       refreshToken: response.refreshToken,
+      expiresInMins: this.sessionTimeout,
     };
     this.localStorageService.setItem('token', tokens);
   }

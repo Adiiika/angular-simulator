@@ -19,6 +19,17 @@ import { requestInterceptor } from './interceptors/request.interceptor';
 import { errorHandlingInterceptor } from './interceptors/error-handling.interceptor';
 import { authInterceptor } from './features/auth/auth.interceptor';
 import { AuthService } from './features/auth/auth.service';
+import { IConfig } from './IConfig';
+import { DATE_PIPE_DEFAULT_OPTIONS } from '@angular/common';
+import { app_configuration } from './app-configuration.token';
+
+const applicationConfig: IConfig = {
+  companyName: 'румтибет',
+  enableLogs: true,
+  enableNotifications: true,
+  enableTheming: true,
+  sessionTimeout: 600,
+};
 
 const initTheme = (): Preset => {
   const themeFromStorage: Theme | null = localStorage.getItem('theme') as Theme;
@@ -40,6 +51,26 @@ export const appConfig: ApplicationConfig = {
       withInterceptors([requestInterceptor, errorHandlingInterceptor, authInterceptor]),
     ),
     provideBrowserGlobalErrorListeners(),
+    {
+      provide: DATE_PIPE_DEFAULT_OPTIONS,
+      useValue: {
+        dateFormat: 'dd.MM.yyyy HH:mm',
+      }
+    },
+    {
+      provide: app_configuration,
+      useValue: applicationConfig,
+    },
+    {
+      provide: app_configuration,
+      useValue: {
+         companyName: 'РумТибет',
+         enableLogs: true,
+         enableNotifications: true,
+         enableTheming: true,
+         sessionTimeout: 600,
+      }
+    },
     provideRouter(routes),
     provideAnimationsAsync(),
     provideZoneChangeDetection(),
