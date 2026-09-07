@@ -21,10 +21,10 @@ import { authInterceptor } from './features/auth/auth.interceptor';
 import { AuthService } from './features/auth/auth.service';
 import { IConfig } from './IConfig';
 import { DATE_PIPE_DEFAULT_OPTIONS } from '@angular/common';
-import { app_configuration } from './app-configuration.token';
+import { APP_CONFIGURATION } from './app-configuration.token';
 
 const applicationConfig: IConfig = {
-  companyName: 'румтибет',
+  companyName: 'румТибет',
   enableLogs: true,
   enableNotifications: true,
   enableTheming: true,
@@ -58,18 +58,8 @@ export const appConfig: ApplicationConfig = {
       }
     },
     {
-      provide: app_configuration,
+      provide: APP_CONFIGURATION,
       useValue: applicationConfig,
-    },
-    {
-      provide: app_configuration,
-      useValue: {
-         companyName: 'РумТибет',
-         enableLogs: true,
-         enableNotifications: true,
-         enableTheming: true,
-         sessionTimeout: 600,
-      }
     },
     provideRouter(routes),
     provideAnimationsAsync(),

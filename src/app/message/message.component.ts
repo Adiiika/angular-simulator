@@ -3,7 +3,7 @@ import { MessageType } from '../../enums/MessageType';
 import { MessageService } from '../services/message.service';
 import { CommonModule } from '@angular/common';
 import { IConfig } from '../IConfig';
-import { app_configuration } from '../app-configuration.token';
+import { APP_CONFIGURATION } from '../app-configuration.token';
 
 @Component({
   selector: 'app-message',
@@ -13,7 +13,7 @@ import { app_configuration } from '../app-configuration.token';
 })
 export class MessageComponent {
 
-  config: IConfig = inject(app_configuration);
+  config: IConfig = inject(APP_CONFIGURATION);
   enableNotifications: boolean = this.config.enableNotifications;
   
   messageService: MessageService = inject(MessageService);

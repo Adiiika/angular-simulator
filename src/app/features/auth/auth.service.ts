@@ -8,7 +8,7 @@ import { IAuthUser } from './IAuthUser';
 import { ILogin } from './ILogin';
 import { IToken } from './IToken';
 import { IConfig } from '../../IConfig';
-import { app_configuration } from '../../app-configuration.token';
+import { APP_CONFIGURATION } from '../../app-configuration.token';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +21,7 @@ export class AuthService {
 
   readonly API_URL: string = 'https://dummyjson.com/auth';
   
-  config: IConfig = inject(app_configuration);
+  config: IConfig = inject(APP_CONFIGURATION);
   sessionTimeout: number = this.config.sessionTimeout;
 
   currentUserSubject: BehaviorSubject<IAuthUser | null> = new BehaviorSubject<IAuthUser | null>(

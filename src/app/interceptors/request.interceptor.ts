@@ -8,7 +8,7 @@ import {
 } from '@angular/common/http';
 import { catchError, tap, throwError } from 'rxjs';
 import { IConfig } from '../IConfig';
-import { app_configuration } from '../app-configuration.token';
+import { APP_CONFIGURATION } from '../app-configuration.token';
 import { inject } from '@angular/core';
 
 export const requestInterceptor: HttpInterceptorFn = (
@@ -16,7 +16,7 @@ export const requestInterceptor: HttpInterceptorFn = (
   next: HttpHandlerFn,
 ) => {
   const requestTime: number = Date.now();
-  const config: IConfig = inject(app_configuration);
+  const config: IConfig = inject(APP_CONFIGURATION);
 
   if (!config.enableLogs) {
     return next(req);

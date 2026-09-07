@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { app_configuration } from '../app-configuration.token';
+import { APP_CONFIGURATION } from '../app-configuration.token';
 import { IConfig } from '../IConfig';
 
 @Component({
@@ -10,7 +10,7 @@ import { IConfig } from '../IConfig';
 })
 export class FooterComponent {
 
-  config: IConfig = inject(app_configuration);
+  config: IConfig = inject(APP_CONFIGURATION);
   companyName: string = this.config.companyName;
   
 }

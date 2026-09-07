@@ -1,19 +1,20 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { IMessages } from '../../interfaces/IMessage';
 import { MessageType } from '../../enums/MessageType';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { IConfig } from '../IConfig';
+import { APP_CONFIGURATION } from '../app-configuration.token';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MessageService {
 
-  static showLoader(): void {
-    throw new Error('Method not implemented.');
-  }
-
   private messagesSubject: BehaviorSubject<IMessages[]> = new BehaviorSubject<IMessages[]>([]);
   messageList$: Observable<IMessages[]> = this.messagesSubject.asObservable();
+
+  config: IConfig = inject(APP_CONFIGURATION);
+  enableNotifications: boolean = this.config.enableNotifications;
 
   showSuccess(description: string): void {
     this.addMessage(MessageType.SUCCESS, description);
@@ -38,18 +39,22 @@ export class MessageService {
   }
 
   private addMessage(type: MessageType, description: string): void {
-    const newMessage: IMessages = {
-      id: Date.now(),
-      type: type,
-      description: description,
-    };
 
-    const currentMessages: IMessages[] = this.messagesSubject.getValue();
-    this.messagesSubject.next([newMessage, ...currentMessages]);
+    if (this.config.enableNotifications) {
 
-    setTimeout(() => {
-      this.closeMessage(newMessage.id);
-    }, 5000);
+      const newMessage: IMessages = {
+        id: Date.now(),
+        type: type,
+        description: description,
+      };
+
+      const currentMessages: IMessages[] = this.messagesSubject.getValue();
+      this.messagesSubject.next([newMessage, ...currentMessages]);
+
+      setTimeout(() => {
+        this.closeMessage(newMessage.id);
+      }, 5000);
   }
+    }
 
 }

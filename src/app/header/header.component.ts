@@ -10,7 +10,7 @@ import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { ThemeService } from '../services/theme.service';
 import { AuthService } from '../features/auth/auth.service';
 import { DatePipe } from '@angular/common';
-import { app_configuration } from '../app-configuration.token';
+import { APP_CONFIGURATION } from '../app-configuration.token';
 import { IConfig } from '../IConfig';
 
 @Component({
@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit {
   themeService: ThemeService = inject(ThemeService);
   authSevice: AuthService = inject(AuthService);
 
-  config: IConfig = inject(app_configuration);
+  config: IConfig = inject(APP_CONFIGURATION);
   myDate: Date = new Date();
   enableTheming = this.config.enableTheming;
   faSun: IconDefinition = faSun;
