@@ -83,14 +83,14 @@
   display: flex;
   flex-direction: row;
   justify-content: start;
-  padding: 0px 6px 0 80px;
+  padding: 0px 6px 0 160px;
 }
 
 .count-container {
   display: flex;
   flex-direction: row;
   justify-content: end;
-  margin: 0 0 0 193px;
+  margin: 0 0 0 270px;
 }
 
 .count-div {
@@ -135,4 +135,8 @@
 
 .ng-fa-icon {
   margin-top: 12px;
+}
+
+.last-visit-time {
+ font-size: 19px;
 }
