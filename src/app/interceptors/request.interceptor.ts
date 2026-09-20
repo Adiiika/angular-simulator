@@ -7,12 +7,20 @@ import {
   HttpRequest,
 } from '@angular/common/http';
 import { catchError, tap, throwError } from 'rxjs';
+import { IConfig } from '../IConfig';
+import { APP_CONFIGURATION } from '../app-configuration.token';
+import { inject } from '@angular/core';
 
 export const requestInterceptor: HttpInterceptorFn = (
   req: HttpRequest<unknown>,
   next: HttpHandlerFn,
 ) => {
   const requestTime: number = Date.now();
+  const config: IConfig = inject(APP_CONFIGURATION);
+
+  if (!config.enableLogs) {
+    return next(req);
+  }
 
   return next(req).pipe(
     tap((event: HttpEvent<unknown>) => {

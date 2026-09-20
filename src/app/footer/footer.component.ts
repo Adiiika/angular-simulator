@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { APP_CONFIGURATION } from '../app-configuration.token';
+import { IConfig } from '../IConfig';
 
 @Component({
   selector: 'app-footer',
@@ -8,6 +10,7 @@ import { Component } from '@angular/core';
 })
 export class FooterComponent {
 
-  companyName: string = '«РумТибет»';
-
+  config: IConfig = inject(APP_CONFIGURATION);
+  companyName: string = this.config.companyName;
+  
 }

@@ -23,12 +23,14 @@
             {{ navigation.text }}
           </a>
         }
-        <p-toggleswitch
-          (onChange)="themeService.toggleDarkMode($event.checked)"
-          [ngModel]="themeService.isDarkMode$ | async"
-        />
+        @if (enableTheming) {
+          <p-toggleswitch
+            (onChange)="themeService.toggleDarkMode($event.checked)"
+            [ngModel]="themeService.isDarkMode$ | async"
+          />
 
-        <fa-icon [icon]="(themeService.isDarkMode$ | async) ? faMoon : faSun" />
+          <fa-icon [icon]="(themeService.isDarkMode$ | async) ? faMoon : faSun" />
+        }
         <button id="request-consultation-btn" class="fs-16 fw-600" width="157px" height="44px">
           Консультация
         </button>
@@ -64,6 +66,9 @@
     </div>
     <div>
       <button (click)="authSevice.logout()" id="close-session-btn">Закончить сессию</button>
+
+      <h3 class="last-visit-title">Последний вход:</h3>
+      <p class="last-visit-time">{{ myDate | date }}</p>
     </div>
   </div>
 </header>
