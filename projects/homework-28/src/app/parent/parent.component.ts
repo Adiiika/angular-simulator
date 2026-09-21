@@ -7,23 +7,20 @@ import { IUser } from '../IUser';
   imports: [ChildComponent],
   templateUrl: './parent.component.html',
   styleUrl: './parent.component.scss',
-
 })
 export class ParentComponent {
 
   user: IUser = {
     name: 'Bagir',
-    age: 13
+    age: 13,
   };
 
-
-  changeName() {
-   this.user = {
-    ...this.user,
-    name: 'Eugene',
-    age: 24
-   };    
-
+  changeName(): void {
+    this.user = {
+      ...this.user,
+      name: 'Eugene',
+      age: 24,
+    };
   }
 
 }

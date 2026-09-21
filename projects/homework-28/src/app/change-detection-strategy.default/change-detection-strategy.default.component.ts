@@ -1,5 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  DoCheck,
+  inject,
+} from '@angular/core';
 
 @Component({
   selector: 'app-change-detection-strategy-default',
@@ -10,65 +16,53 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, inject 
 })
 export class ChangeDetectionStrategyDefaultComponent implements DoCheck {
 
-  private http = inject(HttpClient);
   private cdr: ChangeDetectorRef = inject(ChangeDetectorRef);
+  private http = inject(HttpClient);
   count: number = 0;
 
-  ngDoCheck() {
+  ngDoCheck(): void {
     console.warn('Change Detection');
-}
+  }
 
-  changeByClick() {
+  changeByClick(): void {
     this.count++;
   }
 
-  changeBySetTimeout() {
-      setTimeout(() => {
+  changeBySetTimeout(): void {
+    setTimeout(() => {
       this.count++;
     }, 500);
   }
-    
-  async changeByPromise() {
+
+  async changeByPromise(): Promise<void> {
     try {
-      this.count++ ;
+      this.count++;
     } catch {
       console.error('error');
     }
   }
 
-  changeByHttp() {
+  changeByHttp(): void {
     this.http.get('https://jsonplaceholder.typicode.com/users');
     this.count++;
   }
 
-  changeByInterval() {
+  changeByInterval(): void {
     setInterval(() => {
       this.count++;
       this.cdr.markForCheck();
     }, 1000);
   }
 
-   async multipleEventChange() {
-   try {
-    setTimeout(() => {
-      this.count++;
-      this.cdr.markForCheck();
-    }, 1000);
-   } catch {
-    console.error('error');
-   }
-  }
-  
+  async multipleEventChange(): Promise<void> {
+    try {
+      setTimeout(() => {
+        this.count++;
+        this.cdr.markForCheck();
+      }, 1000);
+    } catch {
+      console.error('error');
+    }
   }
 
-// 1. Обновился ли интерфейс автоматически?
-// Ответ: да, 6 раза
-
-// 2. Сколько раз выполнился ngDoCheck()?
-// также 6 раз когда обновлялся интерфейс
-
-// 3.Понадобилось ли использовать ChangeDetectorRef?
-// 3 раза
-
-// 4. Что именно, по вашему мнению, стало причиной запуска Change Detection?
-// События которые триггерят changeDetectionStrategy.default, которые я написал выше
+}

@@ -1,71 +1,59 @@
-import { HttpClient } from '@angular/common/http';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  DoCheck,
+  inject,
+} from '@angular/core';
 
 @Component({
   selector: 'app-change-detection-strategy-on-push',
   imports: [],
   templateUrl: './change-detection-strategy-on-push.component.html',
   styleUrl: './change-detection-strategy-on-push.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ChangeDetectionStrategyOnPushComponent {
-
-  private http = inject(HttpClient);
+export class ChangeDetectionStrategyOnPushComponent implements DoCheck {
+  
   private cdr: ChangeDetectorRef = inject(ChangeDetectorRef);
   count: number = 0;
 
-//   ngDoCheck() {
-//     console.warn('Change Detection');
-// }
-
-  async changeByMarkForCheck() {
-
-
-
-        this.count++;
-        this.cdr.reattach(); 
-        // this.cdr.markForCheck()
-    }
-    
+  ngDoCheck(): void {
+    console.warn('Change Detection');
   }
-  
-  // changeValue() {
-  //     setTimeout(() => {
-  //     this.count = 2;
-  //     this.cdr.detectChanges();
-  //   }, 500);
-  // }
-    
-  // async promiseValue() {
-  //   try {
-  //     this.count = 3 ;
-  //   } finally {
-  //     console.warn('ee2');
-  //   }
-  // }
 
-  // getValue() {
-  //   this.http.get('https://jsonplaceholder.typicode.com/users');
-  //   this.count = 4;
-  // }
+  changeByMarkForCheck(): void {
+    setTimeout(() => {
+      this.count++;
+      this.cdr.markForCheck();
+    }, 500);
+  }
 
-  // setIntervalValue() {
-  //   setInterval(() => {
-  //     this.count = 5;
-  //     this.cdr.detectChanges();
-  //   }, 1000);
-  // }
+  changeByDetectChanges(): void {
+    setTimeout(() => {
+      this.count++;
+      this.cdr.detectChanges();
+    }, 500);
+  }
 
-  //  async setValue() {
-  //  try {
-  //   setTimeout(() => {
-  //     this.count = 6;
-  //     this.cdr.detectChanges();
-  //   }, 1500);
-  //  } catch {
-  //   console.warn('ew');
-  //  }
+  changeByDetach(): void {
+    this.cdr.detach();
+  }
 
-  
+  async multipleEventChange(): Promise<void> {
+    try {
+      setTimeout(() => {
+        this.count++;
+        this.cdr.markForCheck();
+      }, 1000);
+    } catch {
+      console.error('error');
+    }
+  }
 
-// }}
+  changeByReattach(): void {
+    this.count++;
+    this.cdr.reattach();
+  }
+
+}

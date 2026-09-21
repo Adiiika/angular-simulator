@@ -15,7 +15,4 @@ export class ChildComponent {
     age: 32,
   };
 
-
-
-  
 }
