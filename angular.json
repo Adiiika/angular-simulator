@@ -62,7 +62,8 @@
               }
             ],
             "styles": ["src/assets/styles.scss"],
-            "polyfills": ["zone.js"]
+            "polyfills": [
+            ]
           },
           "configurations": {
             "production": {
@@ -107,6 +108,79 @@
           "builder": "@angular-eslint/builder:lint",
           "options": {
             "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
+          }
+        }
+      }
+    },
+    "homework-28": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/homework-28",
+      "sourceRoot": "projects/homework-28/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "projects/homework-28/src/main.ts",
+            "tsConfig": "projects/homework-28/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/homework-28/public"
+              }
+            ],
+            "styles": ["projects/homework-28/src/styles.scss"]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "homework-28:build:production"
+            },
+            "development": {
+              "buildTarget": "homework-28:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["projects/homework-28/**/*.ts", "projects/homework-28/**/*.html"],
+            "eslintConfig": "projects/homework-28/eslint.config.js"
           }
         }
       }
