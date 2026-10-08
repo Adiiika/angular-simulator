@@ -7,10 +7,11 @@ import { MessageService } from '../../../services/message.service';
 import { PostApiService } from '../post-api.service';
 import { PostService } from '../post.service';
 import { IPost } from '../IPost';
+import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-post-create',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, TranslatePipe],
   templateUrl: './post-create.component.html',
   styleUrl: './post-create.component.scss',
 })
@@ -21,7 +22,10 @@ export class PostCreateComponent {
   messageService: MessageService = inject(MessageService);
   postApiService: PostApiService = inject(PostApiService);
   postService: PostService = inject(PostService);
+  translateService: TranslateService = inject(TranslateService);
   router: Router = inject(Router);
+
+  translatedMessage = this.translateService.translate('postFailureError');
 
   postCreateForm: FormGroup = new FormGroup({
     title: new FormControl(''),
@@ -58,7 +62,7 @@ export class PostCreateComponent {
         }),
         catchError(() => {
           return throwError(() => {
-            this.messageService.showError('Не удалось создать пост!');
+            this.messageService.getPostFailureMessage('messageSection.postFailureError');
           });
         }),
       )

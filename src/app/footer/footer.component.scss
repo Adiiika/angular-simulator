@@ -67,8 +67,15 @@
   }
 
   .privacy-policy {
+    margin-top: 15px;
+    margin-bottom: 0px;
     line-height: 18px;
     width: 536px;
+  }
+  
+  .personal-data-policy {
+    margin-top: 0;
+    text-decoration: underline;
   }
 
   #privacy-policy-link {

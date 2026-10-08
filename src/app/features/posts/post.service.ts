@@ -46,7 +46,7 @@ export class PostService {
   loadNewPosts(limit: number, skip: number): Observable<IPostResponce> {
     return this.postApiService.getPost(limit, skip).pipe(
       catchError(() => {
-        this.messageService.showError('Не удалось загрузить посты');
+        this.messageService.getPostLoadFailureMessage('messageSection.postLoadFailureError');
         return of();
       }),
     );

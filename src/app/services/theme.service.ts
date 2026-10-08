@@ -6,6 +6,7 @@ import { laraPreset, noraPreset, auraPreset } from '../../assets/themes-preset';
 import { ITheme } from '../../interfaces/ITheme';
 import { Theme } from '../../enums/Theme';
 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -22,16 +23,20 @@ export class ThemeService {
   );
 
   isDarkMode$: Observable<boolean> = this.isDarkModeSubject.asObservable();
+
   themes: ITheme[] = [
     {
+      key: 'nav.themeSwitch.nora',
       theme: Theme.NORA,
       preset: noraPreset,
     },
     {
+      key: 'nav.themeSwitch.aura',
       theme: Theme.AURA,
       preset: auraPreset,
     },
     {
+      key: 'nav.themeSwitch.lara',
       theme: Theme.LARA,
       preset: laraPreset,
     },

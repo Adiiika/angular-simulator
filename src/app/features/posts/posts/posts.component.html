@@ -1,5 +1,5 @@
 @if (loadService.isLoading$ | async) {
-  <h1 class="post-title">Список постов:</h1>
+  <h1 class="post-title">{{ 'postsSection.postList' | translate }}</h1>
   <p-table [loading]="loadService.isLoading$">
     <ng-template pTemplate="header">
       <tr>
@@ -19,7 +19,7 @@
     </ng-template>
   </p-table>
 } @else {
-  <h1 class="post-title">Список постов:</h1>
+  <h1 class="post-title">{{ 'postsSection.postList' | translate }}</h1>
   <p-table
     dataKey="id"
     [(contextMenuSelection)]="selectedProduct"
@@ -53,6 +53,8 @@
     </ng-template>
   </p-table>
 
-  <button id="create-post-btn" routerLink="/posts/create">Создать пост</button>
+  <button id="create-post-btn" routerLink="/posts/create">
+    {{ 'button.createPost' | translate }}
+  </button>
   <p-contextmenu [model]="menuPost" #contextMenu />
 }

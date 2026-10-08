@@ -7,16 +7,18 @@ import { UserService } from '../services/user.service';
 import { UserCardComponent } from '../user-card/user-card.component';
 import { UserCreateComponent } from '../user-create/user-create.component';
 import { UserFilterComponent } from '../user-filter/user-filter.component';
+import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-users-page',
   standalone: true,
-  imports: [AsyncPipe, RouterOutlet, UserCardComponent, UserCreateComponent, UserFilterComponent],
+  imports: [AsyncPipe, RouterOutlet, UserCardComponent, UserCreateComponent, UserFilterComponent, TranslatePipe],
   templateUrl: './users-page.component.html',
   styleUrl: './users-page.component.scss',
 })
 export class UsersPageComponent implements OnInit {
 
+  translateService: TranslateService = inject(TranslateService);
   userService: UserService = inject(UserService);
   filterSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
   users$: Observable<IUser[]> = this.userService.users$;

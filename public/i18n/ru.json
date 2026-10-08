@@ -1,0 +1,261 @@
+{
+  "nav": {
+    "changeLanguage": "Поменять язык",
+    "languages": {
+      "english": "Английский",
+      "russian": "Русский",
+      "arabic": "Арабский"
+    },
+    "companyName": "РУМТИБЕТ",
+    "post": "Посты",
+    "main": "Главное",
+    "users": "Пользователи",
+    "consultation": "Консультация",
+    "sessionEnd": "Закончить сессию",
+    "lastVisit": "Последний вход:",
+    "themeSwitch": {
+      "nora": "Нора",
+      "aura": "Аура",
+      "lara": "Лара"
+    }
+  },
+   "button": {
+    "showDate": "Показать дату",
+    "showClicker": "Показать кликер",
+    "findProgram": "Найти программу",
+    "tourProgram": "Программа тура",
+    "programPrice": "Стоимость программ",
+    "rankingDestinations": "Рейтинг направлений",
+    "blogCardInfo": "читать статью",
+    "otherMaterials": "Другие материалы",
+    "pinterest": "Наш pinterest",
+    "subscribeNews": "Подписаться на новости",
+    "authLogin": "Логин",
+    "registerUser": "Зарегистрировать пользователя",
+    "deleteUser": "Удалить пользователя",
+    "createPost": "Создать пост",
+    "postEditUpdate": "Обновить"
+
+  },
+   "main": {
+  "mainTitle": "Насладись прогулкой в горах\n с командой единомышленников",
+  "tourLocation": "Локация для тура",
+  "tourTowns": {
+    "moscow": "Москва",
+    "saintPetersburg": "Санкт-Петербург",
+    "sochi": "Сочи"
+  },
+  "tourSelect": "выберите из списка",
+  "tourDateSelect": "укажите дату",
+  "tourMembers": "Участники",
+  "numberOfMembers": {
+    "oneMember": "1 человек",
+    "twoMembers": "2 человека",
+    "threeMembers": "3 человека"
+  }},
+  "sectionDescription": {
+   "historyJourney": "о нашем походе",
+  "promoDescription": "Исследуйте все горные массивы мира вместе с нами",
+  "descriptionJourney": "Его корни уходят в один фрагмент классической латыни 45 года н. э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов в Lorem Ipsum, «consectetur» и занялся его поисками в классической латинской литературе."
+  },
+  "sectionOffer": {
+   "companyOffers": "наше предложение",
+   "bestOffer": "Лучшие программы для тебя",
+   "descriptionOffer": "Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа.",
+   "offerCardDescription": "Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.",
+   "offerCardTitle": {
+    "experiencedGuide": "Опытный гид",
+    "safeTrip": "Безопасный поход",
+    "fairPrices": "Лояльные цены"
+   }},
+   "sectionPath": {
+      "touristView": "по версии отдыхающих",
+      "popularDestinations": "Популярные направления",
+      "pathsTitle": {
+        "lake": "Озеро возле гор",
+        "night": "Ночь в горах",
+        "stretching": "Растяжка в горах"
+      },
+      "pathsSubtitile": {
+        "romanticAdventure": "романтическое приключение",
+        "groupOfFriends": "в компании друзей",
+        "caresAboutSelf": "для тех, кто заботится о себе"
+      },
+      "pathRating": {
+        "firstPhoto": "4.9",
+        "secondPhoto": "4.5",
+        "thirdPhoto": "5.0"
+      },
+       "pathPrice": {
+        "firstPhoto": "480",
+        "secondPhoto": "500",
+        "thirdPhoto": "230"
+      }
+   },
+     "sectionBlog": {
+    "blogTitle": "делимся впечатлениями",
+    "blogJourney": "Блог о путешествиях",
+    "blogCardTitle": {
+      "beautifulItaly": "Красивая италия, какая она в реальности?",
+      "awayWithDoubts": "Долой сомнения! Весь мир открыт для вас!",
+      "prepareSoloTrip": "Как подготовиться в путешествие в одиночку?",
+      "flyIndia": "Индия... летим?"
+    },
+    "blogCardDate": "01/04/2023",
+    "blogCardDescription": {
+      "long": "Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.",
+      "medium": "Для современного мира базовый вектор развития предполагает",
+      "veryShort": "Для современного мира базовый вектор"
+    }
+   },
+   "sectionPhotoReport": {
+    "reportTitle": "фото-отчет",
+    "experienceReport": "Делимся впечатлениями"
+   },
+    "preFooter": {
+    "subTitle": "актуально",
+    "newsTitle": "Получайте полезные рассылки о путешествиях",
+    "emailPrompt": "Введите e-mail адрес",
+    "privacyPolicy": "подписываясь на новости, вы автоматически соглашаетесь с",
+    "personalDataPolicy": "условиями обработки персональных данных"
+   },
+   "footer": {
+    "companyFooter": "Компания румТибет",
+    "descriptionFooter": "Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney.",
+    "phoneNumber": "+7 (123) 456-78-90",
+    "serviceTitle": "Наши услуги",
+    "typeServices": {
+      "summerMountains": "Прогулки в горы летом",
+      "winterHikes": "Зимние походы в горы",
+      "templesVisit": "Посещение храмов в горах",
+      "templeExtremeType": "Экстремальные виды туризма",
+      "amazoniaHikes": "Походы в джунглях Амазонии",
+      "africaTrip": "Поездка в Африку"
+    },
+    "importantForTrip": "Важно для путешествий",
+    "prepareService": {
+      "longHikeGuide": "Как собрать в долгий поход?",
+      "vitalItem": "Жизненно важные предметы для похода",
+      "healthInsurance": "Медицинская страховка, гарантии безопасности",
+      "isDoctor": "Если вы врач - загляните сюда"
+    }
+   },
+   "sub-footer": {
+    "footerBottomCopyright": "ИП Константинопольский К.К., 2023",
+    "footerBottomLink": "Политика обработки персональных данных"
+   },
+   "authSection": {
+    "authUser": "Авторизация пользователя",
+    "authUsername": "Никнейм",
+    "authPassword": "Пароль"
+   },
+   "userCreateSection": {
+    "registrationTitle": "Регистрация пользователя",
+    "createUserField": {
+      "createUserName": "Имя:",
+      "createUserLogin": "Логин:",
+      "createUserEmail": "Эл. Почта:",
+      "createUserPhone": "Телефон:",
+      "createUserWeb": "Веб сайт:",
+      "createUserTown": "Город:",
+      "createUserStreet": "Улица:",
+      "createUserSuite": "Офис:",
+      "createUserZipcode": "Индекс:",
+      "createUserСoordinates": "Координаты:",
+      "createUserCompany": "Компания:",
+      "createUserCatchPhrase": "Миссия:",
+      "createUserCompanyBs": "Специализация:"
+    },
+    "createUserPlaceHolder": {
+      "createUserName": "Введите имя",
+      "createUserLogin": "Введите логин",
+      "createUserEmail": "Введите email",
+      "createUserPhone": "Введите номер телефона",
+      "createUserWeb": "Введите веб-сайт",
+      "createUserTown": "Введите город",
+      "createUserStreet": "Введите улицу",
+      "createUserSuite": "Введите офис",
+      "createUserZipcode": "Введите индекс",
+      "createUserLat": "Введите широту",
+      "createUserLng": "Введите долготу",
+      "createUserCompany": "Укажите компанию",
+      "createUserCatchPhrase": "Расскажите о миссии",
+      "createUserCompanyBs": "Введите специализацию"
+    }
+   },
+   "userCardSection": {
+    "userCardTitleText": {
+      "contact": "КОНТАКТЫ",
+      "street": "АДРЕС ПРОЖИВАНИЯ",
+      "workPlace": "МЕСТО РАБОТЫ"
+    },
+    "userCardKey": {
+      "email": "Эл.почта:",
+      "phoneNumber": "Телефон:",
+      "webSite": "Веб-сайт:",
+      "town": "Город:",
+      "street": "Улица:",
+      "office": "Офис:",
+      "zipcode": "Индекс:",
+      "coordinate": "Координаты:",
+      "company": "Компания:",
+      "mission": "Миссия:",
+      "specialization": "Специализация:"
+    } 
+   },
+   "userFilterSection": {
+    "userFilterTitle": "Поиск пользователя",
+    "userFilterPlaceHolder": "Введите имя пользователя",
+    "currentUsers": "Количество",
+    "quantity": {
+      "firstForm": "Пользователь",
+      "secondForm": "Пользователя",
+      "thirdForm": "Пользователей"
+    }
+
+   },
+   "userPageSection": {
+    "userList": "Список пользователей",
+    "noUserList": "Нет пользователей"
+   },
+    "postsSection": {
+    "postList": "Список постов",
+    "postListLabel": {
+      "detail": "Посмотреть",
+      "edit": "Редактировать",
+      "delete": "Удалить"
+    }
+   },
+   "postCreateSection": {
+    "postCreateTitle": "Создание поста",
+    "postCreatePlaceHolder": {
+      "title": "Введите title",
+      "body": "Введите body",
+      "tags": "Введите tags",
+      "likes": "Введите likes",
+      "dislikes": "Введите dislikes",
+      "views": "Введите views",
+      "userId": "Введите userId"
+    }
+   },
+   "postEditSection": {
+    "postEditTitle": "Редактирование поста",
+    "postEdit": {
+      "title": "Введите новый title:",
+      "tags": "Введите новый tags:",
+      "views": "Введите новый views:"
+    }
+   },
+   "messageSection": {
+    "success": "Направления получены",
+    "warn": "Программа недоступна",
+    "info": "Стоимость отправлена на почту",
+    "error": "Материалы недоступны",
+    "authFailureError": "Не удалось войти ",
+    "postFailureError": "Не удалось создать пост!",
+    "postUpdateFailureError": "Не удалось обновить пост!",
+    "postLoadFailureError": "Не удалось загрузить посты!",
+    "httpFailureError": "Ошибка {{ error.status }}"
+
+   }
+  }

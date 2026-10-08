@@ -3,16 +3,18 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { IUser } from '../../interfaces/IUser';
 import { HoverDirective } from '../directives/hover.directive';
 import { GradientDirective } from '../directives/gradient.directive';
+import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-user-create',
-  imports: [ReactiveFormsModule, HoverDirective, GradientDirective],
+  imports: [ReactiveFormsModule, HoverDirective, GradientDirective, TranslatePipe],
   templateUrl: './user-create.component.html',
   styleUrl: './user-create.component.scss',
 })
 export class UserCreateComponent {
 
   private fb: FormBuilder = inject(FormBuilder);
+  private translateService: TranslateService = inject(TranslateService);
 
   @Output() createUser: EventEmitter<IUser> = new EventEmitter<IUser>();
 

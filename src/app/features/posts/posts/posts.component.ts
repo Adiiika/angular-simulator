@@ -15,21 +15,28 @@ import { LoaderService } from '../../../services/loader.service';
 import { IPost } from '../IPost';
 import { PostEditDialogComponent } from '../post-edit-dialog/post-edit-dialog.component';
 import { IPostResponce } from '../IPostResponce';
+import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-posts',
-  imports: [TableModule, AsyncPipe, SkeletonModule, ContextMenuModule, PaginatorModule, RouterLink],
+  imports: [TableModule, AsyncPipe, SkeletonModule, ContextMenuModule, PaginatorModule, RouterLink, TranslatePipe],
   providers: [DialogService],
   templateUrl: './posts.component.html',
   styleUrl: './posts.component.scss',
 })
 export class PostsComponent implements OnInit {
 
+  translateService: TranslateService = inject(TranslateService);
   dialogService: DialogService = inject(DialogService);
   postApiService: PostApiService = inject(PostApiService);
   messageService: MessageService = inject(MessageService);
   loadService: LoaderService = inject(LoaderService);
   postService: PostService = inject(PostService);
+  translatedHeader = this.translateService.instant('postEditSection.postEditTitle');
+  
+  translatedLabelView = this.translateService.instant('postsSection.postListLabel.detail');
+  translatedLabelEdit = this.translateService.instant('postsSection.postListLabel.edit');
+  translatedLabelDelete = this.translateService.instant('postsSection.postListLabel.delete');
 
   router: Router = inject(Router);
 
@@ -41,7 +48,7 @@ export class PostsComponent implements OnInit {
 
   menuPost: MenuItem[] = [
     {
-      label: 'Просмотр',
+      label: this.translatedLabelView,
       command: () => {
         if (this.selectedProduct?.id) {
           this.viewPost(this.selectedProduct?.id);
@@ -49,13 +56,13 @@ export class PostsComponent implements OnInit {
       },
     },
     {
-      label: 'Редактировать',
+      label: this.translatedLabelEdit,
       command: () => {
         this.showDialog();
       },
     },
     {
-      label: 'Удалить',
+      label: this.translatedLabelDelete,
       command: () => {
         if (this.selectedProduct?.id) {
           this.onDelete(this.selectedProduct?.id);
@@ -85,7 +92,7 @@ export class PostsComponent implements OnInit {
 
   showDialog(): void {
     this.dialogService.open(PostEditDialogComponent, {
-      header: 'Редактирование поста',
+      header: this.translatedHeader,
       width: '25vw',
       height: '30vw',
       contentStyle: {

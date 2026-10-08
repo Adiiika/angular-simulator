@@ -1,110 +1,132 @@
 <div class="container-user">
   <div class="user-list">
     <div class="user-card">
-      <h1 class="registration-title">Регистрация пользователя</h1>
+      <h1 class="registration-title">{{ 'userCreateSection.registrationTitle' | translate }}</h1>
       <form [formGroup]="userForm">
         <div class="create-user__field">
-          <label for="name" class="create-user__label">Имя:</label>
+          <label for="name" class="create-user__label">{{
+            'userCreateSection.createUserField.createUserName' | translate
+          }}</label>
           <input
             [gradientConfiguration]="{ delay: 1000, colors: ['#ee7352', '#23d5ab'], thickness: 2 }"
             appGradient
             id="create-user__input"
             type="text"
-            placeholder="Введите имя"
+            [placeholder]="'userCreateSection.createUserPlaceHolder.createUserName' | translate"
             formControlName="name"
           />
         </div>
         <div class="create-user__field">
-          <label for="username" class="create-user__label">Логин:</label>
+          <label for="username" class="create-user__label">{{
+            'userCreateSection.createUserField.createUserLogin' | translate
+          }}</label>
           <input
             appGradient
             id="create-user__input"
             type="text"
-            placeholder="Введите логин"
+            [placeholder]="'userCreateSection.createUserPlaceHolder.createUserLogin' | translate"
             formControlName="username"
           />
         </div>
         <div class="create-user__field">
-          <label for="email" class="create-user__label">Эл. Почта:</label>
+          <label for="email" class="create-user__label">{{
+            'userCreateSection.createUserField.createUserEmail' | translate
+          }}</label>
           <input
             appGradient
             id="create-user__input"
             type="text"
-            placeholder="Введите email"
+            [placeholder]="'userCreateSection.createUserPlaceHolder.createUserEmail' | translate"
             formControlName="email"
           />
         </div>
         <div class="create-user__field">
-          <label for="phone" class="create-user__label">Телефон:</label>
+          <label for="phone" class="create-user__label">{{
+            'userCreateSection.createUserField.createUserPhone' | translate
+          }}</label>
           <input
             appGradient
             id="create-user__input"
             type="text"
-            placeholder="Введите номер телефона"
+            [placeholder]="'userCreateSection.createUserPlaceHolder.createUserPhone' | translate"
             formControlName="phone"
           />
         </div>
         <div class="create-user__field">
-          <label for="website" class="create-user__label">Веб сайт:</label>
+          <label for="website" class="create-user__label">{{
+            'userCreateSection.createUserField.createUserWeb' | translate
+          }}</label>
           <input
             appGradient
             id="create-user__input"
             type="text"
-            placeholder="Введите веб-сайт"
+            [placeholder]="'userCreateSection.createUserPlaceHolder.createUserWeb' | translate"
             formControlName="website"
           />
         </div>
 
         <div formGroupName="address">
           <div class="create-user__field">
-            <label for="city" class="create-user__label">Город:</label>
+            <label for="city" class="create-user__label">{{
+              'userCreateSection.createUserField.createUserTown' | translate
+            }}</label>
             <input
               appGradient
               id="create-user__input"
               type="text"
-              placeholder="Введите город"
+              [placeholder]="'userCreateSection.createUserPlaceHolder.createUserTown' | translate"
               formControlName="city"
             />
           </div>
           <div class="create-user__field">
-            <label for="street" class="create-user__label">Улица:</label>
+            <label for="street" class="create-user__label">{{
+              'userCreateSection.createUserField.createUserStreet' | translate
+            }}</label>
             <input
               appGradient
               id="create-user__input"
               type="text"
-              placeholder="Введите улицу"
+              [placeholder]="'userCreateSection.createUserPlaceHolder.createUserStreet' | translate"
               formControlName="street"
             />
           </div>
           <div class="create-user__field">
-            <label for="suite" class="create-user__label">Офис:</label>
+            <label for="suite" class="create-user__label">{{
+              'userCreateSection.createUserField.createUserSuite' | translate
+            }}</label>
             <input
               appGradient
               id="create-user__input"
               type="text"
-              placeholder="Введите офис"
+              [placeholder]="'userCreateSection.createUserPlaceHolder.createUserSuite' | translate"
               formControlName="suite"
             />
           </div>
           <div class="create-user__field">
-            <label for="zipcode" class="create-user__label">Индекс:</label>
+            <label for="zipcode" class="create-user__label">{{
+              'userCreateSection.createUserField.createUserZipcode' | translate
+            }}</label>
             <input
               appGradient
               id="create-user__input"
               type="text"
-              placeholder="Введите индекс"
+              [placeholder]="
+                'userCreateSection.createUserPlaceHolder.createUserZipcode' | translate
+              "
               formControlName="zipcode"
             />
           </div>
 
           <div formGroupName="geo">
             <div class="create-user__field">
-              <label for="lat" class="create-user__label">Координаты:</label>
+              <label for="lat" class="create-user__label">{{
+                'userCreateSection.createUserField.createUserСoordinates' | translate
+              }}</label>
               <input
                 appGradient
                 id="create-user__input-adress"
                 type="text"
-                placeholder="Введите широту"
+                [placeholder]="'userCreateSection.createUserPlaceHolder.createUserLat' | translate"
                 formControlName="lat"
               />
               <input
@@ -112,7 +134,7 @@
                 for="lng"
                 id="create-user__input-adress"
                 type="text"
-                placeholder="Введите долготу"
+                [placeholder]="'userCreateSection.createUserPlaceHolder.createUserLng' | translate"
                 formControlName="lng"
               />
             </div>
@@ -121,41 +143,53 @@
 
         <div formGroupName="company">
           <div class="create-user__field">
-            <label for="companyName" class="create-user__label">Компания:</label>
+            <label for="companyName" class="create-user__label">{{
+              'userCreateSection.createUserField.createUserCompany' | translate
+            }}</label>
             <input
               appGradient
               id="create-user__input"
               type="text"
-              placeholder="Укажите компанию"
+              [placeholder]="
+                'userCreateSection.createUserPlaceHolder.createUserCompany' | translate
+              "
               formControlName="name"
             />
           </div>
 
           <div class="create-user__field">
-            <label for="catchPhrase" class="create-user__label">Миссия:</label>
+            <label for="catchPhrase" class="create-user__label">{{
+              'userCreateSection.createUserField.createUserCatchPhrase' | translate
+            }}</label>
             <input
               appGradient
               id="create-user__input"
               type="text"
-              placeholder="Расскажите о миссии"
+              [placeholder]="
+                'userCreateSection.createUserPlaceHolder.createUserCatchPhrase' | translate
+              "
               formControlName="catchPhrase"
             />
           </div>
 
           <div class="create-user__field">
-            <label for="companyBs" for="companyBs" class="create-user__label">Специализация:</label>
+            <label for="companyBs" for="companyBs" class="create-user__label">{{
+              'userCreateSection.createUserField.createUserCompanyBs' | translate
+            }}</label>
             <input
               appGradient
               id="create-user__input"
               type="text"
-              placeholder="Введите специализацию"
+              [placeholder]="
+                'userCreateSection.createUserPlaceHolder.createUserCompanyBs' | translate
+              "
               formControlName="companyBs"
             />
           </div>
         </div>
       </form>
       <button appHover (click)="onSubmit()" type="button" id="create-user__btn">
-        Зарегистрировать пользователя
+        {{ 'button.registerUser' | translate }}
       </button>
     </div>
   </div>
