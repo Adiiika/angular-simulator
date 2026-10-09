@@ -6,10 +6,11 @@ import { UserService } from '../services/user.service';
 import { AsyncPipe } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { PluralPipe } from '../pipes/plural.pipe';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-user-filter',
-  imports: [ReactiveFormsModule, AsyncPipe, CommonModule, PluralPipe],
+  imports: [ReactiveFormsModule, AsyncPipe, CommonModule, PluralPipe, TranslatePipe],
   templateUrl: './user-filter.component.html',
   styleUrl: './user-filter.component.scss',
 })
@@ -19,6 +20,7 @@ export class UserFilterComponent implements OnInit {
 
   destroyRef: DestroyRef = inject(DestroyRef);
   userService: UserService = inject(UserService);
+  translateService: TranslateService = inject(TranslateService);
 
   userNameControl: FormControl = new FormControl('');
 

@@ -1,6 +1,6 @@
 <div class="users-container">
   <div class="user-filter-container">
-    <h1 class="user-filter-title">Поиск пользователя</h1>
+    <h1 class="user-filter-title">{{ 'userFilterSection.userFilterTitle' | translate }}</h1>
     <input
       id="user-filter-input"
       type="text"
@@ -10,7 +10,7 @@
   </div>
 
   <div>
-    <h1 class="current-users">Количество:</h1>
+    <h1 class="current-users">{{ 'userFilterSection.currentUsers' | translate }}</h1>
     @if (userService.users$ | async; as users) {
       <h2>
         {{ users.length | plural: 'Пользователь' : 'Пользователя' : 'Пользователей' }}

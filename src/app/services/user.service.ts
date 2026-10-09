@@ -50,7 +50,7 @@ export class UserService {
 
     return this.userApi.getUsers().pipe(
       catchError((error: IUser) => {
-        this.messageService.showError('Нет пользователей');
+        this.messageService.showError();
         console.error('ошибка', error);
         return of([]);
       }),

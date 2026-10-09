@@ -1,10 +1,10 @@
 <form class="post-container-edit" [formGroup]="postForm" (ngSubmit)="onSubmit()">
-  <h4>Введите новый title:</h4>
+  <h4>{{ 'postEditSection.postEdit.title' | translate }}</h4>
   <input id="update-input" type="text" formControlName="title" />
-  <h4>Введите новый tags:</h4>
+  <h4>{{ 'postEditSection.postEdit.tags' | translate }}</h4>
   <input id="update-input" type="text" formControlName="tags" />
 
-  <h4>Введите новый views:</h4>
+  <h4>{{ 'postEditSection.postEdit.views' | translate }}</h4>
   <input id="update-input" type="number" formControlName="views" />
-  <button id="update-btn" type="submit">Обновить</button>
+  <button id="update-btn" type="submit">{{ 'button.postEditUpdate' | translate }}</button>
 </form>

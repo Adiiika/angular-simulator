@@ -16,20 +16,40 @@ export class MessageService {
   config: IConfig = inject(APP_CONFIGURATION);
   enableNotifications: boolean = this.config.enableNotifications;
 
-  showSuccess(description: string): void {
-    this.addMessage(MessageType.SUCCESS, description);
+  showSuccess(): void {
+    this.addMessage(MessageType.SUCCESS, 'messageSection.success');
   }
 
-  showWarn(description: string): void {
-    this.addMessage(MessageType.WARN, description);
+  showWarn(): void {
+    this.addMessage(MessageType.WARN, 'messageSection.warn');
   }
 
-  showInfo(description: string): void {
-    this.addMessage(MessageType.INFO, description);
+  showInfo(): void {
+    this.addMessage(MessageType.INFO, 'messageSection.info');
   }
 
-  showError(description: string): void {
+  showError(): void {
+    this.addMessage(MessageType.ERROR, 'messageSection.error');
+  }
+
+  getAuthErrorMessage(description: string) {
     this.addMessage(MessageType.ERROR, description);
+  }
+
+  getPostFailureMessage(description: string) {
+    this.addMessage(MessageType.ERROR, description);
+  }
+
+  getPostUpdateFailureMessage(description: string) {
+        this.addMessage(MessageType.ERROR, description);
+  }
+
+  getPostLoadFailureMessage(description: string) {
+    this.addMessage(MessageType.ERROR, description);
+  }
+
+  getHttpFailureMessage(description: string) {
+        this.addMessage(MessageType.ERROR, description);
   }
 
   closeMessage(id: number): void {

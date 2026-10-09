@@ -1,34 +1,33 @@
 <footer class="sub-footer">
   <div class="sub-footer-left">
-    <span class="sub-title">актуально</span>
-    <h2 class="news-title">Получайте полезные рассылки о путешествиях</h2>
+    <span class="sub-title">{{ 'preFooter.subTitle' | translate }}</span>
+    <h2 class="news-title">{{ 'preFooter.newsTitle' | translate }}</h2>
   </div>
   <div class="sub-footer-right">
-    <span class="email-prompt fw-700 fs-16">Введите e-mail адрес</span>
+    <span class="email-prompt fw-700 fs-16">{{ 'preFooter.emailPrompt' | translate }}</span>
     <div class="subscription-form">
       <input id="email-input" placeholder="name@domain.com" type="email" />
-      <button id="subscribe-news-btn">Подписаться на новости</button>
+      <button id="subscribe-news-btn">{{ 'button.subscribeNews' | translate }}</button>
     </div>
     <p class="privacy-policy fs-14 fw-400">
-      подписываясь на новости, вы автоматически соглашаетесь
-      <a id="privacy-policy-link"
-        >с условиями обработки персональных данных и правилами рекламных рассылок</a
-      >
+      {{ 'preFooter.privacyPolicy' | translate }}
+    </p>
+    <p class="personal-data-policy fs-14 fw-400">
+      {{ 'preFooter.personalDataPolicy' | translate }}
     </p>
   </div>
 </footer>
 
 <footer class="footer-support">
   <div class="footer-social-media">
-    <span class="company-footer fw-700 fs-20">Компания {{ companyName }}</span>
+    <span class="company-footer fw-700 fs-20">{{ 'footer.companyFooter' | translate }}</span>
     <p class="description-footer fs-14 fw-400">
-      Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух
-      тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney.
+      {{ 'footer.descriptionFooter' | translate }}
     </p>
     <div class="feedback-content">
       <a href="mailto:info@domain.com" id="email-feedback" class="fw-600 fs-14">info@domain.com</a>
-      <a href="tel:+71234567890" id="phone-number-feedback" class="fw-600 fs-14"
-        >+7 (123) 456-78-90</a
+      <a href="tel:+71234567890" id="phone-number-feedback" class="fw-600 fs-14">
+        {{ 'footer.phoneNumber' | translate }}</a
       >
     </div>
     <div id="social-icons-group">
@@ -39,27 +38,35 @@
     </div>
   </div>
   <div class="footer-service">
-    <span class="service-title fw-700 fs-20">Наши услуги</span>
+    <span class="service-title fw-700 fs-20">{{ 'footer.serviceTitle' | translate }}</span>
     <ul class="footer-service-item">
-      <li id="summer-mountains">Прогулки в горы летом</li>
-      <li>Зимние походы в горы</li>
-      <li>Посещение храмов в горах</li>
-      <li>Экстремальные виды туризма</li>
-      <li>Походы в джунглях Амазонии</li>
-      <li>Поездка в Африку</li>
+      <li id="summer-mountains">
+        {{ 'footer.typeServices.summerMountains' | translate }}
+      </li>
+      <li>
+        {{ 'footer.typeServices.winterHikes' | translate }}
+      </li>
+      <li>{{ 'footer.typeServices.templesVisit' | translate }}</li>
+      <li>{{ 'footer.typeServices.templeExtremeType' | translate }}</li>
+      <li>{{ 'footer.typeServices.amazoniaHikes' | translate }}</li>
+      <li>{{ 'footer.typeServices.africaTrip' | translate }}</li>
     </ul>
   </div>
   <div class="footer-service">
-    <span class="travel-essentials fw-700 fs-20">Важно для путешествий</span>
+    <span class="travel-essentials fw-700 fs-20">{{ 'footer.importantForTrip' | translate }}</span>
     <ul class="footer-service-item">
-      <li id="long-hike-guide">Как собрать в долгий поход?</li>
-      <li>Жизненно важные предметы для похода</li>
-      <li>Медицинская страховка, гарантии безопасности</li>
-      <li>Если вы врач - загляните сюда</li>
+      <li id="long-hike-guide">{{ 'footer.prepareService.longHikeGuide' | translate }}</li>
+      <li>{{ 'footer.prepareService.vitalItem' | translate }}</li>
+      <li>{{ 'footer.prepareService.healthInsurance' | translate }}</li>
+      <li>{{ 'footer.prepareService.isDoctor' | translate }}</li>
     </ul>
   </div>
 </footer>
 <footer class="footer-bottom">
-  <span class="footer-bottom__copyright fs-14 fw-600">ИП Константинопольский К.К., 2023</span>
-  <a id="footer-bottom-link" class="fs-14 fw-400">Политика обработки персональных данных</a>
+  <span class="footer-bottom__copyright fs-14 fw-600">
+    {{ 'sub-footer.footerBottomLink' | translate }}
+  </span>
+  <a id="footer-bottom-link" class="fs-14 fw-400">{{
+    'sub-footer.footerBottomCopyright' | translate
+  }}</a>
 </footer>

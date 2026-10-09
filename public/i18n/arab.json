@@ -1,0 +1,261 @@
+{
+  "nav": {
+    "changeLanguage": "تغيير اللغة",
+     "languages": {
+      "english": "الإنجليزية",
+      "russian": "الروسية",
+      "arabic": "العربية"
+    },
+    "companyName": "روم تيبت",
+    "post": " الرئيسية المنشورات",
+    "main": "الرئيسية",
+    "users": "المستخدمون",
+    "consultation": "استشارة",
+    "sessionEnd": "إنهاء الجلسة",
+    "lastVisit": "آخر تسجيل دخول:",
+    "themeSwitch": {
+      "nora": "نورا",
+      "aura": "أورا",
+      "lara": "لارا"
+    }
+
+  },
+   "button": {
+    "showDate": "إظهار التاريخ",
+    "showClicker": "إظهار العداد",
+    "tourProgram": "برنامج الجولة",
+    "findProgram": "ابحث عن برنامج",
+    "programPrice": "تكلفة البرامج",
+    "blogCardInfo": "اقرأ المقال",
+    "otherMaterials": "مواد أخرى",
+    "pinterest": "حسابنا على بينتيريست",
+    "subscribeNews": "اشترك في النشرة الإخبارية",
+    "authLogin": "تسجيل الدخول",
+    "registerUser": "تسجيل مستخدم جديد" ,
+    "deleteUser": "حذف المستخدم",
+    "createPost": "إنشاء منشور",
+            "postEditUpdate": "تحديث"
+
+
+
+  },
+  "main": {
+    "mainTitle": "استمتع بنزهة في الجبال مع فريق من الأشخاص المتشابهين في التفكير",
+     "tourLocation": "موقع الجولة",
+  "tourTowns": {
+    "moscow": "موسكو",
+    "saintPetersburg": "سان بطرسبرغ ",
+    "sochi": "سوتشي"
+  },
+  "tourSelect": "اختر من القائمة",
+    "tourDateSelect": "حدد التاريخ",
+  "tourMembers": "المشاركون",
+  "numberOfMembers": {
+    "oneMember": "شخص واحد",
+    "twoMembers": "شخصان",
+    "threeMembers": "3 أشخاص"
+  }},
+  "sectionDescription": {
+   "historyJourney": "عن رحلتنا",
+  "promoDescription": "استكشف جميع السلاسل الجبلية في العالم معنا",
+  "descriptionJourney":  "تعود جذورها إلى مقطع من اللاتينية الكلاسيكية يعود إلى عام 45 قبل الميلاد، أي أكثر من ألفي عام مضت. قام ريتشارد ماكلينتوك، أستاذ اللاتينية في كلية هامبدن-سيدني بولاية فرجينيا، بالبحث عن إحدى الكلمات اللاتينية الغريبة، 'consectetur'، في الأدب اللاتيني الكلاسيكي."
+  },
+  "sectionOffer": {
+   "companyOffers": "عرضنا",
+   "bestOffer": "أفضل البرامج لك",
+   "descriptionOffer": "تعود جذورها إلى مقطع من اللاتينية الكلاسيكية يعود إلى عام 45 للميلاد، أي أكثر من ألفي عام مضت. ريتشارد ماكلينتوك، أستاذ اللاتينية في كلية",
+   "offerCardDescription": "بالنسبة للعالم الحديث، يفترض المسار الأساسي للتطور طرقًا مستقلة لتحقيق الشروط المقابلة للتفعيل.",
+   "offerCardTitle": {
+    "experiencedGuide": "مرشد ذو خبرة",
+    "safeTrip": "رحلة آمنة",
+    "fairPrices": "أسعار مناسبة"
+   },
+   "programPrice": "تكلفة البرامج"
+  },
+  "sectionPath": {
+      "touristView": "حسب آراء المسافرين",
+      "popularDestinations": "الوجهات الشائعة",
+      "pathsTitle": {
+        "lake": "بحيرة بالقرب من الجبال",
+        "night": "ليلة في الجبال",
+        "stretching": "تمارين الإطالة في الجبال"
+      },
+      "pathsSubtitile": {
+        "romanticAdventure": "مغامرة رومانسية",
+        "groupOfFriends": "بصحبة الأصدقاء",
+        "caresAboutSelf": "لمن يهتم بنفسه"
+      },
+      "pathRating": {
+        "firstPhoto": "٤.٩",
+        "secondPhoto": "٤.٥",
+        "thirdPhoto": "٥.٠"
+      },
+      "pathPrice": {
+        "firstPhoto": "٤٨٠",
+        "secondPhoto": "٥٠٠",
+        "thirdPhoto": "٢٣٠"
+      }
+   },
+     "sectionBlog": {
+    "blogTitle": "نشارككم انطباعاتنا",
+    "blogJourney": "مدونة السفر",
+    "blogCardTitle": {
+      "beautifulItaly": "إيطاليا الجميلة، كيف هي في الواقع؟",
+      "awayWithDoubts": "تخلَّ عن الشكوك! العالم كله مفتوح أمامك!",
+      "prepareSoloTrip": "كيف تستعد للسفر بمفردك؟",
+      "flyIndia": "الهند... هل نسافر؟"
+    },
+    "blogCardDate": "٠١/٠٣/٢٠٢٣",
+
+    "blogCardDescription": {
+      "long": "'بالنسبة للعالم الحديث، يفترض المسار الأساسي للتطور طرقًا مستقلة لتحقيق الشروط المقابلة للتفعيل.'",
+      "medium": "بالنسبة للعالم الحديث، يفترض المسار الأساسي للتطور طرقًا مستقلة لتحقيق الشروط المقابلة للتفعيل.",
+      "short": "بالنسبة للعالم الحديث، يفترض المسار الأساسي للتطور",
+      "veryShort": "بالنسبة للعالم الحديث، المسار الأساسي"
+    }
+   },
+   "sectionPhotoReport": {
+    "reportTitle": "تقرير مصور",
+    "experienceReport": "نشارككم انطباعاتنا"
+   },
+   "preFooter": {
+    "subTitle": "رائج",
+    "newsTitle": "احصل على نشرات بريدية مفيدة عن السفر",
+    "emailPrompt": "أدخل عنوان البريد الإلكتروني",
+    "privacyPolicy": "من خلال الاشتراك في النشرة الإخبارية، فإنك توافقة",
+    "personalDataPolicy": "تلقائيًا على شروط معالجة البيانات الشخصية وقواعد الرسائل الإعلانية"
+
+   },
+    "footer": {
+    "companyFooter": "شركة روم تيبت",
+    "descriptionFooter": "تعود جذورها إلى مقطع من اللاتينية الكلاسيكية يعود إلى عام 45 للميلاد، أي أكثر من ألفي عام مضت. ريتشارد ماكلينتوك، أستاذ اللاتينية في كلية هامبدن-سيدني.",
+    "phoneNumber": "+٧ (١٢٣) ٤٥٦-٧٨-٩٠",
+    "serviceTitle": "خدماتنا",
+    "typeServices": {
+      "summerMountains": "نزهات جبلية صيفية",
+      "winterHikes": "رحلات جبلية شتوية",
+      "templesVisit": "زيارة المعابد في الجبال",
+      "templeExtremeType": "أنواع السياحة المتطرفة",
+      "amazoniaHikes": "رحلات في غابات الأمازون",
+      "africaTrip": "رحلة إلى أفريقيا"
+    },
+    "importantForTrip": "مهم للسفر",
+    "prepareService": {
+      "longHikeGuide": "كيف تستعد لرحلة طويلة؟",
+      "vitalItem": "أغراض أساسية للرحلة",
+      "healthInsurance": "التأمين الصحي، ضمانات السلامة",
+      "isDoctor": "إذا كنت طبيبًا - اطلع هنا"
+    }
+   },
+   "sub-footer": {
+    "footerBottomCopyright": "المالك الفردي قسطنطينوبولسكي ك.ك.، ٢٠٢٣",
+    "footerBottomLink": "سياسة معالجة البيانات الشخصية"
+   },
+    "authSection": {
+    "authUser": "تسجيل دخول المستخدم",
+    "authUsername": "الاسم المستعار",
+    "authPassword": " كلمة المرور"
+   },
+    "userCreateSection": {
+    "registrationTitle": "تسجيل مستخدم جديد",
+     "createUserField": {
+      "createUserName": "الاسم:",
+      "createUserLogin": "اسم المستخدم:",
+      "createUserEmail": "البريد الإلكتروني:",
+      "createUserPhone": "الهاتف:",
+      "createUserWeb": "الموقع الإلكتروني:",
+      "createUserTown": "المدينة:",
+      "createUserStreet": "الشارع:",
+      "createUserSuite": "المكتب:",
+      "createUserZipcode": "الرمز البريدي:",
+      "createUserСoordinates": "الإحداثيات:",
+      "createUserCompany": "الشركة:",
+      "createUserCatchPhrase": "المهمة:",
+      "createUserCompanyBs": "التخصص:"
+    },
+    "createUserPlaceHolder": {
+      "createUserName": "أدخل اسمك",
+      "createUserLogin": "أدخل اسم المستخدم",
+      "createUserEmail": "أدخل البريد الإلكتروني",
+      "createUserPhone": "أدخل رقم الهاتف",
+      "createUserWeb": "أدخل الموقع الإلكتروني",
+      "createUserTown": "أدخل المدينة",
+      "createUserStreet": "أدخل الشارع",
+      "createUserSuite": "أدخل المكتب",
+      "createUserZipcode": "أدخل الرمز البريدي",
+      "createUserLat": "أدخل خط العرض",
+      "createUserLng": "أدخل خط الطول",
+      "createUserCompany": " حدد الشركة",
+      "createUserCatchPhrase": "أخبرنا عن المهمة",
+      "createUserCompanyBs": "أدخل التخصص"
+    }
+   },
+    "userCardSection": {
+    "userCardTitleText": {
+      "contact": "جهات الاتصال",
+      "street": " عنوان السكن",
+      "workPlace": "مكان العمل"
+    },
+    "userCardKey": {
+      "email": "البريد الإلكتروني:",
+      "phoneNumber": "الهاتف:",
+      "webSite": "الموقع الإلكتروني:",
+      "town": "المدينة:",
+      "street": "الشارع:",
+      "office": "المكتب:",
+      "zipcode": "الرمز البريدي:",
+      "coordinate": "الإحداثيات:",
+      "company": "الشركة:",
+      "mission": "المهمة:",
+      "specialization": "التخصص:"
+    } 
+   },
+   "userFilterSection": {
+    "userFilterTitle": "البحث عن مستخدم",
+    "userFilterPlaceHolder": "",
+    "currentUsers": "الكمية"
+   },
+   "userPageSection": {
+    "userList": "قائمة المستخدمين",
+    "noUserList": "لا يوجد مستخدمون"
+   },
+    "postsSection": {
+    "postList": " قائمة المنشورات",
+     "postListLabel": {
+      "detail": "عرض",
+      "edit": "تعديل",
+      "delete": "حذف"
+    }
+   },
+   "postCreateSection": {
+    "postCreateTitle": "إنشاء منشور",
+    "postCreatePlaceHolder": {
+      "title": "أدخل العنوان",
+      "body": "أدخل المحتوى",
+      "tags": "أدخل الوسوم",
+      "likes": "أدخل الإعجابات",
+      "dislikes": "أدخل عدم الإعجابات",
+      "views": "أدخل المشاهدات",
+      "userId": "أدخل معرف المستخدم"
+    }
+   },
+    "postEditSection": {
+    "postEditTitle": "تعديل المنشور",
+    "postEdit": {
+      "title": "أدخل العنوان الجديد:",
+      "tags": "أدخل الوسوم الجديدة:",
+      "views": "أدخل المشاهدات الجديدة:"
+    }
+   },
+    "messageSection": {
+    "success": "تم استلام الوجهات",
+    "warn": "البرنامج غير متاح",
+    "info": "تم إرسال السعر إلى البريد الإلكتروني",
+    "error": "المواد غير متاحة",
+     "authFailureError": "فشل تسجيل الدخول",
+    "postFailureError": "فشل إنشاء المنشور!",
+    "postUpdateFailureError": "فشل تحديث المنشور!",
+    "postLoadFailureError": "فشل تحميل المنشورات",
+    "httpFailureError": "خطأ {{ error.status }}"
+   }
+   }

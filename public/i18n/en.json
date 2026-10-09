@@ -1,0 +1,260 @@
+{
+  "nav": {
+    "changeLanguage": "Change language",
+    "languages": {
+      "english": "English",
+      "russian": "Russian",
+      "arabic": "Arabic"
+    },
+    "companyName": "RUMTIBET",
+    "post": "Posts",
+    "main": "Main",
+    "users": "Users",
+    "consultation": "Consultantion",
+    "sessionEnd": "End session",
+    "lastVisit": "Last visit:",
+    "themeSwitch": {
+      "nora": "Nora",
+      "aura": "Aura",
+      "lara": "Lara"
+    }
+  },
+  "button": {
+    "showDate": "Show date",
+    "showClicker": "Show clicker",
+    "findProgram": "find a program",
+    "programPrice": "Program pricing",
+    "tourProgram": "Tour program",
+    "blogCardInfo": "read the article",
+    "otherMaterials": "Other materials",
+    "pinterest": "Our pinterest",
+    "subscribeNews": "Subscribe to the newsletter",
+    "authLogin": "Login",
+        "registerUser": "Register user",
+            "deleteUser": "Delete user",
+                "createPost": "Create post",
+        "postEditUpdate": "Update"
+
+
+
+  },
+  "main": {
+    "mainTitle": "Enjoy a walk in the mountains with a team of like-minded people",
+     "tourLocation": "Tour location",
+  "tourTowns": {
+    "moscow": "Moscow",
+    "saintPetersburg": "Saint-Petersburg",
+    "sochi": "Sochi"
+  },
+  "tourSelect": "select from the list",
+  "tourDateSelect": "specify a date",
+  "tourMembers": "Participants",
+  "numberOfMembers": {
+    "oneMember": "1 person",
+    "twoMembers": "2 people",
+    "threeMembers": "3 people"
+  }},
+  "sectionDescription": {
+  "historyJourney": "about our trip",
+  "promoDescription": "Explore all the mountain ranges of the world with us",
+  "descriptionJourney":  "Its roots go back to a single fragment of classical Latin from 45 BC, that is, more than two thousand years ago. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, 'consectetur', and went searching through classical Latin literature."
+  },
+  "sectionOffer": {
+   "companyOffers": "our offer",
+   "bestOffer": "The best program for you",
+   "descriptionOffer": "Its roots go back to a single fragment of classical Latin from 45 BC, that is, more than two thousand years ago. Richard McClintock, a Latin professor from the college.",
+   "offerCardDescription": "For the modern world, the basic vector of development assumes independent ways of implementing the corresponding conditions for activation.",
+   "offerCardTitle": {
+    "experiencedGuide": "Experienced guide",
+    "safeTrip": "Safe trip",
+    "fairPrices": "Fair prices"
+   }
+  },
+  "sectionPath": {
+      "touristView": "According to travelers",
+      "popularDestinations": "Popular destinations",
+      "pathsTitle": {
+        "lake": "Lake near the mountains",
+        "night": "Night in the mountains",
+        "stretching": "Stretching in the mountains"
+      },
+      "pathsSubtitile": {
+        "romanticAdventure": "a romantic adventure",
+        "groupOfFriends": "with a group of friends",
+        "caresAboutSelf": "for those who care about themselves"
+      },
+      "pathRating": {
+        "firstPhoto": "4.9",
+        "secondPhoto": "4.5",
+        "thirdPhoto": "5.0"
+      },
+      "pathPrice": {
+        "firstPhoto": "480",
+        "secondPhoto": "500",
+        "thirdPhoto": "230"
+      }
+   },
+    "sectionBlog": {
+    "blogTitle": "Sharing impressions",
+    "blogJourney": "Travel blog",
+    "blogCardTitle": {
+      "beautifulItaly": "Beautiful Italy, what is it really like?",
+      "awayWithDoubts": "Away with doubts! The whole world is open to you!",
+      "prepareSoloTrip": "How to prepare for a solo trip?",
+      "flyIndia": "India ... shall we fly?"
+    },
+    "blogCardDate": "01/04/2023",
+    "blogCardDescription": {
+      "long": "For the modern world, the basic vector of development assumes independent ways of implementing the corresponding conditions for activation ... independent ways of implementing the corresponding...",
+      "medium": "For the modern world, the basic vector of development assumes independent ways of implementing the corresponding conditions for activation.",
+      "short": "For the modern world, the basic vector of development assumes",
+      "veryShort": "For the modern world, the basic vector"
+    }},
+  "sectionPhotoReport": {
+ "reportTitle": "photo-report",
+ "experienceReport": "Sharing impressions"
+  },
+  "preFooter": {
+    "subTitle": "relevant",
+    "newsTitle": "Get useful travel newsletters",
+    "emailPrompt": "Enter your e-mail address",
+    "privacyPolicy": "By subscribing to the newsletter, you automatically agree to",
+    "personalDataPolicy": "agree to our Privacy Policy"
+   },
+    "footer": {
+    "companyFooter": "RumTibet Company",
+    "descriptionFooter": "Its roots go back to a single fragment of classical Latin from 45 AD, that is, more than two thousand years ago. Richard McClintock, a Latin professor from Hampden-Sydney College.",
+    "phoneNumber": "+7 (123) 456-78-90",
+    "serviceTitle": "Our services",
+    "typeServices": {
+      "summerMountains": "Summer mountain walks",
+      "winterHikes": "Winter mountain hikes",
+      "templesVisit": "Visiting temples in the mountains",
+      "templeExtremeType": "Extreme tourism",
+      "amazoniaHikes": "Treks in the Amazon jungle",
+      "africaTrip": "Trip to Africa"
+    },
+    "importantForTrip": "Important for travel",
+    "prepareService": {
+      "longHikeGuide": "How to pack for a long trek?",
+      "vitalItem": "Essential items for a trek",
+      "healthInsurance": "Medical insurance, safety guarantees",
+      "isDoctor": "If you're a doctor, check this out"
+    }
+   },
+   "sub-footer": {
+    "footerBottomCopyright": "Sole Proprietor Konstantinopolsky K.K., 2023",
+    "footerBottomLink": "Personal data processing policy"
+   },
+    "authSection": {
+    "authUser": "User authorization",
+    "authUsername": "Username",
+    "authPassword": "Password"
+   },
+    "userCreateSection": {
+    "registrationTitle": "User registration",
+      "createUserField": {
+      "createUserName": "Name:",
+      "createUserLogin": "Login:",
+      "createUserEmail": "Email:",
+      "createUserPhone": "Phone number:",
+      "createUserWeb": "Website:",
+      "createUserTown": "Town:",
+      "createUserStreet": "Street:",
+      "createUserSuite": "Office:",
+      "createUserZipcode": "Index:",
+      "createUserСoordinates": "Coordinate:",
+      "createUserCompany": "Company:",
+      "createUserCatchPhrase": "Mission:",
+      "createUserCompanyBs": "Specialization:"
+    },
+    "createUserPlaceHolder": {
+      "createUserName": "Enter your name",
+      "createUserLogin": "Enter login",
+      "createUserEmail": "Enter email",
+      "createUserPhone": "Enter phone number",
+      "createUserWeb": "Enter website",
+      "createUserTown": "Enter city",
+      "createUserStreet": "Enter street",
+      "createUserSuite": "Enter office",
+      "createUserZipcode": "Enter postal code",
+      "createUserLat": "Enter latitude",
+      "createUserLng": "Enter longitude",
+      "createUserCompany": "Specify company",
+      "createUserCatchPhrase": "Tell about your mission",
+      "createUserCompanyBs": "Enter specialization"
+    }
+   },
+    "userCardSection": {
+    "userCardTitleText": {
+      "contact": "CONTACTS",
+      "street": "HOME ADDRESS",
+      "workPlace": "PLACE OF WORK"
+    },
+    "userCardKey": {
+      "email": "Email:",
+      "phoneNumber": "Phone:",
+      "webSite": "Website:",
+      "town": "City:",
+      "street": "Street:",
+      "office": "Office:",
+      "zipcode": "Postal code:",
+      "coordinate": "Coordinates:",
+      "company": "Company:",
+      "mission": "Mission:",
+      "specialization": "Specialization:"
+    } 
+   },
+   "userFilterSection": {
+    "userFilterTitle": "Search user",
+    "currentUsers": "Quantity",
+     "quantity": {
+      "firstForm": "User",
+      "secondForm": "Users",
+      "thirdForm": "Users"
+    }
+   },
+   "userPageSection": {
+    "userList": "User list",
+    "noUserList": "No users"
+   },
+    "postsSection": {
+    "postList": "Post list",
+     "postListLabel": {
+      "detail": "View",
+      "edit": "Edit",
+      "delete": "Delete"
+    }
+   },
+   "postCreateSection": {
+    "postCreateTitle": "Create post",
+    "postCreatePlaceHolder": {
+      "title": "Enter your title",
+      "body": "Enter your body",
+      "tags": "Enter your tags",
+      "likes": "Enter your likes",
+      "dislikes": "Enter your dislikes",
+      "views": "Enter your views",
+      "userId": "Enter your userId"
+    }
+   },
+    "postEditSection": {
+    "postEditTitle": "Edit post",
+    "postEdit": {
+      "title": "Enter new title:",
+      "tags": "Enter new tags:",
+      "views": "Enter new views:"
+    }
+   },
+    "messageSection": {
+    "success": "Destinations received",
+    "warn": "Program unavailable",
+    "info": "Price sent to email",
+    "error": "Materials unavailable",
+    "authFailureError": "Login failed",
+    "postFailureError": "Failed to create post!",
+    "postUpdateFailureError": "Failed to update post!",
+    "postLoadFailureError": "Failed to load posts",
+    "httpFailureError": "Error {{ error.status }}"
+   }
+   }

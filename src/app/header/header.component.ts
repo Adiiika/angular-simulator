@@ -12,6 +12,8 @@ import { AuthService } from '../features/auth/auth.service';
 import { DatePipe } from '@angular/common';
 import { APP_CONFIGURATION } from '../app-configuration.token';
 import { IConfig } from '../IConfig';
+import { TranslatePipe, TranslateDirective, TranslateService } from '@ngx-translate/core';
+import { LanguageService } from '../services/language.service';
 
 @Component({
   selector: 'app-header',
@@ -25,6 +27,8 @@ import { IConfig } from '../IConfig';
     UpperCasePipe,
     AsyncPipe,
     DatePipe,
+    TranslatePipe, 
+    TranslateDirective,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
@@ -33,16 +37,20 @@ export class HeaderComponent implements OnInit {
 
   themeService: ThemeService = inject(ThemeService);
   authSevice: AuthService = inject(AuthService);
+  translateService: TranslateService = inject(TranslateService);
+  languageService: LanguageService = inject(LanguageService);
 
   config: IConfig = inject(APP_CONFIGURATION);
   myDate: Date = new Date();
   enableTheming = this.config.enableTheming;
   faSun: IconDefinition = faSun;
   faMoon: IconDefinition = faMoon;
-  companyName: string = this.config.companyName;
+  companyName: string  = this.config.companyName;
   date: string = '';
   counter: number = 0;
   isClickerMode: boolean = true;
+  themes = this.themeService.themes;
+
 
   ngOnInit() {
        setInterval(() => {
@@ -50,20 +58,24 @@ export class HeaderComponent implements OnInit {
     }, 1000);
   }
 
+  changeLang(lang: string) {
+    this.languageService.changeLang(lang);
+  }
+
   navigations: INav[] = [
     {
       id: 1,
-      text: 'Посты',
+      text: 'nav.post',
       link: '/posts',
     },
     {
       id: 2,
-      text: 'Главная',
+      text: 'nav.main',
       link: '/homePage',
     },
     {
       id: 3,
-      text: 'Пользователи',
+      text: 'nav.users',
       link: '/users',
     },
   ];

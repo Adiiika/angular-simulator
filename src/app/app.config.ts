@@ -4,9 +4,10 @@ import {
   provideAppInitializer,
   provideZoneChangeDetection,
   inject,
+  importProvidersFrom,
 } from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { providePrimeNG } from 'primeng/config';
@@ -22,6 +23,12 @@ import { AuthService } from './features/auth/auth.service';
 import { IConfig } from './IConfig';
 import { DATE_PIPE_DEFAULT_OPTIONS } from '@angular/common';
 import { APP_CONFIGURATION } from './app-configuration.token';
+import {provideTranslateLoader, provideTranslateService, TranslateDefaultParser, TranslateLoader} from "@ngx-translate/core";
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
+import 'zone.js';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { AppComponent } from './app.component';
 
 const applicationConfig: IConfig = {
   companyName: 'румТибет',
@@ -47,9 +54,14 @@ const initTheme = (): Preset => {
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideHttpClient(
-      withInterceptors([requestInterceptor, errorHandlingInterceptor, authInterceptor]),
-    ),
+    provideHttpClient(withInterceptors([requestInterceptor, errorHandlingInterceptor, authInterceptor])),
+     provideTranslateService({
+      loader: provideTranslateHttpLoader({
+        prefix: '/i18n/',
+        suffix: '.json',
+      }),
+      fallbackLang: 'en',
+    }),
     provideBrowserGlobalErrorListeners(),
     {
       provide: DATE_PIPE_DEFAULT_OPTIONS,

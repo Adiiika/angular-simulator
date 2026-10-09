@@ -5,11 +5,12 @@ import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PostService } from '../post.service';
 import { IPost } from '../IPost';
 import { MessageService } from '../../../services/message.service';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-post-edit-dialog',
   providers: [NgModule],
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule, TranslatePipe],
   templateUrl: './post-edit-dialog.component.html',
   styleUrl: './post-edit-dialog.component.scss',
 })
@@ -19,6 +20,7 @@ export class PostEditDialogComponent implements OnInit {
   dynamicDialogRef: DynamicDialogRef = inject(DynamicDialogRef);
   formBuilder: FormBuilder = inject(FormBuilder);
   postService: PostService = inject(PostService);
+  translateService: TranslateService = inject(TranslateService);
   messageService: MessageService = inject(MessageService);
 
   posts: Partial<IPost[]> = [];
@@ -50,7 +52,7 @@ export class PostEditDialogComponent implements OnInit {
         }),
         catchError(() => {
           return throwError(() => {
-            this.messageService.showError('Не удалось обновить пост!');
+            this.messageService.getPostUpdateFailureMessage('messageSection.postUpdateFailureError');
           });
         }),
       )

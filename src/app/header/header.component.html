@@ -1,15 +1,38 @@
 <header class="container-header">
   <div class="header-navigation">
+    <div class="languages-container">
+      <div>
+        <h3>{{ 'nav.changeLanguage' | translate }}</h3>
+      </div>
+      <div class="change-language-container">
+        <button id="channge-lang-btn" (click)="changeLang('en')">
+          {{ 'nav.languages.english' | translate }}
+        </button>
+        <button id="channge-lang-btn" (click)="changeLang('ru')">
+          {{ 'nav.languages.russian' | translate }}
+        </button>
+        <button id="channge-lang-btn" (click)="changeLang('arab')">
+          {{ 'nav.languages.arabic' | translate }}
+        </button>
+      </div>
+    </div>
     <div class="header-left">
-      <img class="company-icon" src="./mountain-logo.svg" width="137px" height="72px" alt="" />
-      <span class="company-name fs-18">{{ companyName | uppercase }}</span>
-      <p-selectbutton
-        id="select-themes-btn"
-        (onChange)="themeService.changeTheme($event.value)"
-        [options]="themeService.themes"
-        optionLabel="theme"
-        optionValue="theme"
-      />
+      <div class="company-name-container">
+        <img class="company-icon" src="./mountain-logo.svg" width="137px" height="72px" alt="" />
+        <span class="company-name fs-18">{{ 'nav.companyName' | translate | uppercase }}</span>
+
+        <p-selectbutton
+          id="select-themes-btn"
+          (onChange)="themeService.changeTheme($event.value)"
+          [options]="themeService.themes"
+          optionLabel="theme"
+          optionValue="theme"
+        >
+          <ng-template pTemplate="item" let-theme>
+            <span> {{ theme.key | translate }}</span>
+          </ng-template>
+        </p-selectbutton>
+      </div>
     </div>
     <div class="toogle-container">
       <nav class="header-right-navigation fs-18">
@@ -20,7 +43,7 @@
             routerLinkActive="active-navigation-text"
             id="navigation-text"
           >
-            {{ navigation.text }}
+            {{ navigation.text | translate }}
           </a>
         }
         @if (enableTheming) {
@@ -31,43 +54,47 @@
 
           <fa-icon [icon]="(themeService.isDarkMode$ | async) ? faMoon : faSun" />
         }
-        <button id="request-consultation-btn" class="fs-16 fw-600" width="157px" height="44px">
-          Консультация
-        </button>
       </nav>
-      @if (!isClickerMode) {
-        <div class="date-container">
-          <span class="run-time">{{ date }}</span>
-          <button (click)="isClickerMode = !isClickerMode" id="date-toggle-btn">
-            Показать кликер
-          </button>
-        </div>
-      }
-
-      @if (isClickerMode) {
-        <div class="count-container">
-          <div class="counter-control">
-            <button (click)="counter += 1" id="counter-plus" class="fs-20">+</button>
-            <span class="count-zero fs-20">{{ counter }}</span>
-            <button
-              (click)="counter -= 1"
-              [disabled]="counter === 0"
-              id="counter-minus"
-              class="fs-20"
-            >
-              -
+      <div class="date-clicker-container">
+        <button id="request-consultation-btn" class="fs-16 fw-600" width="157px" height="44px">
+          {{ 'nav.consultation' | translate }}
+        </button>
+        @if (!isClickerMode) {
+          <div class="date-container">
+            <span class="run-time">{{ date }}</span>
+            <button (click)="isClickerMode = !isClickerMode" id="date-toggle-btn">
+              {{ 'button.showClicker' | translate }}
             </button>
           </div>
-          <button (click)="isClickerMode = !isClickerMode" id="count-toggle-btn">
-            Показать дату
-          </button>
-        </div>
-      }
-    </div>
-    <div>
-      <button (click)="authSevice.logout()" id="close-session-btn">Закончить сессию</button>
+        }
 
-      <h3 class="last-visit-title">Последний вход:</h3>
+        @if (isClickerMode) {
+          <div class="count-container">
+            <div class="counter-control">
+              <button (click)="counter += 1" id="counter-plus" class="fs-20">+</button>
+              <span class="count-zero fs-20">{{ counter }}</span>
+              <button
+                (click)="counter -= 1"
+                [disabled]="counter === 0"
+                id="counter-minus"
+                class="fs-20"
+              >
+                -
+              </button>
+            </div>
+            <button (click)="isClickerMode = !isClickerMode" id="count-toggle-btn">
+              {{ 'button.showDate' | translate }}
+            </button>
+          </div>
+        }
+      </div>
+    </div>
+    <div class="session-info-container">
+      <button (click)="authSevice.logout()" id="close-session-btn">
+        {{ 'nav.sessionEnd' | translate }}
+      </button>
+
+      <h3 class="last-visit-title">{{ 'nav.lastVisit' | translate }}</h3>
       <p class="last-visit-time">{{ myDate | date }}</p>
     </div>
   </div>
